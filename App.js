@@ -16,7 +16,7 @@ export default function App() {
         <View style={styles.container}>
             <StatusBar hidden />
 			<LinearGradient
-                colors={["white", "#B895C8"]}
+                colors={["white", "white","#B895C8"]}
                 style={styles.gradient}
             />
 			<CarouselItem />
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
 		position: "absolute",
         left: 0,
         right: 0,
-        top: 220,
-        height: Dimensions.get("window").height,
+        top: 0,
+		height: Dimensions.get("window").height,
+		zIndex: -1,
     },
 });
