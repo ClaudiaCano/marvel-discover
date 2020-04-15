@@ -6,11 +6,12 @@ import BtnVerMas from "./components/BtnVerMas";
 import BtnLeido from "./components/BtnLeido";
 import Personaje from "./components/Personaje";
 import AppBar from "./components/AppBar";
+import CardSliderHome from "./components/CardSliderHome";
 
 export default function App() {
   return (
     <View style={styles.container}>
-        <AppBar />
+        <CardSliderHome />
     </View>
   );
 }
