@@ -9,6 +9,7 @@ import Personaje from "./components/Personaje";
 import AppBar from "./components/AppBar";
 import CarouselItem from "./components/CarouselItem";
 import CardSliderHome from "./components/CardSliderHome";
+import ImgVerMas from "./components/ImgVerMas";
 import CardCommicEvent from "./components/CardComicEvent";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
                 style={styles.gradient}
             />
 			<CarouselItem />
+			<ImgVerMas />
             <AppBar />
         </View>
     );
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#B895C8",
         //alignItems: "center",
         //justifyContent: "center",
-
         //justifyContent: "flex-end",
     },
     gradient: {
