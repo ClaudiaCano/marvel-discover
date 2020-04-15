@@ -7,11 +7,12 @@ import BtnLeido from "./components/BtnLeido";
 import Personaje from "./components/Personaje";
 import AppBar from "./components/AppBar";
 import CardSliderHome from "./components/CardSliderHome";
+import CardCommicEvent from "./components/CardComicEvent";
 
 export default function App() {
   return (
     <View style={styles.container}>
-        <CardSliderHome />
+        <CardCommicEvent />
     </View>
   );
 }

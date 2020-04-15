@@ -1,10 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import * as Font from "expo-font";
-import Star1 from "../assets/1.1.png";
-import Star2 from "../assets/2.1.png";
-import Star3 from "../assets/3.1.png";
-import Star4 from "../assets/4.1.png";
+import Comic1 from "../assets/image1.png";
+import Comic2 from "../assets/image2.png";
+
 
 export default class Personaje extends React.Component {
     constructor() {
@@ -30,18 +29,15 @@ export default class Personaje extends React.Component {
     render() {
         return (
           <View style={styles.card}>
-            <Image source={Star1} style={styles.image} />
-            <Image source={Star2} style={styles.image} />
-            <Image source={Star3} style={styles.image} />
-            <Image source={Star4} style={styles.imageFinal} />
+            <Image source={Comic1} style={styles.image} />
+            <Image source={Comic2} style={styles.imageFinal} />
           </View>
         );
     }
 }
 
 
-
-const CARD_HEIGHT = 150;
+const CARD_HEIGHT = 400;
 const CARD_WIDTH = 350;
 
 const styles = StyleSheet.create({
@@ -50,32 +46,40 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "auto",
     height: CARD_HEIGHT,
-    marginTop: 200,
+    marginTop: 50,
     marginLeft: 20,
     marginRight: 20,
     borderRadius: 10,
-    backgroundColor: "white",
+    backgroundColor: "transparent",
 
-    shadowOffset: { width: 5, height: 5 },
-    shadowRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.3,
+    
   },
   image:{
-    marginLeft: 10,
+    marginLeft: 2,
     marginTop: 5,
-    width: 80,
+    width: 250,
     height: CARD_HEIGHT - 10,
     resizeMode: "cover",
     justifyContent: "center",
+
+    shadowOffset: { width: 5, height: 5 },
+    shadowRadius: 5,
+    shadowColor: "grey",
+    shadowOpacity: 0.2,
   },
   imageFinal:{
-    marginLeft: 10,
+    marginLeft: 2,
     marginTop: 5,
-    width: 40,
+    width: 103,
     height: CARD_HEIGHT - 10,
     resizeMode: "cover",
     justifyContent: "center",
+
+    shadowOffset: { width: 5, height: 5 },
+    shadowRadius: 5,
+    shadowColor: "grey",
+    shadowOpacity: 0.2,
   },
+
   
 });
