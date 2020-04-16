@@ -13,6 +13,7 @@ import ImgVerMas from "./components/ImgVerMas";
 import CardCommicEvent from "./components/CardComicEvent";
 import ComicHeader from "./components/ComicHeader";
 import UserHeader from "./components/UserHeader";
+import CardListaResultados from "./components/CardListaResultados";
 
 export default function App() {
     return (
@@ -23,7 +24,7 @@ export default function App() {
                 style={styles.gradient}
             />
 			<ComicHeader />
-			<ImgVerMas />
+			<CardListaResultados />
             <AppBar />
         </View>
     );
