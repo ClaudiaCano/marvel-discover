@@ -1,36 +1,40 @@
 import React, { createContext, useContext } from "react";
-import { StyleSheet, Image, ImageBackground, Text, View } from "react-native";
+import { StyleSheet, Image, ImageBackground, Text, View, ShadowPropTypesIOS } from "react-native";
 
 import BackSvg from "../assets/back.svg";
 import CurveSvg from "../assets/curve.svg";
 
 
-const ComicHeader = () => {
+export default class ComicHeader extends React.Component{
+  render() {
+    const Url = this.props.Cover;
+
+    return (
+      <View>
   
-  return (
-    <View>
+        <ImageBackground
+          style={styles.headerBackground}
+          source={{ uri: "https://thebuzzpaper.com/wp-content/uploads/2019/11/space-signals-3246.jpg" }}
+          blurRadius={3}
+        >
+          
+          <BackSvg style={styles.backIcon}/>
+          
+          <Image 
+          style={styles.poster} 
+          source={{uri: Url}}>
+          </Image>
+          <CurveSvg style={styles.Curve}/>
+          
+        </ImageBackground>
+  
+      </View>
+    );
+  }
 
-      <ImageBackground
-        style={styles.headerBackground}
-        source={{ uri: "https://thebuzzpaper.com/wp-content/uploads/2019/11/space-signals-3246.jpg" }}
-        blurRadius={3}
-      >
-        
-        <BackSvg style={styles.backIcon}/>
-        
-        <Image 
-        style={styles.poster} 
-        source={{ uri: "http://www.eslahoradelastortas.com/blog/media/2015/11/Princess_Leia_Trade_Paperback_Final_Cover-624x958.jpg" }}>
-        </Image>
-        <CurveSvg style={styles.Curve}/>
-        
-      </ImageBackground>
-
-    </View>
-  );
+  
 };
 
-export default ComicHeader;
 
 const styles = StyleSheet.create({
 
