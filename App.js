@@ -21,8 +21,8 @@ export default function App() {
     return (
         <View style={styles.container}>
             <StatusBar hidden />
-			<LinearGradient
-                colors={["white", "white","#B895C8"]}
+            <LinearGradient
+                colors={["white", "white", "#B895C8"]}
                 style={styles.gradient}
             />
             <Comic></Comic>
@@ -39,11 +39,11 @@ const styles = StyleSheet.create({
         //justifyContent: "flex-end",
     },
     gradient: {
-		position: "absolute",
+        position: "absolute",
         left: 0,
         right: 0,
         top: 0,
-		height: Dimensions.get("window").height,
-		zIndex: -1,
+        height: Dimensions.get("window").height,
+        zIndex: -1,
     },
 });

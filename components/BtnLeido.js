@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, Dimensions, TouchableHighlight } from "react-native";
 
 const BtnLeido = () => {
     const text1 = "¿LEÍDO?";
@@ -18,10 +18,17 @@ export default BtnLeido;
 
 const BTN_COLOR = "#5E009C";
 const BTN_HEIGHT = 56;
-const BTN_WIDTH = 290;
+const BTN_WIDTH = Dimensions.get("window").width * 0.7;
 const BTN_BACKGROUND = "white";
 
 const styles = StyleSheet.create({
+    btn: {
+        width: BTN_WIDTH,
+        height: BTN_HEIGHT,
+        position: "absolute",
+        top: Dimensions.get("window").height - BTN_HEIGHT,
+        right: 0
+    },
     text: {
         position: "absolute",
         width: BTN_WIDTH,
@@ -32,10 +39,6 @@ const styles = StyleSheet.create({
         fontFamily: "Roboto",
         textAlign: "center",
         textAlignVertical: "center",
-    },
-    btn: {
-        width: BTN_WIDTH,
-        height: BTN_HEIGHT,
     },
     btnTop: {
         width: BTN_WIDTH,

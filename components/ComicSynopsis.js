@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import * as Font from "expo-font";
 
-export default class ComicDetails extends React.Component {
+export default class ComicSynopsis extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -23,16 +23,15 @@ export default class ComicDetails extends React.Component {
     render() {
         return (
             <View style={styles.box}>
-                <Text style={styles.text_1}>{this.props.Name}</Text>
-                <Text style={styles.text_1}>{this.props.Date}</Text>
-                <Text style={styles.text_2}>Escritor</Text>
-                <Text style={styles.text_2}>Publicación</Text>
+                <Text style={styles.text_1}>Sinopsis</Text>
+                <Text style={styles.text_2}>{this.props.Synopsis}</Text>
             </View>
         );
     }
 }
 
-const COLOR = "#757575";
+const COLOR = "black";
+const COLOR_TEXT = "#757575";
 const FONT_SIZE_1 = 18;
 const FONT_SIZE_2 = 14;
 const FONT = "RobotoCondensed-Regular";
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "flex-start",
         flexWrap: "wrap",
-        marginBottom: 30,
+        marginBottom: 80,
     },
     text_1: {
         color: COLOR,
@@ -54,13 +53,14 @@ const styles = StyleSheet.create({
         fontFamily: FONT_BOLD,
         textTransform: "uppercase",
         display: "flex",
-        width: (Dimensions.get("screen").width - 20) / 2,
+        width: (Dimensions.get("screen").width - 20),
+        marginBottom: 10,
     },
     text_2: {
-        color: COLOR,
+        color: COLOR_TEXT,
         fontSize: FONT_SIZE_2,
         fontFamily: FONT,
         display: "flex",
-        width: (Dimensions.get("screen").width - 20) / 2,
+        width: (Dimensions.get("screen").width - 20),
     },
 });

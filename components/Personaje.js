@@ -25,16 +25,15 @@ export default class Personaje extends React.Component {
   }
 
   render() {
-    const character = "PRINCESA LEIA";
-    const completename = "LEIA ORGANA";
+
     return (
       <View style={styles.card}>
         <View style={styles.cardTop} />
         <View style={styles.line} />
         <View style={styles.cardBottom} />
-        <Text style={styles.character}>{character}</Text>
+        <Text style={styles.character}>{this.props.character}</Text>
         <Text style={[styles.character, styles.completename]}>
-          {completename}
+          {this.props.completename}
         </Text>
         <Image source={Leia} style={styles.image} />
       </View>
@@ -57,6 +56,7 @@ const styles = StyleSheet.create({
     color: PRIMARY_TEXT_COLOR,
     fontSize: 12,
     fontFamily: "RobotoCondensed-Bold",
+    textTransform: "uppercase",
     textAlign: "left",
     marginTop: 110,
     marginLeft: 10,

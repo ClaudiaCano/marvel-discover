@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import * as Font from "expo-font";
+import Personaje from "../components/Personaje";
 
-export default class ComicTitle extends React.Component {
+export default class ComicPersonajes extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -22,16 +23,16 @@ export default class ComicTitle extends React.Component {
     render() {
         return (
             <View style={styles.box}>
-                <Text style={styles.text}>{this.props.Title}</Text>
+                <Text style={styles.text_1}>PERSONAJES</Text>
+                <Personaje character = "Princesa Leia" completename = "Leia Organa"/>
             </View>
         );
     }
 }
 
-const COLOR = "black";
-const FONT_SIZE = 24;
+const COLOR = "#D01C1F";
+const FONT_SIZE = 18;
 const FONT = "RobotoCondensed-Bold";
-const MARGIN_BOTTOM = 20;
 
 const styles = StyleSheet.create({
     box: {
@@ -41,13 +42,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "flex-start",
         flexWrap: "wrap",
-        marginBottom: MARGIN_BOTTOM,
+        marginBottom: 30,
     },
-    text: {
+    text_1: {
         color: COLOR,
         fontSize: FONT_SIZE,
         fontFamily: FONT,
         textTransform: "uppercase",
         display: "flex",
+        width: (Dimensions.get("screen").width - 20),
+        marginBottom: 10,
     },
 });
