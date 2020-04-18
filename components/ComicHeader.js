@@ -22,7 +22,6 @@ const ComicHeader = () => {
         style={styles.poster} 
         source={{ uri: "http://www.eslahoradelastortas.com/blog/media/2015/11/Princess_Leia_Trade_Paperback_Final_Cover-624x958.jpg" }}>
         </Image>
-
         <CurveSvg style={styles.Curve}/>
         
       </ImageBackground>

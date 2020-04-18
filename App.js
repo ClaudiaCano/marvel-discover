@@ -11,9 +11,11 @@ import CarouselItem from "./components/CarouselItem";
 import CardSliderHome from "./components/CardSliderHome";
 import ImgVerMas from "./components/ImgVerMas";
 import CardCommicEvent from "./components/CardComicEvent";
-import ComicHeader from "./components/ComicHeader";
 import UserHeader from "./components/UserHeader";
 import CardListaResultados from "./components/CardListaResultados";
+
+/*------------------------ PAGES ------------------------ */
+import Comic from "./pages/Comic";
 
 export default function App() {
     return (
@@ -23,9 +25,7 @@ export default function App() {
                 colors={["white", "white","#B895C8"]}
                 style={styles.gradient}
             />
-			<ComicHeader />
-			<CardListaResultados />
-            <AppBar />
+            <Comic></Comic>
         </View>
     );
 }
