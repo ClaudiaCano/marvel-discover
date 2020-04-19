@@ -16,35 +16,36 @@ import CardListaResultados from "./components/CardListaResultados";
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
-import { FaceAnchorProp } from "expo/build/AR";
+import Evento from "./pages/Evento";
 
 export default function App() {
-    return (
-        <View style={styles.container}>
-            <StatusBar hidden />
-            <LinearGradient
-                colors={["white", "white", "#B895C8"]}
-                style={styles.gradient}
-            />
-            <AppBar style={styles.appbar}/>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <StatusBar hidden />
+      <LinearGradient
+        colors={["white", "white", "#B895C8"]}
+        style={styles.gradient}
+      />
+
+      <Evento />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#B895C8",
-        //alignItems: "center",
-        //justifyContent: "center",
-        //justifyContent: "flex-end",
-    },
-    gradient: {
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-        height: Dimensions.get("window").height,
-        zIndex: -1,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#B895C8",
+    //alignItems: "center",
+    //justifyContent: "center",
+    //justifyContent: "flex-end",
+  },
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
+    zIndex: -1,
+  },
 });

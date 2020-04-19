@@ -36,8 +36,8 @@ export default class AppBar extends React.Component {
     const imageWidth = dimensions.width;
     const ratio = imageWidth / 615.6;
     return (
-      <View>
-        <View style={styles.appbar}>
+      <View style={styles.appbar}>
+        <View style={styles.appbarstructure}>
           <AppBarSvg
             width={imageWidth}
             height={136 * ratio}
@@ -71,9 +71,15 @@ const SEARCH_COLOR = "#D01C1F";
 
 const styles = StyleSheet.create({
   appbar: {
+    width: windowwidth,
+    height: barheight + 30,
     position: "absolute",
     top: windowheight - barheight - 30,
   },
+  /*appbarstructure: {
+    position: "absolute",
+    top: windowheight - barheight - 30,
+  },*/
   appbarbackground: {
     position: "absolute",
     top: 30,
@@ -105,7 +111,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     flexDirection: "row",
     justifyContent: "space-around",
-    top: windowheight - barheight - 30 + 40,
+    //top: windowheight - barheight - 30 + 40,
+    top: 40,
     elevation: 24,
   },
   column: {
