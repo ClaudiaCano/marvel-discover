@@ -17,6 +17,7 @@ import CardListaResultados from "./components/CardListaResultados";
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
 import Evento from "./pages/Evento";
+import Splash from "./pages/Splash";
 
 export default function App() {
   return (
@@ -27,7 +28,7 @@ export default function App() {
         style={styles.gradient}
       />
 
-      <Evento />
+      <Splash />
     </View>
   );
 }
