@@ -25,7 +25,6 @@ export default class Personaje extends React.Component {
   }
 
   render() {
-
     return (
       <View style={styles.card}>
         <View style={styles.cardTop} />

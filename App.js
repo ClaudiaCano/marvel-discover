@@ -16,6 +16,7 @@ import CardListaResultados from "./components/CardListaResultados";
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
+import { FaceAnchorProp } from "expo/build/AR";
 
 export default function App() {
     return (
@@ -25,7 +26,7 @@ export default function App() {
                 colors={["white", "white", "#B895C8"]}
                 style={styles.gradient}
             />
-            <Comic></Comic>
+            <AppBar style={styles.appbar}/>
         </View>
     );
 }

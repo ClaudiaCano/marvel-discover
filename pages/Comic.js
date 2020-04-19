@@ -41,7 +41,8 @@ export default class Comic extends React.Component {
                     <ComicPersonajes Characters = {StarWars.characters} />
                     <ComicSynopsis Synopsis = {StarWars.synopsis} />
                 </ScrollView>
-                <ComicBar />
+
+                <ComicBar /> 
                 <BtnLeido />
             </View>
         );

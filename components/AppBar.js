@@ -36,17 +36,17 @@ export default class AppBar extends React.Component {
     const imageWidth = dimensions.width;
     const ratio = imageWidth / 615.6;
     return (
-      <View style={styles.appBar}>
-        <AppBarSvg
-          width={imageWidth}
-          height={136 * ratio}
-          style={styles.appbarbackground}
-        />
-        <View style={styles.circlecontainer}>
+      <View>
+        <View style={styles.appbar}>
+          <AppBarSvg
+            width={imageWidth}
+            height={136 * ratio}
+            style={styles.appbarbackground}
+          />
           <View style={styles.circle} />
           <SearchIcon width={20} height={20} style={styles.searchicon} />
         </View>
-        <View style={styles.icons}>
+        <View style={styles.row}>
           <View style={styles.column}>
             <Logo width={20} height={20} />
             <Text style={styles.text}>{home}</Text>
@@ -62,21 +62,21 @@ export default class AppBar extends React.Component {
 }
 
 const dimensions = Dimensions.get("window");
-const imageWidth = dimensions.width;
-const ratio = imageWidth / 615.6;
+const windowwidth = dimensions.width;
+const windowheight = dimensions.height;
+const ratio = windowwidth / 615.6;
 const barheight = 136 * ratio;
 
 const SEARCH_COLOR = "#D01C1F";
 
 const styles = StyleSheet.create({
-  appBar: {
-    flex: 1,
-    width: imageWidth,
-    height: barheight,
+  appbar: {
+    position: "absolute",
+    top: windowheight - barheight - 30,
   },
   appbarbackground: {
     position: "absolute",
-    bottom: 0,
+    top: 30,
     shadowColor: "#826A92",
     shadowOffset: {
       width: 0,
@@ -86,12 +86,26 @@ const styles = StyleSheet.create({
     shadowRadius: 40,
     elevation: 24,
   },
-  icons: {
-    flex: 1,
+  circle: {
+    position: "absolute",
+    left: windowwidth / 2 - 30,
+    flexDirection: "row",
+    alignItems: "center",
+    width: 60,
+    height: 60,
+    borderRadius: 100 / 2,
+    backgroundColor: SEARCH_COLOR,
+  },
+  searchicon: {
+    position: "absolute",
+    left: windowwidth / 2 - 10,
+    top: 20,
+  },
+  row: {
+    position: "absolute",
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: "flex-end",
-    marginBottom: 30,
+    top: windowheight - barheight - 30 + 40,
     elevation: 24,
   },
   column: {
@@ -102,24 +116,5 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "RobotoCondensed-Regular",
     fontSize: 11,
-  },
-  circlecontainer: {
-    justifyContent: "flex-end",
-    alignItems: "center",
-    marginTop: 667,
-  },
-  circle: {
-    width: 60,
-    height: 60,
-    borderRadius: 100 / 2,
-    backgroundColor: SEARCH_COLOR,
-
-    shadowOffset: { width: 10, height: 10 },
-    shadowColor: "black",
-    shadowOpacity: 1.0,
-  },
-  searchicon: {
-    position: "absolute",
-    bottom: 20,
   },
 });

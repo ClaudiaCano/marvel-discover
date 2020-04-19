@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  ActivityIndicator,
-  TouchableHighlight,
-} from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 import SaveIcon from "../assets/saveicon.svg";
 import SaveIconSelected from "../assets/saveiconselected.svg";
 import * as Font from "expo-font";
@@ -35,7 +29,7 @@ export default class Guardar extends React.Component {
   render() {
     const { selected } = this.state.selected;
     return (
-      <View style={styles.page}>
+      <View style={styles.column}>
         <TouchableHighlight
           underlayColor={"#f0f0"}
           onPress={() => {
@@ -43,9 +37,9 @@ export default class Guardar extends React.Component {
           }}
         >
           {this.state.selected ? (
-            <SaveIconSelected width={120} height={40} />
+            <SaveIconSelected style={styles.icon} />
           ) : (
-            <SaveIcon width={120} height={40} />
+            <SaveIcon style={styles.icon} />
           )}
         </TouchableHighlight>
         {this.state.selected ? (
@@ -58,19 +52,26 @@ export default class Guardar extends React.Component {
   }
 }
 
+const DISTANCE_ICON_TEXT = 1;
+
 const styles = StyleSheet.create({
-  page: {
+  /*page: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },*/
+  column: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
   },
   text: {
-    marginTop: 7,
+    marginTop: DISTANCE_ICON_TEXT,
     fontFamily: "RobotoCondensed-Regular",
+    fontSize: 12,
   },
-  textSelected: {
-    marginTop: 7,
-    color: "#FF00FF",
-    fontFamily: "RobotoCondensed-Regular",
+  icon: {
+    height: "100%",
+    aspectRatio: 1,
   },
 });
