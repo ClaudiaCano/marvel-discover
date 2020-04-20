@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         height: BTN_HEIGHT,
         color: BTN_COLOR,
         fontSize: 11,
-        fontFamily: "Roboto",
         textAlign: "center",
         textAlignVertical: "center",
     },

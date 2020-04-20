@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import * as Font from "expo-font";
-import Star1 from "../assets/1.1.png";
-import Star2 from "../assets/2.1.png";
-import Star3 from "../assets/3.1.png";
-import Star4 from "../assets/4.1.png";
+import Star1 from "../assets/2.1.png";
+import Star2 from "../assets/2.2.png";
+import Star3 from "../assets/2.3.png";
+import Star4 from "../assets/2.4.png";
 
-export default class Personaje extends React.Component {
+export default class CardSilderHome2 extends React.Component {
     constructor() {
       super();
       this.state = {
@@ -42,7 +42,6 @@ export default class Personaje extends React.Component {
 
 
 const CARD_HEIGHT = 150;
-const CARD_WIDTH = 350;
 
 const styles = StyleSheet.create({
   card: {
@@ -50,10 +49,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "auto",
     height: CARD_HEIGHT,
-    marginTop: 200,
+    marginTop: 0,
     marginLeft: 20,
     marginRight: 20,
-    borderRadius: 10,
+    marginBottom: 20,
+    borderRadius: 5,
     backgroundColor: "white",
 
     shadowOffset: { width: 5, height: 5 },

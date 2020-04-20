@@ -8,7 +8,7 @@ import BtnLeido from "./components/BtnLeido";
 import Personaje from "./components/Personaje";
 import AppBar from "./components/AppBar";
 import CarouselItem from "./components/CarouselItem";
-import CardSliderHome from "./components/CardSliderHome";
+import CardSliderHome1 from "./components/CardSliderHome1";
 import ImgVerMas from "./components/ImgVerMas";
 import CardCommicEvent from "./components/CardComicEvent";
 import UserHeader from "./components/UserHeader";
@@ -18,6 +18,7 @@ import CardListaResultados from "./components/CardListaResultados";
 import Comic from "./pages/Comic";
 import Evento from "./pages/Evento";
 import Splash from "./pages/Splash";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
@@ -28,7 +29,7 @@ export default function App() {
         style={styles.gradient}
       />
 
-      <Comic />
+      <Home />
     </View>
   );
 }
