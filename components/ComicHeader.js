@@ -10,6 +10,7 @@ import {
 
 import BackSvg from "../assets/back.svg";
 import CurveSvg from "../assets/curve.svg";
+import BackgroundImg from "../assets/HeaderBackground.jpg";
 
 export default class ComicHeader extends React.Component {
     render() {
@@ -19,11 +20,7 @@ export default class ComicHeader extends React.Component {
             <View>
                 <ImageBackground
                     style={styles.headerBackground}
-                    source={{
-                        uri:
-                            "https://thebuzzpaper.com/wp-content/uploads/2019/11/space-signals-3246.jpg",
-                    }}
-                    blurRadius={3}
+                    source={BackgroundImg}
                 >
                     <BackSvg style={styles.backIcon} />
 
@@ -64,6 +61,6 @@ const styles = StyleSheet.create({
     //Curvy border
     Curve: {
         height: 100,
-        alignSelf: "stretch"
+        alignSelf: "stretch",
     },
 });

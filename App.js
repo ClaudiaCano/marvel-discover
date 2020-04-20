@@ -28,7 +28,7 @@ export default function App() {
         style={styles.gradient}
       />
 
-      <Splash />
+      <Comic />
     </View>
   );
 }
