@@ -1,22 +1,18 @@
 import React from "react";
 import { StyleSheet, ScrollView, View, Dimensions } from "react-native";
 import * as Font from "expo-font";
+import { LinearGradient } from "expo-linear-gradient";
 
-import CardSliderHome1 from "../components/CardSliderHome1";
-import CardSliderHome2 from "../components/CardSliderHome2";
-import CardSliderHome3 from "../components/CardSliderHome3";
+import EventTitleResults from "../components/EventTitleLeidosGuardados";
+import CardListaLeidos from "../components/CardListaLeidos";
+import BackIcon from "../assets/backblack.svg";
 import AppBar from "../components/AppBar";
-import CarouselItem from "../components/CarouselItem";
 
-import HomeTitles from "../components/HomeTitles";
-
-const Titles = {
-  title: "Secret Wars",
-  title2: "Star Wars",
-  title3: "Avengers VS X-Men",
+const Results = {
+  text: "Leídos",
 };
 
-export default class Home extends React.Component {
+export default class Leidos extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -40,17 +36,12 @@ export default class Home extends React.Component {
   render() {
     return (
       <View>
-        <CarouselItem />
+        <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
+        <BackIcon style={styles.backIcon} />
+        <EventTitleResults Title={Results.text} />
+
         <ScrollView>
-          <HomeTitles Title={Titles.title} />
-          <CardSliderHome1 />
-          
-          <HomeTitles Title={Titles.title2} />
-          <CardSliderHome2 />
-          
-          <HomeTitles Title={Titles.title3} />
-          <CardSliderHome3 />
-          
+          <CardListaLeidos />
           <View style={styles.sizedbox}/>
         </ScrollView>
         
@@ -61,7 +52,21 @@ export default class Home extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
+    zIndex: -1,
+  },
+  backIcon: {
+    position: "absolute",
+    top: 38,
+    left: 30,
+    zIndex: 2,
+  },
   sizedbox: {
-    height: 350,
+    height: 200,
   },
 });

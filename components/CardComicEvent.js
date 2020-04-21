@@ -4,7 +4,7 @@ import * as Font from "expo-font";
 import Comic1 from "../assets/image1.png";
 import Comic2 from "../assets/image2.png";
 
-export default class Personaje extends React.Component {
+export default class CardComicEvent extends React.Component {
   constructor() {
     super();
     this.state = {

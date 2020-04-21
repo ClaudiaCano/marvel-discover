@@ -6,7 +6,7 @@ import Star2 from "../assets/1.2.png";
 import Star3 from "../assets/1.3.png";
 import Star4 from "../assets/1.4.png";
 
-export default class CardSliderHome extends React.Component {
+export default class CardSliderHome1 extends React.Component {
     constructor() {
       super();
       this.state = {

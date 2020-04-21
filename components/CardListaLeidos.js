@@ -2,14 +2,13 @@ import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import * as Font from "expo-font";
 import Star1 from "../assets/image1.png";
-import Star2 from "../assets/results2.png";
-import Star3 from "../assets/results3.png";
-import Star4 from "../assets/results4.png";
-import Star5 from "../assets/results5.png";
-
+import Star2 from "../assets/comicLeido2.png";
+import Star3 from "../assets/comicLeido3.png";
+import Star4 from "../assets/comicLeido4.png";
+import Star5 from "../assets/comicLeido5.png";
 import Guardar from "../components/Guardar";
 
-export default class CardListaResultados extends React.Component {
+export default class CardListaLeidos extends React.Component {
     constructor() {
       super();
       this.state = {
@@ -32,10 +31,10 @@ export default class CardListaResultados extends React.Component {
 
     render() {
         const title1 = "Star Wars (2015) #1";
-        const title2 = "Infinity War (2019)";
-        const title3 = "War of the Realms:\nWar Scrolls (2019)\n#2";
-        const title4 = "Infinity War\nOmnibus (2019)";
-        const title5 = "War of the Realms\nStrikeforce: The\nLand of Giants\n(2019) #1";
+        const title2 = "The Amazing\nSpider-Man #4";
+        const title3 = "Jessica Jones:\nBlind Spot (2020) #1";
+        const title4 = "Marvel-Verse:\nIron Man (2019)";
+        const title5 = "Amazing Spider-Man:\nThe daily bugle #2";
         return (
           <View>
             <View style={styles.card}>
@@ -105,6 +104,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     display: "flex",
     top: "15%",
+    textTransform: "uppercase",
   },
   vector:{
     top: "15%",
