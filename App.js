@@ -22,6 +22,17 @@ import Home from "./pages/Home";
 import Resultados from "./pages/Resultados";
 import Leidos from "./pages/Leidos";
 import Guardados from "./pages/Guardados";
+import Perfil from "./pages/Perfil";
+import Search from "./pages/Search";
+
+//--------- PARA EL SEARCH (porque la gradiente es diferente)-------------
+/*
+export default function App() {
+  return (
+    <Search/>
+  );
+}
+*/
 
 export default function App() {
   return (
