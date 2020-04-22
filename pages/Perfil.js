@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
 import * as Font from "expo-font";
 import UserHeader from "../components/UserHeader";
+import UserPfp from "../components/UserPfp";
 import UserInfo from "../components/UserInfo";
 import UserColecciones from "../components/UserColecciones";
 import AppBar from "../components/AppBar";
@@ -9,7 +10,9 @@ import AppBar from "../components/AppBar";
 import BackSvg from "../assets/back.svg";
 import GearSvg from "../assets/settingsicon.svg";
 
+
 const user = {
+  pfp: "https://amayei.nyc3.digitaloceanspaces.com/2019/04/Screen-Shot-2019-04-26-at-11.50.46-PM.png",
   name: "User",
   username: "@User",
   about:
@@ -24,6 +27,7 @@ export default class Perfil extends React.Component {
             <GearSvg style={styles.gearIcon}/>
               <ScrollView>
                   <UserHeader/>
+                  <UserPfp ProfilePic = {user.pfp} />
                   <UserInfo Name = {user.name} Username = {user.username} Bio = {user.about} />
                   <UserColecciones/>
               </ScrollView>

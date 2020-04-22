@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
 
     page: {
-      height: '100%',
+      height: Dimensions.get("window").height,
     },
 
     gradient: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
       left: 0,
       right: 0,
       top: 0,
-      height: "100%",
+      height: Dimensions.get("window").height,
       zIndex: -1,
     },
         
