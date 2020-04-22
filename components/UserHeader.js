@@ -1,27 +1,47 @@
-import React, { createContext, useContext } from "react";
+import * as React from "react"
 import { StyleSheet, Image, ImageBackground, Text, View } from "react-native";
-import * as Svg from 'react-native-svg';
+import Svg, { Defs, Path, ClipPath, Use, G } from "react-native-svg"
 
-import BackSvg from "../assets/back.svg";
-import GearSvg from "../assets/settingsicon.svg";
-import UserSvg from "../assets/user.svg";
+
+//import UserSvg from "../assets/user.svg";
+import UserSvg from "../assets/formaPerfil.svg";
+
+import imgHeader from "../assets/HeaderBackground.jpg";
+
+/*
+<Svg viewBox="0 0 510 608">
+  <Defs>
+    <Path id="prefix__a" d="M85 0L0 88v520h430l80-88V0z" />
+  </Defs>
+  <ClipPath id="mascara">
+    <Use xlinkHref="#prefix__a" overflow="visible" />
+  </ClipPath>
+  <G clipPath="url(#mascara)">
+    <Image
+      width={393}
+      height={467}
+      href="https://amayei.nyc3.digitaloceanspaces.com/2019/04/Screen-Shot-2019-04-26-at-11.50.46-PM.png"
+      transform="scale(1.2977 1.3019)"
+      overflow="visible"
+    />
+  </G>
+</Svg>
+*/
 
 
 const UserHeader = () => {
   return (
-    <View>
+    <View style={styles.fullheader}>
 
       <ImageBackground
       style={styles.headerBackground}
-      source={{ uri: "https://thebuzzpaper.com/wp-content/uploads/2019/11/space-signals-3246.jpg" }}
-      blurRadius={3}
+      source={imgHeader}
+      blurRadius={2}
       >
-        <BackSvg style={styles.backIcon}/>
-        <GearSvg style={styles.gearIcon}/>
       </ImageBackground>
 
-      <View>
-          <UserSvg style={styles.pfpShape}/>
+      <View >
+        <UserSvg style={styles.pfpShape}/>
       </View>
 
     </View>
@@ -32,22 +52,10 @@ export default UserHeader;
 
 const styles = StyleSheet.create({
 
-  //Back "ARROW" Icon
-  backIcon: {
-    width: 20, 
-    height: 20,
-    alignSelf: 'flex-start', //moves the item to the left or horizontal start of the page
-    top: 30,
-    left: 20,
-  },
-
-  //Settings "GEAR" Icon
-  gearIcon: {
-    width: 20, 
-    height: 20,
-    alignSelf: 'flex-end', //moves the item to the right or horizontal end of the page
-    top: 10, // "10 + heightofbackIcon(20) = 30" | since it's written after - it's placed below instead of on the same level.
-    right: 20,
+  fullheader:{
+    flex: 1,
+    flexDirection: "column",
+    marginBottom: -140,
   },
 
   //PROFILE PICTURE
@@ -56,19 +64,13 @@ const styles = StyleSheet.create({
     height: 250,
     overflow: 'hidden',
   },
+
   pfpShape: {
-    position: 'absolute',
-    top: -100,
-    height: 150,
+    position: "relative",
+    bottom: 150,
+    height: 200,
     width: '100%',
     alignSelf: 'center',
-    overflow: "hidden",
-    color: 'transparent',
-  },
-  pfp: {
-    height: 100,
-    alignSelf: "stretch",
-    overflow: 'hidden',
   },
   
 });
