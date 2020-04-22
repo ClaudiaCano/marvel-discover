@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
         color: BTN_COLOR,
         fontSize: 18,
         fontWeight: "bold",
-        fontFamily: "Roboto",
         textAlign: "center",
         textAlignVertical: "center",
     },

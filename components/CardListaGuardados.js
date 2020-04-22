@@ -1,15 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import * as Font from "expo-font";
-import Star1 from "../assets/image1.png";
-import Star2 from "../assets/results2.png";
-import Star3 from "../assets/results3.png";
-import Star4 from "../assets/results4.png";
-import Star5 from "../assets/results5.png";
-
+import Star1 from "../assets/2.3.png";
+import Star2 from "../assets/comicGuardado2.png";
+import Star3 from "../assets/comicGuardado3.png";
+import Star4 from "../assets/comicGuardado4.png";
+import Star5 from "../assets/comicGuardado5.png";
 import Guardar from "../components/Guardar";
 
-export default class CardListaResultados extends React.Component {
+export default class CardListaGuardados extends React.Component {
     constructor() {
       super();
       this.state = {
@@ -31,41 +30,36 @@ export default class CardListaResultados extends React.Component {
     }
 
     render() {
-        const title1 = "Star Wars (2015) #1";
-        const title2 = "Infinity War (2019)";
-        const title3 = "War of the Realms:\nWar Scrolls (2019)\n#2";
-        const title4 = "Infinity War\nOmnibus (2019)";
-        const title5 = "War of the Realms\nStrikeforce: The\nLand of Giants\n(2019) #1";
+        const title1 = "Princess leia (2015)\n#1";
+        const title2 = "Marvel Action\nCaptain Marvel\n(2019) #3";
+        const title3 = "Ant-Man and the\nwasp: Lost and found";
+        const title4 = "Avengers by jason\naaron vol.5:\nchallenge of the\nhost riders";
+        const title5 = "Tarot (2020) #2";
         return (
           <View>
             <View style={styles.card}>
               <Image source={Star1} style={styles.image} />
               <Text style={styles.title}>{title1}</Text>
-              <Guardar style={styles.vector} />
             </View>
 
             <View style={styles.card}>
               <Image source={Star2} style={styles.image} />
               <Text style={styles.title}>{title2}</Text>
-              <Guardar style={styles.vector} />
             </View>
 
             <View style={styles.card}>
               <Image source={Star3} style={styles.image} />
               <Text style={styles.title}>{title3}</Text>
-              <Guardar style={styles.vector} />
             </View>
 
             <View style={styles.card}>
               <Image source={Star4} style={styles.image} />
               <Text style={styles.title}>{title4}</Text>
-              <Guardar style={styles.vector} />
             </View>
 
             <View style={styles.card}>
               <Image source={Star5} style={styles.image} />
               <Text style={styles.title}>{title5}</Text>
-              <Guardar style={styles.vector} />
             </View>
           </View>
         );
@@ -105,6 +99,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     display: "flex",
     top: "15%",
+    textTransform: "uppercase",
   },
   vector:{
     top: "15%",

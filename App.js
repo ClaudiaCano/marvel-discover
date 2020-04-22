@@ -19,17 +19,9 @@ import Comic from "./pages/Comic";
 import Evento from "./pages/Evento";
 import Splash from "./pages/Splash";
 import Home from "./pages/Home";
-import Perfil from "./pages/Perfil";
-import Search from "./pages/Search";
-
-//--------- PARA EL SEARCH (porque la gradiente es diferente)-------------
-/*
-export default function App() {
-  return (
-    <Search/>
-  );
-}
-*/
+import Resultados from "./pages/Resultados";
+import Leidos from "./pages/Leidos";
+import Guardados from "./pages/Guardados";
 
 export default function App() {
   return (
@@ -40,7 +32,7 @@ export default function App() {
         style={styles.gradient}
       />
 
-      <Home />
+      <Guardados />
     </View>
   );
 }
