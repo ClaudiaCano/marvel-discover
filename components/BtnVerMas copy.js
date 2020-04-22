@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 
-const text = "VER MÁS";
+const text = "¿Leído?";
 
-export default class BtnVermas1 extends React.Component {
+export default class BtnVermas extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -55,6 +55,11 @@ const styles = StyleSheet.create({
         textAlignVertical: "center",
     },
     btn: {
+        flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingRight: 10,
         width: BTN_WIDTH,
         height: BTN_HEIGHT,
     },

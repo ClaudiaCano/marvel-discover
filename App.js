@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, StatusBar, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import Guardar from "./components/Guardar";
-import BtnVerMas from "./components/BtnVerMas";
 import BtnLeido from "./components/BtnLeido";
 import Personaje from "./components/Personaje";
 import AppBar from "./components/AppBar";

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 
-import BtnVerMas from "../components/BtnVerMas1";
+import BtnVerMas from "./BtnVerMas";
 
 export default class HomeTitles extends React.Component {
     constructor() {
@@ -48,8 +48,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         flex: 0,
         flexDirection: "row",
-        alignItems: "flex-start",
-        flexWrap: "wrap",
+        justifyContent: "space-between",
         marginBottom: MARGIN_BOTTOM,
         marginTop: MARGIN_TOP,
     },

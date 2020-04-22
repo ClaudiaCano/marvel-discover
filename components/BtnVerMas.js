@@ -1,24 +1,47 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import * as Font from "expo-font";
 
-const BtnVerMas = () => {
-    const text = "VER MÁS";
+const text = "VER MÁS";
 
-    return (
-        <View style={styles.btn}>
-            <View style={styles.btnTop} />
-            <View style={styles.btnBottom} />
-            <Text style={styles.text}>{text}</Text>
-        </View>
-    );
-};
+export default class BtnVermas extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            fontloaded: false,
+            selected: false,
+        };
+    }
 
-export default BtnVerMas;
+    async componentDidMount() {
+        await Font.loadAsync({
+            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+            "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
+            "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
+            "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
+            "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
+            "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+        });
+
+        this.setState({ fontloaded: true });
+    }
+
+    render() {
+        return (
+            <View style={styles.btn}>
+                <View style={styles.btnTop} />
+                <View style={styles.btnBottom} />
+                <Text style={styles.text}>{text}</Text>
+            </View>
+        );
+    }
+}
 
 const BTN_COLOR = "white";
 const BTN_HEIGHT = 20;
 const BTN_WIDTH = 65;
 const BTN_BACKGROUND = "#4E00B0";
+const FONT_TYPE = "RobotoCondensed-Bold";
 
 const styles = StyleSheet.create({
     text: {
@@ -27,6 +50,7 @@ const styles = StyleSheet.create({
         height: BTN_HEIGHT,
         color: BTN_COLOR,
         fontSize: 11,
+        fontFamily: FONT_TYPE,
         textAlign: "center",
         textAlignVertical: "center",
     },

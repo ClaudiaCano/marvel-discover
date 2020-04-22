@@ -7,7 +7,7 @@ import Star3 from "../assets/results3.png";
 import Star4 from "../assets/results4.png";
 import Star5 from "../assets/results5.png";
 
-import Guardar from "../components/Guardar";
+import Guardar from "./GuardarLists";
 
 export default class CardListaResultados extends React.Component {
     constructor() {
@@ -41,31 +41,31 @@ export default class CardListaResultados extends React.Component {
             <View style={styles.card}>
               <Image source={Star1} style={styles.image} />
               <Text style={styles.title}>{title1}</Text>
-              <Guardar style={styles.vector} />
+              <Guardar />
             </View>
 
             <View style={styles.card}>
               <Image source={Star2} style={styles.image} />
               <Text style={styles.title}>{title2}</Text>
-              <Guardar style={styles.vector} />
+              <Guardar />
             </View>
 
             <View style={styles.card}>
               <Image source={Star3} style={styles.image} />
               <Text style={styles.title}>{title3}</Text>
-              <Guardar style={styles.vector} />
+              <Guardar />
             </View>
 
             <View style={styles.card}>
               <Image source={Star4} style={styles.image} />
               <Text style={styles.title}>{title4}</Text>
-              <Guardar style={styles.vector} />
+              <Guardar />
             </View>
 
             <View style={styles.card}>
               <Image source={Star5} style={styles.image} />
               <Text style={styles.title}>{title5}</Text>
-              <Guardar style={styles.vector} />
+              <Guardar />
             </View>
           </View>
         );
@@ -79,6 +79,8 @@ const styles = StyleSheet.create({
   card: {
     flex: 0,
     flexDirection: "row",
+    justifyContent: "space-between",
+    alignContent: "center",
     width: "auto",
     height: CARD_HEIGHT,
     marginTop: 20,
@@ -102,11 +104,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 17,
     fontFamily: "RobotoCondensed-Bold",
-    marginLeft: 10,
     display: "flex",
-    top: "15%",
-  },
-  vector:{
-    top: "15%",
+    top: "17%",
   },
 });

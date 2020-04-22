@@ -6,7 +6,8 @@ import Star2 from "../assets/comicGuardado2.png";
 import Star3 from "../assets/comicGuardado3.png";
 import Star4 from "../assets/comicGuardado4.png";
 import Star5 from "../assets/comicGuardado5.png";
-import Guardar from "../components/Guardar";
+
+import Leido from "../components/BtnVerMas copy";
 
 export default class CardListaGuardados extends React.Component {
     constructor() {
@@ -40,6 +41,7 @@ export default class CardListaGuardados extends React.Component {
             <View style={styles.card}>
               <Image source={Star1} style={styles.image} />
               <Text style={styles.title}>{title1}</Text>
+              <Leido />
             </View>
 
             <View style={styles.card}>
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
     flex: 0,
     flexDirection: "row",
     width: "auto",
+    justifyContent: "space-between",
     height: CARD_HEIGHT,
     marginTop: 20,
     marginLeft: 20,
@@ -96,12 +99,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 17,
     fontFamily: "RobotoCondensed-Bold",
-    marginLeft: 10,
     display: "flex",
-    top: "15%",
+    top: "17%",
     textTransform: "uppercase",
-  },
-  vector:{
-    top: "15%",
   },
 });
