@@ -75,15 +75,15 @@ export default class HomeModif extends React.Component {
 }
 
 const CARD_HEIGHT = 150;
-const PADDING = 20;
+const PADDING = 10;
 
 const styles = StyleSheet.create({
   sizedbox: {
-    height: 100,
+    height: 70,
   },
   container: {
     flex: 1,
-    marginBottom: 40,
+    marginBottom: 30,
   },
   number: {
     height: CARD_HEIGHT - 10,
@@ -128,5 +128,6 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowColor: "black",
     shadowOpacity: 0.3,
+    elevation: 8,
   },
 });
