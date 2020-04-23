@@ -1,36 +1,30 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, Text, View, Dimensions, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
 
-export default class ComicDetails extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            fontloaded: false,
-            selected: false,
-        };
-    }
+export default function ComicDetails(props) {
 
-    async componentDidMount() {
-        await Font.loadAsync({
-            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-            "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-        });
+    const [fontsLoaded] = useFonts({
+        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+    });
 
-        this.setState({ fontloaded: true });
-    }
-
-    render() {
+    if (!fontsLoaded) {
         return (
             <View style={styles.container}>
-                <View style={styles.box}>
-                <Text style={styles.text_1}>{this.props.Name}</Text>
-                <Text style={styles.text_2}>{this.props.Username}</Text>
-                </View>
-                <Text style={styles.text_3}>{this.props.Bio}</Text>
+                <ActivityIndicator />
             </View>
         );
     }
+    return (
+        <View style={styles.container}>
+            <View style={styles.box}>
+            <Text style={styles.text_1}>{props.Name}</Text>
+            <Text style={styles.text_2}>{props.Username}</Text>
+            </View>
+            <Text style={styles.text_3}>{props.Bio}</Text>
+        </View>
+    );
 }
 
 const COLOR = "#000000";
