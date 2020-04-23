@@ -1,17 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar, Dimensions } from "react-native";
+import { StyleSheet, Text, View, StatusBar, Dimensions, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Guardar from "./components/Guardar";
-import BtnLeido from "./components/BtnLeido";
-import Personaje from "./components/Personaje";
+/*------------------------ COMPONENTS ------------------------ */
 import AppBar from "./components/AppBar";
-import CarouselItem from "./components/CarouselItem";
-import ImgVerMas from "./components/ImgVerMas";
-import CardCommicEvent from "./components/CardComicEvent";
-import UserHeader from "./components/UserHeader";
-
-import CardListaResultados from "./components/CardListaResultados";
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
@@ -22,7 +17,7 @@ import Leidos from "./pages/Leidos";
 import Guardados from "./pages/Guardados";
 import Perfil from "./pages/Perfil";
 import Search from "./pages/Search";
-import HomeModif from "./pages/HomeModif";
+import Home from "./pages/Home";
 
 //--------- PARA EL SEARCH (porque la gradiente es diferente)-------------
 /*
@@ -33,22 +28,32 @@ export default function App() {
 }
 */
 
+const Stack = createStackNavigator();
+
 export default function App() {
   //const comicPage = useState(false);
 
   return (
-    <View style={styles.container}>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="perfil" component={Perfil} />
+      </Stack.Navigator>
+      <AppBar />
+    </NavigationContainer>
+  );
+}
+
+/*<View style={styles.container}>
       <StatusBar hidden />
       <LinearGradient
         colors={["white", "white", "#B895C8"]}
         style={styles.gradient}
       />
 
-      <HomeModif />
+      <Resultados />
       <AppBar />
-    </View>
-  );
-}
+    </View>*/
 
 const styles = StyleSheet.create({
   container: {
