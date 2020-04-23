@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { StyleSheet, Text, View, ActivityIndicator, Button } from "react-native";
 import { useFonts } from "@use-expo/font";
 import { Dimensions } from "react-native";
 
@@ -8,8 +8,10 @@ import Logo from "../assets/logo.svg";
 import ProfileIcon from "../assets/profileicon.svg";
 import SearchIcon from "../assets/searchicon.svg";
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function AppBar() {
+const AppBar = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
@@ -35,6 +37,10 @@ export default function AppBar() {
           height={136 * ratio}
           style={styles.appbarbackground}
         />
+        <Button
+        onPress={() => navigation.navigate('perfil')}
+        title="Go to Brent's profile"
+      />
         <View style={styles.circle} />
         <SearchIcon width={20} height={20} style={styles.searchicon} />
       </View>
@@ -52,6 +58,7 @@ export default function AppBar() {
   );
 }
 
+export default AppBar;
 
 const dimensions = Dimensions.get("window");
 const windowwidth = dimensions.width;

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View, Dimensions } from "react-native";
 import ComicHeader from "../components/ComicHeader";
 import ComicTitle from "../components/ComicTitle";
 import ComicDetails from "../components/ComicDetails";
@@ -8,6 +8,10 @@ import ComicSynopsis from "../components/ComicSynopsis";
 import ComicBar from "../components/ComicBar";
 import BackSvg from "../assets/back.svg";
 import BtnLeido from "../components/BtnLeido";
+import Guardar from "../components/Guardar";
+
+
+import photoLeia from "../assets/Leia.jpg";
 
 const StarWars = {
     title: "Star Wars (2015) #1",
@@ -17,7 +21,7 @@ const StarWars = {
         leia: {
             character: "Princesa Leia",
             completeName: "Leia Organa",
-            photo: "../assets/Leia.jpg",
+            photo: photoLeia,
         },
         darthVader: {
             character: "Darth Vader",
@@ -42,9 +46,10 @@ export default class Comic extends React.Component {
                     <ComicPersonajes Characters={StarWars.characters} />
                     <ComicSynopsis Synopsis={StarWars.synopsis} />
                 </ScrollView>
-
-                <ComicBar />
-                <BtnLeido />
+                <View style={styles.comicbar}>
+                    <Guardar />
+                    <BtnLeido />
+                </View>                
             </View>
         );
     }
@@ -57,4 +62,11 @@ const styles = StyleSheet.create({
         left: 20,
         zIndex: 2,
     },
+    comicbar:{
+        top: Dimensions.get("window").height - 56,
+        position:"absolute",
+        flex: 0,
+        flexDirection: "row",
+        backgroundColor: "rgba(196, 164, 216, 0.85)"
+    }
 });

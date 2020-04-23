@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
     btn: {
         width: BTN_WIDTH,
         height: BTN_HEIGHT,
-        position: "absolute",
-        top: Dimensions.get("window").height - BTN_HEIGHT,
+        top: 0,
         right: 0
     },
     text: {

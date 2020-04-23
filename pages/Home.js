@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
+import { StyleSheet, Text, View, ScrollView, FlatList, Button } from "react-native";
 
 import CarouselItem from "../components/CarouselItem";
 import AppBar from "../components/AppBar";
@@ -42,11 +42,22 @@ const NumberList = ({ array }) => (
   />
 );
 
-export default class HomeModif extends React.Component {
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.buttonPress = this.buttonPress.bind(this);
+  }
+
+  buttonPress() {
+    console.log('Perfil');
+    this.props.navigation.navigate('perfil');
+  }
+
   render() {
     return (
       <View>
         <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={{color: 'blue'}} onPress={this.buttonPress}>Perfil</Text>
         <CarouselItem />
           <View height={20} />
 
