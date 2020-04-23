@@ -2,30 +2,24 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 
-export default class ComicTitle extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            fontloaded: false,
-            selected: false,
-        };
+export default function ComicTitle () {
+    const [fontsLoaded] = useFonts({
+        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator />
+            </View>
+        );
     }
-
-    async componentDidMount() {
-        await Font.loadAsync({
-            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-        });
-
-        this.setState({ fontloaded: true });
-    }
-
-    render() {
         return (
             <View style={styles.box}>
                 <Text style={styles.text}>{this.props.Title}</Text>
             </View>
         );
-    }
 }
 
 const COLOR = "black";

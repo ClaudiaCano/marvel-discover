@@ -1,33 +1,27 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import * as Font from "expo-font";
+import { useFonts } from "@use-expo/font";
 
-export default class ComicSynopsis extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            fontloaded: false,
-            selected: false,
-        };
-    }
+export default function ComicSynopsis() {
+    const [fontsLoaded] = useFonts({
+        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+    });
 
-    async componentDidMount() {
-        await Font.loadAsync({
-            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-            "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-        });
-
-        this.setState({ fontloaded: true });
-    }
-
-    render() {
+    if (!fontsLoaded) {
         return (
-            <View style={styles.box}>
-                <Text style={styles.text_1}>Sinopsis</Text>
-                <Text style={styles.text_2}>{this.props.Synopsis}</Text>
+            <View style={styles.container}>
+                <ActivityIndicator />
             </View>
         );
     }
+
+    return (
+        <View style={styles.box}>
+            <Text style={styles.text_1}>Sinopsis</Text>
+            <Text style={styles.text_2}>{this.props.Synopsis}</Text>
+        </View>
+    );
 }
 
 const COLOR = "black";
@@ -53,7 +47,6 @@ const styles = StyleSheet.create({
         fontFamily: FONT_BOLD,
         textTransform: "uppercase",
         display: "flex",
-        width: (Dimensions.get("screen").width - 20),
         marginBottom: 10,
     },
     text_2: {
@@ -61,6 +54,5 @@ const styles = StyleSheet.create({
         fontSize: FONT_SIZE_2,
         fontFamily: FONT,
         display: "flex",
-        width: (Dimensions.get("screen").width - 20),
     },
 });
