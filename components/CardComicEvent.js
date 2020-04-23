@@ -4,35 +4,13 @@ import * as Font from "expo-font";
 import Comic1 from "../assets/image1.png";
 import Comic2 from "../assets/image2.png";
 
-export default class CardComicEvent extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fontloaded: false,
-    };
-  }
-
-  async componentDidMount() {
-    await Font.loadAsync({
-      "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-      "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-      "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-      "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-      "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-      "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-    });
-
-    this.setState({ fontloaded: true });
-  }
-
-  render() {
-    return (
-      <View style={styles.card}>
-        <Image source={Comic1} style={styles.image} />
-        <Image source={Comic2} style={styles.imageFinal} />
-      </View>
-    );
-  }
+export default function CardComicEvent() {
+  return (
+    <View style={styles.card}>
+      <Image source={Comic1} style={styles.image} />
+      <Image source={Comic2} style={styles.imageFinal} />
+    </View>
+  );
 }
 
 const CARD_HEIGHT = 400;

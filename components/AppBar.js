@@ -11,11 +11,6 @@ import SearchIcon from "../assets/searchicon.svg";
 
 export default function AppBar() {
   const [fontsLoaded] = useFonts({
-    "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-    "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-    "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-    "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-    "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
 
