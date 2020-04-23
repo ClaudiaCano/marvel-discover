@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image} from "react-native";
 import * as Font from "expo-font";
 import Star1 from "../assets/image1.png";
 import Star2 from "../assets/results2.png";
@@ -8,6 +8,16 @@ import Star4 from "../assets/results4.png";
 import Star5 from "../assets/results5.png";
 
 import Guardar from "./GuardarLists";
+import CardResultados from "./CardResultados";
+
+const Resultados = {
+  comics: {
+    0:{
+      title: "Star Wars (2015) #1",
+      cover: Star1,
+    }
+  }
+}
 
 export default class CardListaResultados extends React.Component {
     constructor() {
@@ -38,6 +48,9 @@ export default class CardListaResultados extends React.Component {
         const title5 = "War of the Realms\nStrikeforce: The\nLand of Giants\n(2019) #1";
         return (
           <View>
+
+            <CardResultados Title = {Resultados.comics[0].title} Cover = {Resultados.comics[0].cover}/>
+
             <View style={styles.card}>
               <Image source={Star1} style={styles.image} />
               <Text style={styles.title}>{title1}</Text>
