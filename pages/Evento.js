@@ -1,19 +1,14 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Dimensions, ActivityIndicator } from "react-native";
+import { StyleSheet, ScrollView, View, Dimensions } from "react-native";
+import * as Font from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 
-/*------------------------ FONTS ------------------------ */
-import * as Font from "expo-font";
-import { useFonts } from "@use-expo/font";
-
-/*------------------------ COMPONENTS ------------------------ */
 import EventTitle from "../components/EventTitle";
 import CardComic from "../components/CardComicEvent";
-import Details from "../components/Details";
+import EventDetails from "../components/EventDetails";
 import BackIcon from "../assets/backblack.svg";
 import AppBar from "../components/AppBar";
 
-/*------------------------ OBJECTS ------------------------ */
 const StarWars = {
   title: "Star Wars (2015)",
   description:
@@ -22,7 +17,6 @@ const StarWars = {
     "Jason Aaron, John Cassaday, Kieron Gillen, Salvador Larroca, Adi Granov Mark Waid, Terry Dodson, Greg Weisman, Mark Brooks, Pepe Larraz, Stuart Immonen.",
 };
 
-/*------------------------ PAGE ------------------------ */
 export default class Evento extends React.Component {
   constructor() {
     super();
@@ -52,9 +46,12 @@ export default class Evento extends React.Component {
         <ScrollView>
           <EventTitle Title={StarWars.title} />
           <CardComic />
-          <Details Title="Descripción" Description={StarWars.description} />
-          <Details Title="Creadores" Description={StarWars.creators} />
-          <View style={styles.sizedbox} />
+          <EventDetails
+            Title="Descripción"
+            Description={StarWars.description}
+          />
+          <EventDetails Title="Creadores" Description={StarWars.creators} />
+          <View style={styles.sizedbox}/>
         </ScrollView>
         <AppBar />
       </View>

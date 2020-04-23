@@ -8,7 +8,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@use-expo/font": "^2.0.0",
     "add": "^2.0.6",
     "expo": "^37.0.7",
     "expo-linear-gradient": "~8.1.0",

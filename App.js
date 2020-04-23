@@ -45,7 +45,7 @@ export default function App() {
         style={styles.gradient}
       />
 
-      <Evento />
+      <HomeModif />
     </View>
   );
 }
