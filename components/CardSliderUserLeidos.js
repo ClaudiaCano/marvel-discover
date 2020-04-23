@@ -6,27 +6,8 @@ import Img2 from "../assets/4.2.jpg";
 import Img3 from "../assets/4.3.jpg";
 import Img4 from "../assets/4.4.jpg";
 
-export default class CardSliderUserLeidos extends React.Component {
-    constructor() {
-      super();
-      this.state = {
-        fontloaded: false,
-      };
-    }
-  
-    async componentDidMount() {
-      await Font.loadAsync({
-        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-        "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-        "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-        "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-        "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-      });
-  
-      this.setState({ fontloaded: true });
-    }
 
+export default class CardSliderUserLeidos extends React.Component {
     render() {
         return (
           <View style={styles.card}>

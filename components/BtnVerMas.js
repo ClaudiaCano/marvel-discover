@@ -1,41 +1,43 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import * as Font from "expo-font";
+import {
+    StyleSheet,
+    Text,
+    View,
+    ActivityIndicator,
+    TouchableHighlight,
+} from "react-native";
+import { useFonts } from "@use-expo/font";
 
 const text = "VER MÁS";
 
-export default class BtnVermas extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            fontloaded: false,
-            selected: false,
-        };
-    }
+const BtnVermas = ({ navigation }) => {
+    const [fontsLoaded] = useFonts({
+        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+    });
 
-    async componentDidMount() {
-        await Font.loadAsync({
-            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-            "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-            "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-            "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-            "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-            "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-        });
+    const goToEvento = () => {
+        navigation.navigate("evento");
+    };
 
-        this.setState({ fontloaded: true });
-    }
-
-    render() {
+    if (!fontsLoaded) {
         return (
+            <View style={styles.container}>
+                <ActivityIndicator />
+            </View>
+        );
+    }
+    return (
+        <TouchableHighlight onPress={goToEvento}>
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
                 <View style={styles.btnBottom} />
                 <Text style={styles.text}>{text}</Text>
             </View>
-        );
-    }
-}
+        </TouchableHighlight>
+    );
+};
+
+export default BtnVermas;
 
 const BTN_COLOR = "white";
 const BTN_HEIGHT = 20;
