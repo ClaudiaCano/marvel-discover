@@ -13,8 +13,6 @@ import UserHeader from "./components/UserHeader";
 
 import CardListaResultados from "./components/CardListaResultados";
 
-
-
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
 import Evento from "./pages/Evento";
@@ -35,8 +33,9 @@ export default function App() {
 }
 */
 
-
 export default function App() {
+  //const comicPage = useState(false);
+
   return (
     <View style={styles.container}>
       <StatusBar hidden />
@@ -45,12 +44,11 @@ export default function App() {
         style={styles.gradient}
       />
 
-      <Comic />
+      <HomeModif />
+      <AppBar />
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

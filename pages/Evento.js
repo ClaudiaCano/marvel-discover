@@ -7,7 +7,6 @@ import EventTitle from "../components/EventTitle";
 import CardComic from "../components/CardComicEvent";
 import Details from "../components/Details";
 import BackIcon from "../assets/backblack.svg";
-import AppBar from "../components/AppBar";
 
 /*------------------------ OBJECTS ------------------------ */
 const StarWars = {
@@ -35,7 +34,6 @@ export default class Evento extends React.Component {
           <Details Title="Creadores" Description={StarWars.creators} />
           <View style={styles.sizedbox}/>
         </ScrollView>
-        <AppBar />
       </View>
     );
   }
