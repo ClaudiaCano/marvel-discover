@@ -38,6 +38,8 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="perfil" component={Perfil} />
+        <Stack.Screen name="evento" component={Evento} />
+        <Stack.Screen name="comic" component={Comic} />
       </Stack.Navigator>
       <AppBar />
     </NavigationContainer>

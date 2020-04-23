@@ -50,14 +50,14 @@ export default class Home extends React.Component {
 
   buttonPress() {
     console.log('Perfil');
-    this.props.navigation.navigate('perfil');
+    this.props.navigation.navigate('evento');
   }
 
   render() {
     return (
       <View>
         <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={{color: 'blue'}} onPress={this.buttonPress}>Perfil</Text>
+        <Text style={{color: 'blue'}} onPress={this.buttonPress}>Evento</Text>
         <CarouselItem />
           <View height={20} />
 

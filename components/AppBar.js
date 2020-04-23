@@ -16,6 +16,11 @@ const AppBar = ({ navigation }) => {
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
 
+  const goToPerfil= () => {
+    // 7. Usar el navegador per anar a la pantalla posant el "name"
+    navigation.navigate("perfil");
+  };
+
   if (!fontsLoaded) {
       return (
           <View style={styles.container}>
@@ -37,10 +42,7 @@ const AppBar = ({ navigation }) => {
           height={136 * ratio}
           style={styles.appbarbackground}
         />
-        <Button
-        onPress={() => navigation.navigate('perfil')}
-        title="Go to Brent's profile"
-      />
+        <Button title="Go to Screen 1" onPress={goToPerfil}></Button>
         <View style={styles.circle} />
         <SearchIcon width={20} height={20} style={styles.searchicon} />
       </View>
