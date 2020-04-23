@@ -1,13 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View, Image} from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
+
 import Star1 from "../assets/image1.png";
 import Star2 from "../assets/results2.png";
 import Star3 from "../assets/results3.png";
 import Star4 from "../assets/results4.png";
 import Star5 from "../assets/results5.png";
 
-import Guardar from "./GuardarLists";
 import CardResultados from "./CardResultados";
 
 const Resultados = {
@@ -15,75 +15,52 @@ const Resultados = {
     0:{
       title: "Star Wars (2015) #1",
       cover: Star1,
-    }
+    },
+    1:{
+      title: "Infinity War (2019)",
+      cover: Star2,
+    },
+    2:{
+      title: "War of the Realms:\nWar Scrolls (2019)\n#2",
+      cover: Star3,
+    },
+    3:{
+      title: "Infinity War\nOmnibus (2019)",
+      cover: Star4,
+    },
+    4:{
+      title: "War of the Realms\nStrikeforce: The\nLand of Giants\n(2019) #1",
+      cover: Star5,
+    },
   }
 }
 
-export default class CardListaResultados extends React.Component {
-    constructor() {
-      super();
-      this.state = {
-        fontloaded: false,
-      };
-    }
-  
-    async componentDidMount() {
-      await Font.loadAsync({
-        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-        "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-        "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-        "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-        "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-      });
-  
-      this.setState({ fontloaded: true });
-    }
+export default function CardListaResultados() {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+    "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+});
 
-    render() {
-        const title1 = "Star Wars (2015) #1";
-        const title2 = "Infinity War (2019)";
-        const title3 = "War of the Realms:\nWar Scrolls (2019)\n#2";
-        const title4 = "Infinity War\nOmnibus (2019)";
-        const title5 = "War of the Realms\nStrikeforce: The\nLand of Giants\n(2019) #1";
+if (!fontsLoaded) {
+    return (
+        <View style={styles.container}>
+            <ActivityIndicator />
+        </View>
+    );
+}
+        
         return (
           <View>
 
             <CardResultados Title = {Resultados.comics[0].title} Cover = {Resultados.comics[0].cover}/>
-
-            <View style={styles.card}>
-              <Image source={Star1} style={styles.image} />
-              <Text style={styles.title}>{title1}</Text>
-              <Guardar />
-            </View>
-
-            <View style={styles.card}>
-              <Image source={Star2} style={styles.image} />
-              <Text style={styles.title}>{title2}</Text>
-              <Guardar />
-            </View>
-
-            <View style={styles.card}>
-              <Image source={Star3} style={styles.image} />
-              <Text style={styles.title}>{title3}</Text>
-              <Guardar />
-            </View>
-
-            <View style={styles.card}>
-              <Image source={Star4} style={styles.image} />
-              <Text style={styles.title}>{title4}</Text>
-              <Guardar />
-            </View>
-
-            <View style={styles.card}>
-              <Image source={Star5} style={styles.image} />
-              <Text style={styles.title}>{title5}</Text>
-              <Guardar />
-            </View>
+            <CardResultados Title = {Resultados.comics[1].title} Cover = {Resultados.comics[1].cover}/>
+            <CardResultados Title = {Resultados.comics[2].title} Cover = {Resultados.comics[2].cover}/>
+            <CardResultados Title = {Resultados.comics[3].title} Cover = {Resultados.comics[3].cover}/>
+            <CardResultados Title = {Resultados.comics[4].title} Cover = {Resultados.comics[4].cover}/>
+            
           </View>
         );
     }
-}
 
 
 const CARD_HEIGHT = 150;

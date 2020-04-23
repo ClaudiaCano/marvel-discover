@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight, Dimensions } from "react-native";
 import SaveIcon from "../assets/saveicon.svg";
 import SaveIconSelected from "../assets/saveiconselected.svg";
 import * as Font from "expo-font";
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingRight: 10,
+    width: (Dimensions.get("screen").width - 20) / 5,
   },
   text: {
     marginTop: DISTANCE_ICON_TEXT,

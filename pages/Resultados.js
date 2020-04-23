@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Dimensions } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, ScrollView, View, Dimensions, ActivityIndicator} from "react-native";
+import { useFonts } from "@use-expo/font";
 import { LinearGradient } from "expo-linear-gradient";
 
 import TitleResults from "../components/TitleResults";
@@ -12,30 +12,21 @@ const Results = {
   text: "Resultados para 'WAR'",
 };
 
-export default class Resultados extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fontloaded: false,
-    };
-  }
-
-  async componentDidMount() {
-    await Font.loadAsync({
-      "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-      "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-      "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-      "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-      "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
+export default function Resultados() {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
       "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-    });
+  });
 
-    this.setState({ fontloaded: true });
-  }
-
-  render() {
+  if (!fontsLoaded) {
     return (
-      <View>
+      <View style={styles.container}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+  return (
+    <View>
         <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
         <BackIcon style={styles.backIcon} />
         <TitleResults Title={Results.text} />
@@ -47,9 +38,9 @@ export default class Resultados extends React.Component {
         
         <AppBar />
       </View>
-    );
-  }
+  );
 }
+
 
 const styles = StyleSheet.create({
   gradient: {

@@ -18,9 +18,9 @@ import Avengers2 from "../assets/3.2.png";
 import Avengers3 from "../assets/3.3.png";
 
 const sequences = {
-  "Secret Wars": [1, 2, 3, 4],
-  "Star Wars": [2, 3, 5, 7],
-  "Avengers VS X-Men": [2, 4, 6, 8],
+  "Secret Wars": [1, 2, 3, 4, 5],
+  "Star Wars": [2, 3, 5, 7, 9],
+  "Avengers VS X-Men": [2, 4, 6, 8, 10],
 };
 
 const Number = ({ number }) => (
@@ -46,9 +46,8 @@ export default class HomeModif extends React.Component {
   render() {
     return (
       <View>
+        <ScrollView showsVerticalScrollIndicator={false}>
         <CarouselItem />
-
-        <ScrollView>
           <View height={20} />
 
           {Object.entries(sequences).map(([title, array]) => {
@@ -76,11 +75,11 @@ export default class HomeModif extends React.Component {
 }
 
 const CARD_HEIGHT = 150;
-const PADDING = 15;
+const PADDING = 20;
 
 const styles = StyleSheet.create({
   sizedbox: {
-    height: 300,
+    height: 100,
   },
   container: {
     flex: 1,
@@ -106,6 +105,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 8,
     marginLeft: PADDING,
+    textTransform: "uppercase",
   },
   box: {
     flex: 0,
