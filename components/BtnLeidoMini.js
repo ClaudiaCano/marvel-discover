@@ -3,18 +3,18 @@ import {
     StyleSheet,
     Text,
     View,
-    Dimensions,
     ActivityIndicator,
     TouchableHighlight,
 } from "react-native";
 import { useFonts } from "@use-expo/font";
 
-export default function BtnLeido() {
+export default function BtnLeidoMini() {
     const [fontsLoaded] = useFonts({
-        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
     });
 
     const [selected, setSelected] = useState(false);
+
     if (!fontsLoaded) {
         return (
             <View style={styles.container}>
@@ -22,6 +22,7 @@ export default function BtnLeido() {
             </View>
         );
     }
+
     if (!selected) {
         return (
             <View style={styles.btn}>
@@ -41,8 +42,8 @@ export default function BtnLeido() {
     }
     return (
         <View style={styles.btn}>
-            <View style={styles.btnTop2} />
-            <View style={styles.btnBottom2} />
+            <View style={styles.btnTop} />
+            <View style={styles.btnBottom} />
             <TouchableHighlight
                 style={styles.touch}
                 underlayColor={"#f0f0"}
@@ -50,38 +51,37 @@ export default function BtnLeido() {
                     setSelected(!selected);
                 }}
             >
-                <Text style={styles.text2}>Leído</Text>
+                <Text style={styles.text}>¿Leído?</Text>
             </TouchableHighlight>
         </View>
     );
 }
 
-const BTN_COLOR = "#5E009C";
+const BTN_COLOR = "white";
 const BTN_COLOR_2 = "white";
-const BTN_HEIGHT = 56;
-const BTN_WIDTH = Dimensions.get("window").width * 0.7;
-const BTN_BACKGROUND = "white";
+const BTN_HEIGHT = 20;
+const BTN_WIDTH = 65;
+const BTN_BACKGROUND = "#4E00B0";
 const BTN_BACKGROUND_2 = "#D01C1F";
+const FONT_TYPE = "RobotoCondensed-Regular";
 
 const styles = StyleSheet.create({
-    btn: {
-        width: BTN_WIDTH,
-        height: BTN_HEIGHT,
-        top: 0,
-        right: 0,
-    },
     touch: {
         position: "absolute",
         width: BTN_WIDTH,
-        height: BTN_HEIGHT,        
+        height: BTN_HEIGHT,
+    },
+    btn: {
+        width: BTN_WIDTH,
+        height: BTN_HEIGHT,
     },
     text: {
         position: "absolute",
         width: BTN_WIDTH,
         height: BTN_HEIGHT,
         color: BTN_COLOR,
-        fontFamily: "RobotoCondensed-Bold",
-        fontSize: 18,
+        fontSize: 11,
+        fontFamily: FONT_TYPE,
         textAlign: "center",
         textAlignVertical: "center",
         textTransform: "uppercase",
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 0,
         borderTopColor: "transparent",
         borderLeftColor: "transparent",
-        borderLeftWidth: 0,
+        borderLeftWidth: BTN_HEIGHT / 2,
         borderRightColor: "transparent",
         borderRightWidth: 0,
         borderBottomColor: BTN_BACKGROUND,
@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
         width: BTN_WIDTH,
         height: BTN_HEIGHT,
         color: BTN_COLOR_2,
-        fontFamily: "RobotoCondensed-Bold",
-        fontSize: 18,
+        fontSize: 11,
+        fontFamily: FONT_TYPE,
         textAlign: "center",
         textAlignVertical: "center",
         textTransform: "uppercase",
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 0,
         borderTopColor: "transparent",
         borderLeftColor: "transparent",
-        borderLeftWidth: 0,
+        borderLeftWidth: BTN_HEIGHT / 2,
         borderRightColor: "transparent",
         borderRightWidth: 0,
         borderBottomColor: BTN_BACKGROUND_2,
