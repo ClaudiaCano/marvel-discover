@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, View, Dimensions } from "react-native";
 import * as Font from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 
-import EventTitleResults from "../components/EventTitleLeidosGuardados";
+import TitleGuardados from "../components/TitleLeidosGuardados";
 import CardListaGuardados from "../components/CardListaGuardados";
 import BackIcon from "../assets/backblack.svg";
 import AppBar from "../components/AppBar";
@@ -38,7 +38,7 @@ export default class Guardados extends React.Component {
       <View>
         <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
         <BackIcon style={styles.backIcon} />
-        <EventTitleResults Title={Results.text} />
+        <TitleGuardados Title={Results.text} />
 
         <ScrollView>
           <CardListaGuardados />

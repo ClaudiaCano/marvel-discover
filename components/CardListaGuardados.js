@@ -7,7 +7,6 @@ import Star3 from "../assets/comicGuardado3.png";
 import Star4 from "../assets/comicGuardado4.png";
 import Star5 from "../assets/comicGuardado5.png";
 
-import Leido from "../components/BtnVerMas copy";
 
 export default class CardListaGuardados extends React.Component {
     constructor() {

@@ -7,22 +7,24 @@ import BtnLeido from "./components/BtnLeido";
 import Personaje from "./components/Personaje";
 import AppBar from "./components/AppBar";
 import CarouselItem from "./components/CarouselItem";
-import CardSliderHome1 from "./components/CardSliderHome1";
 import ImgVerMas from "./components/ImgVerMas";
 import CardCommicEvent from "./components/CardComicEvent";
 import UserHeader from "./components/UserHeader";
+
 import CardListaResultados from "./components/CardListaResultados";
+
+
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
 import Evento from "./pages/Evento";
 import Splash from "./pages/Splash";
-import Home from "./pages/Home";
 import Resultados from "./pages/Resultados";
 import Leidos from "./pages/Leidos";
 import Guardados from "./pages/Guardados";
 import Perfil from "./pages/Perfil";
 import Search from "./pages/Search";
+import HomeModif from "./pages/HomeModif";
 
 //--------- PARA EL SEARCH (porque la gradiente es diferente)-------------
 /*
@@ -42,7 +44,7 @@ export default function App() {
         style={styles.gradient}
       />
 
-      <Guardados />
+      <HomeModif />
     </View>
   );
 }

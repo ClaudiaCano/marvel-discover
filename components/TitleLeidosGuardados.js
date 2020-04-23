@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 
-export default class EventTitle extends React.Component {
+export default class TitleLeidosGuardados extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -21,20 +21,16 @@ export default class EventTitle extends React.Component {
 
     render() {
         var string = this.props.Title;
-        var number = string.indexOf("'");
-        var text1 = string.slice(0, number);
-        var text2 = string.slice(number);
+        var text1 = string.slice(0);
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>{text1}</Text>
-                <Text style={[styles.text, styles.textcolor]}>{text2}</Text>
             </View>
         );
     }
 }
 
 const FONT_COLOR = "black";
-const SECONDARY_FONT_COLOR = "#5E009C";
 const FONT_SIZE = 24;
 const FONT_TYPE = "RobotoCondensed-Bold";
 
@@ -55,8 +51,5 @@ const styles = StyleSheet.create({
         fontFamily: FONT_TYPE,
         textTransform: "uppercase",
         display: "flex",
-    },
-    textcolor: {
-        color: SECONDARY_FONT_COLOR,
     },
 });

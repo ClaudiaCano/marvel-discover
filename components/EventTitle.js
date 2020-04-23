@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 
-export default class EventTitle extends React.Component {
+export default class Title extends React.Component {
     constructor() {
         super();
         this.state = {
