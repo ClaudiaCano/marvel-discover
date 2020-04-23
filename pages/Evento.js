@@ -15,6 +15,32 @@ import Details from "../components/Details";
 import BackIcon from "../assets/backblack.svg";
 
 /*------------------------ OBJECTS ------------------------ */
+const data = [
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/3/a0/5670864d95ab0/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/3/50/567084ad58a03/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/3/20/5519439c0b32c/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/e/d0/54a2fda8ace40/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/6/90/5536b03673fdf/clean.jpg",
+    },
+];
 const StarWars = {
     title: "Star Wars (2015)",
     description:
@@ -54,9 +80,7 @@ export default class Evento extends React.Component {
                 <EventTitle Title={StarWars.title} />
                 </TouchableHighlight>
                 <ScrollView>
-                    <TouchableHighlight onPress={this.buttonPress}>
-                        <CardComic />
-                    </TouchableHighlight>
+                    <CardComic Data={data}/>
                     <Details
                         Title="Descripción"
                         Description={StarWars.description}
