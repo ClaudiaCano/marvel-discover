@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import * as Font from "expo-font";
 
 export default class EventDetails extends React.Component {
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     fontFamily: TITLE_TYPE,
     textTransform: "uppercase",
     display: "flex",
+    marginBottom: 10,
   },
   body: {
     color: BODY_COLOR,
