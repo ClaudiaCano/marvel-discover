@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
 import { Dimensions } from "react-native";
 
 import AppBarSvg from "../assets/appbar.svg";
@@ -8,58 +8,55 @@ import Logo from "../assets/logo.svg";
 import ProfileIcon from "../assets/profileicon.svg";
 import SearchIcon from "../assets/searchicon.svg";
 
-export default class AppBar extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fontloaded: false,
-    };
+
+export default function AppBar() {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+    "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
+    "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
+    "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
+    "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
+    "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+      return (
+          <View style={styles.container}>
+              <ActivityIndicator />
+          </View>
+      );
   }
-
-  async componentDidMount() {
-    await Font.loadAsync({
-      "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-      "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-      "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-      "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-      "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-      "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-    });
-
-    this.setState({ fontloaded: true });
-  }
-
-  render() {
-    const home = "Home";
-    const profile = "Perfil";
-    const dimensions = Dimensions.get("window");
-    const imageWidth = dimensions.width;
-    const ratio = imageWidth / 615.6;
-    return (
-      <View style={styles.appbar}>
-        <View style={styles.appbarstructure}>
-          <AppBarSvg
-            width={imageWidth}
-            height={136 * ratio}
-            style={styles.appbarbackground}
-          />
-          <View style={styles.circle} />
-          <SearchIcon width={20} height={20} style={styles.searchicon} />
+  
+  const home = "Home";
+  const profile = "Perfil";
+  const dimensions = Dimensions.get("window");
+  const imageWidth = dimensions.width;
+  const ratio = imageWidth / 615.6;
+  return (
+    <View style={styles.appbar}>
+      <View style={styles.appbarstructure}>
+        <AppBarSvg
+          width={imageWidth}
+          height={136 * ratio}
+          style={styles.appbarbackground}
+        />
+        <View style={styles.circle} />
+        <SearchIcon width={20} height={20} style={styles.searchicon} />
+      </View>
+      <View style={styles.row}>
+        <View style={styles.column}>
+          <Logo width={20} height={20} />
+          <Text style={styles.text}>{home}</Text>
         </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-            <Logo width={20} height={20} />
-            <Text style={styles.text}>{home}</Text>
-          </View>
-          <View style={styles.column}>
-            <ProfileIcon width={20} height={20} />
-            <Text style={styles.text}>{profile}</Text>
-          </View>
+        <View style={styles.column}>
+          <ProfileIcon width={20} height={20} />
+          <Text style={styles.text}>{profile}</Text>
         </View>
       </View>
-    );
-  }
+    </View>
+  );
 }
+
 
 const dimensions = Dimensions.get("window");
 const windowwidth = dimensions.width;
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
     width: windowwidth,
     height: barheight + 30,
     position: "absolute",
-    top: windowheight - barheight - 30,
+    top: windowheight - barheight,
   },
   /*appbarstructure: {
     position: "absolute",

@@ -1,34 +1,37 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ActivityIndicator,
+} from "react-native";
 import * as Font from "expo-font";
+import { useFonts } from "@use-expo/font";
 
-export default class Details extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fontloaded: false,
-      selected: false,
-    };
-  }
+export default function EventDetails(props) {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+    "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+  });
 
-  async componentDidMount() {
-    await Font.loadAsync({
-      "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-      "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-    });
-
-    this.setState({ fontloaded: true });
-  }
-
-  render() {
-    const title = this.props.Title;
+  if (!fontsLoaded) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.body}>{this.props.Description}</Text>
+        <ActivityIndicator />
       </View>
     );
   }
+
+  const title = props.Title;
+  const description = props.Description;
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.body}>{description}</Text>
+    </View>
+  );
 }
 
 const TITLE_COLOR = "black";
@@ -54,6 +57,7 @@ const styles = StyleSheet.create({
     fontFamily: TITLE_TYPE,
     textTransform: "uppercase",
     display: "flex",
+    marginBottom: 10,
   },
   body: {
     color: BODY_COLOR,

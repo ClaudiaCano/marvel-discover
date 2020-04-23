@@ -7,7 +7,7 @@ import SearchBar from "../components/SearchBar";
 import SearchSvg from "../assets/searchicon.svg";
 import CloseSvg from "../assets/close.svg";
 
-export default function App() {
+export default function Search() {
     const [text, setText] = React.useState('');
 
     return (
