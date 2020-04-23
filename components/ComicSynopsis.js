@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions, ActivityIndicator } from "react-native";
 import { useFonts } from "@use-expo/font";
 
 export default function ComicSynopsis() {

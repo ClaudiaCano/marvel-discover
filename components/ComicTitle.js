@@ -1,11 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
 
-export default function ComicTitle () {
+export default function ComicTitle() {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
     });
 
     if (!fontsLoaded) {
@@ -15,11 +14,11 @@ export default function ComicTitle () {
             </View>
         );
     }
-        return (
-            <View style={styles.box}>
-                <Text style={styles.text}>{this.props.Title}</Text>
-            </View>
-        );
+    return (
+        <View style={styles.box}>
+            <Text style={styles.text}>{this.props.Title}</Text>
+        </View>
+    );
 }
 
 const COLOR = "black";
