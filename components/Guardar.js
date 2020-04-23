@@ -1,55 +1,50 @@
-import React from "react";
-import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableHighlight,
+  ActivityIndicator,
+} from "react-native";
 import SaveIcon from "../assets/saveicon.svg";
 import SaveIconSelected from "../assets/saveiconselected.svg";
-import * as Font from "expo-font";
+import { useFonts } from "@use-expo/font";
 
-export default class Guardar extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fontloaded: false,
-      selected: false,
-    };
-  }
+export default function Guardar(props) {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+  });
 
-  async componentDidMount() {
-    await Font.loadAsync({
-      "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-      "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-      "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-      "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-      "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-      "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-    });
+  const [selected, setSelected] = useState(false);
 
-    this.setState({ fontloaded: true });
-  }
-
-  render() {
-    const { selected } = this.state.selected;
+  if (!fontsLoaded) {
     return (
-      <View style={styles.column}>
-        <TouchableHighlight
-          underlayColor={"#f0f0"}
-          onPress={() => {
-            this.setState({ selected: !this.state.selected });
-          }}
-        >
-          {this.state.selected ? (
-            <SaveIconSelected style={styles.icon} />
-          ) : (
-            <SaveIcon style={styles.icon} />
-          )}
-        </TouchableHighlight>
-        {this.state.selected ? (
-          <Text style={styles.text}>Guardado</Text>
-        ) : (
-          <Text style={styles.text}>Guardar</Text>
-        )}
+      <View style={styles.container}>
+        <ActivityIndicator />
       </View>
     );
   }
+
+  return (
+    <View style={styles.column}>
+      <TouchableHighlight
+        underlayColor={"#f0f0"}
+        onPress={() => {
+          setSelected(!selected)}}
+      >
+        {selected ? (
+          <SaveIconSelected style={styles.icon} />
+        ) : (
+          <SaveIcon style={styles.icon} />
+        )}
+      </TouchableHighlight>
+      {selected ? (
+        <Text style={styles.text}>Guardado</Text>
+      ) : (
+        <Text style={styles.text}>Guardar</Text>
+      )}
+    </View>
+  );
 }
 
 const DISTANCE_ICON_TEXT = 1;

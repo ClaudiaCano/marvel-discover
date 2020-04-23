@@ -8,10 +8,36 @@ import Logo from "../assets/logo.svg";
 import ProfileIcon from "../assets/profileicon.svg";
 import SearchIcon from "../assets/searchicon.svg";
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+/*const TabBar = (props) => {
+  const { navigationState, navigation, position } = props
+  return (
+    <View style={{
+      height: 80,
+      backgroundColor: 'seashell',
+      flexDirection: "row",
+      justifyContent: 'space-around',
+      alignItems: 'center',
+    }}>
+    {navigationState.routes.map((route, index) => {
+      const focusAnim = position.interpolate({
+        inputRange: [index - 1, index, index + 1],
+        outputRange: [0, 1, 0]
+      })
+      return (
+        <Tab 
+          focusAnim={focusAnim}
+          title={route.routeName} 
+          onPress={() => navigation.navigate(route.routeName)}
+        />
+      )
+    })}
+    </View>
+  )
+}*/
 
-const AppBar = ({ navigation }) => {
+const AppBar = (props) => {
+  const { navigationState, navigation, position } = props
+
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });

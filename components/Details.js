@@ -6,7 +6,6 @@ import {
   Dimensions,
   ActivityIndicator,
 } from "react-native";
-import * as Font from "expo-font";
 import { useFonts } from "@use-expo/font";
 
 export default function EventDetails(props) {
