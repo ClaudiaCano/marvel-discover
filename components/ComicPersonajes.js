@@ -1,34 +1,28 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, Text, View, Dimensions, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
 import Personaje from "../components/Personaje";
 
-export default class ComicPersonajes extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            fontloaded: false,
-            selected: false,
-        };
-    }
-
-    async componentDidMount() {
-        await Font.loadAsync({
-            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-        });
-
-        this.setState({ fontloaded: true });
-    }
-
-    render() {
+export default function ComicPersonajes() {
+    const [fontsLoaded] = useFonts({
+        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+    });
+  
+    if (!fontsLoaded) {
         return (
-            <View style={styles.box}>
-                <Text style={styles.text_1}>PERSONAJES</Text>
-                <Personaje character = "Princesa Leia" completename = "Leia Organa"/>
+            <View style={styles.container}>
+                <ActivityIndicator />
             </View>
         );
     }
-}
+    
+    return (
+        <View style={styles.box}>
+            <Text style={styles.text_1}>PERSONAJES</Text>
+            <Personaje character = "Princesa Leia" completename = "Leia Organa"/>
+        </View>
+    );
+  }
 
 const COLOR = "#D01C1F";
 const FONT_SIZE = 18;
