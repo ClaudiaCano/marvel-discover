@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import EventTitle from "../components/EventTitle";
 import CardComic from "../components/CardComicEvent";
-import EventDetails from "../components/EventDetails";
+import Details from "../components/Details";
 import BackIcon from "../assets/backblack.svg";
 import AppBar from "../components/AppBar";
 
@@ -46,11 +46,11 @@ export default class Evento extends React.Component {
         <ScrollView>
           <EventTitle Title={StarWars.title} />
           <CardComic />
-          <EventDetails
+          <Details
             Title="Descripción"
             Description={StarWars.description}
           />
-          <EventDetails Title="Creadores" Description={StarWars.creators} />
+          <Details Title="Creadores" Description={StarWars.creators} />
           <View style={styles.sizedbox}/>
         </ScrollView>
         <AppBar />
