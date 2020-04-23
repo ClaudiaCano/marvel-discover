@@ -1,72 +1,78 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, Text, View, Image, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
+
 import Star1 from "../assets/2.3.png";
 import Star2 from "../assets/comicGuardado2.png";
 import Star3 from "../assets/comicGuardado3.png";
 import Star4 from "../assets/comicGuardado4.png";
 import Star5 from "../assets/comicGuardado5.png";
 
+import CardGuardados from "./CardGuardados";
 
-export default class CardListaGuardados extends React.Component {
-    constructor() {
-      super();
-      this.state = {
-        fontloaded: false,
-      };
-    }
-  
-    async componentDidMount() {
-      await Font.loadAsync({
-        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-        "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-        "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-        "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-        "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-      });
-  
-      this.setState({ fontloaded: true });
-    }
+const Guardados = {
+  comics: {
+    0: {
+      title: "Princess leia (2015)\n#1",
+      cover: Star1,
+    },
+    1: {
+      title: "Marvel Action\nCaptain Marvel\n(2019) #3",
+      cover: Star2,
+    },
+    2: {
+      title: "Ant-Man and the\nwasp: Lost and found",
+      cover: Star3,
+    },
+    3: {
+      title: "Avengers by jason\naaron vol.5:\nchallenge of the\nhost riders",
+      cover: Star4,
+    },
+    4: {
+      title: "Tarot (2020) #2",
+      cover: Star5,
+    },
+  },
+};
 
-    render() {
-        const title1 = "Princess leia (2015)\n#1";
-        const title2 = "Marvel Action\nCaptain Marvel\n(2019) #3";
-        const title3 = "Ant-Man and the\nwasp: Lost and found";
-        const title4 = "Avengers by jason\naaron vol.5:\nchallenge of the\nhost riders";
-        const title5 = "Tarot (2020) #2";
-        return (
-          <View>
-            <View style={styles.card}>
-              <Image source={Star1} style={styles.image} />
-              <Text style={styles.title}>{title1}</Text>
-              <Leido />
-            </View>
+export default function CardListaGuardados() {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+    "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+  });
 
-            <View style={styles.card}>
-              <Image source={Star2} style={styles.image} />
-              <Text style={styles.title}>{title2}</Text>
-            </View>
-
-            <View style={styles.card}>
-              <Image source={Star3} style={styles.image} />
-              <Text style={styles.title}>{title3}</Text>
-            </View>
-
-            <View style={styles.card}>
-              <Image source={Star4} style={styles.image} />
-              <Text style={styles.title}>{title4}</Text>
-            </View>
-
-            <View style={styles.card}>
-              <Image source={Star5} style={styles.image} />
-              <Text style={styles.title}>{title5}</Text>
-            </View>
-          </View>
-        );
-    }
+  if (!fontsLoaded) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+  return (
+    <View>
+      <CardGuardados
+        Title={Guardados.comics[0].title}
+        Cover={Guardados.comics[0].cover}
+      />
+      <CardGuardados
+        Title={Guardados.comics[1].title}
+        Cover={Guardados.comics[1].cover}
+      />
+      <CardGuardados
+        Title={Guardados.comics[2].title}
+        Cover={Guardados.comics[2].cover}
+      />
+      <CardGuardados
+        Title={Guardados.comics[3].title}
+        Cover={Guardados.comics[3].cover}
+      />
+      <CardGuardados
+        Title={Guardados.comics[4].title}
+        Cover={Guardados.comics[4].cover}
+      />
+    </View>
+  );
 }
-
 
 const CARD_HEIGHT = 150;
 
@@ -88,13 +94,13 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.3,
   },
-  image:{
+  image: {
     marginLeft: 10,
     marginTop: 5,
     width: 80,
     height: CARD_HEIGHT - 10,
     resizeMode: "cover",
-  }, 
+  },
   title: {
     fontSize: 17,
     fontFamily: "RobotoCondensed-Bold",

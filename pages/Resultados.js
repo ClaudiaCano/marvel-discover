@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Dimensions, ActivityIndicator} from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Dimensions,
+  ActivityIndicator,
+} from "react-native";
 import { useFonts } from "@use-expo/font";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -15,7 +21,7 @@ const Results = {
 export default function Resultados() {
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-      "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+    "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -27,20 +33,19 @@ export default function Resultados() {
   }
   return (
     <View>
-        <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
-        <BackIcon style={styles.backIcon} />
-        <TitleResults Title={Results.text} />
+      <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
+      <BackIcon style={styles.backIcon} />
+      <TitleResults Title={Results.text} />
 
-        <ScrollView>
-          <CardListaResultados />
-          <View style={styles.sizedbox}/>
-        </ScrollView>
-        
-        <AppBar />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <CardListaResultados />
+        <View style={styles.sizedbox} />
+      </ScrollView>
+
+      <AppBar />
+    </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   gradient: {
@@ -58,6 +63,6 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   sizedbox: {
-    height: 200,
+    height: 150,
   },
 });
