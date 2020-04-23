@@ -1,36 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
 
-export default class Title extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            fontloaded: false,
-            selected: false,
-        };
-    }
+export default function Title(props) {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+    "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+  });
 
-    async componentDidMount() {
-        await Font.loadAsync({
-            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-        });
+  if (!fontsLoaded) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
-        this.setState({ fontloaded: true });
-    }
+  var string = props.Title;
+  var number = string.indexOf("(");
+  var text1 = string.slice(0, number);
+  var text2 = string.slice(number);
 
-    render() {
-        var string = this.props.Title;
-        var number = string.indexOf("(");
-        var text1 = string.slice(0, number);
-        var text2 = string.slice(number);
-        return (
-            <View style={styles.container}>
-                <Text style={[styles.text, styles.textcolor]}>{text1}</Text>
-                <Text style={styles.text}>{text2}</Text>
-            </View>
-        );
-    }
+  return (
+    <View style={styles.container}>
+      <Text style={[styles.text, styles.textcolor]}>{text1}</Text>
+      <Text style={styles.text}>{text2}</Text>
+    </View>
+  );
 }
 
 const FONT_COLOR = "black";
@@ -39,24 +35,24 @@ const FONT_SIZE = 24;
 const FONT_TYPE = "RobotoCondensed-Bold";
 
 const styles = StyleSheet.create({
-    container: {
-        paddingLeft: 80,
-        paddingRight: 20,
-        flex: 0,
-        flexDirection: "row",
-        alignItems: "flex-start",
-        flexWrap: "wrap",
-        marginTop: 30,
-        marginBottom: 20,
-    },
-    text: {
-        color: FONT_COLOR,
-        fontSize: FONT_SIZE,
-        fontFamily: FONT_TYPE,
-        textTransform: "uppercase",
-        display: "flex",
-    },
-    textcolor: {
-        color: SECONDARY_FONT_COLOR,
-    },
+  container: {
+    paddingLeft: 80,
+    paddingRight: 20,
+    flex: 0,
+    flexDirection: "row",
+    alignItems: "flex-start",
+    flexWrap: "wrap",
+    marginTop: 30,
+    marginBottom: 20,
+  },
+  text: {
+    color: FONT_COLOR,
+    fontSize: FONT_SIZE,
+    fontFamily: FONT_TYPE,
+    textTransform: "uppercase",
+    display: "flex",
+  },
+  textcolor: {
+    color: SECONDARY_FONT_COLOR,
+  },
 });

@@ -1,14 +1,15 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Dimensions } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, ScrollView, View, Dimensions, ActivityIndicator } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+/*------------------------ COMPONENTS ------------------------ */
 import EventTitle from "../components/EventTitle";
 import CardComic from "../components/CardComicEvent";
 import Details from "../components/Details";
 import BackIcon from "../assets/backblack.svg";
 import AppBar from "../components/AppBar";
 
+/*------------------------ OBJECTS ------------------------ */
 const StarWars = {
   title: "Star Wars (2015)",
   description:
@@ -17,27 +18,8 @@ const StarWars = {
     "Jason Aaron, John Cassaday, Kieron Gillen, Salvador Larroca, Adi Granov Mark Waid, Terry Dodson, Greg Weisman, Mark Brooks, Pepe Larraz, Stuart Immonen.",
 };
 
+/*------------------------ PAGE ------------------------ */
 export default class Evento extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fontloaded: false,
-    };
-  }
-
-  async componentDidMount() {
-    await Font.loadAsync({
-      "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-      "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-      "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-      "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-      "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-      "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-    });
-
-    this.setState({ fontloaded: true });
-  }
-
   render() {
     return (
       <View>
