@@ -12,89 +12,65 @@ import CardResultados from "./CardResultados";
 
 const Resultados = {
   comics: {
-    0:{
+    0: {
       title: "Star Wars (2015) #1",
       cover: Star1,
     },
-    1:{
+    1: {
       title: "Infinity War (2019)",
       cover: Star2,
     },
-    2:{
+    2: {
       title: "War of the Realms:\nWar Scrolls (2019)\n#2",
       cover: Star3,
     },
-    3:{
+    3: {
       title: "Infinity War\nOmnibus (2019)",
       cover: Star4,
     },
-    4:{
+    4: {
       title: "War of the Realms\nStrikeforce: The\nLand of Giants\n(2019) #1",
       cover: Star5,
     },
-  }
-}
+  },
+};
 
 export default function CardListaResultados() {
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-});
+  });
 
-if (!fontsLoaded) {
+  if (!fontsLoaded) {
     return (
-        <View style={styles.container}>
-            <ActivityIndicator />
-        </View>
+      <View style={styles.container}>
+        <ActivityIndicator />
+      </View>
     );
+  }
+
+  return (
+    <View>
+      <CardResultados
+        Title={Resultados.comics[0].title}
+        Cover={Resultados.comics[0].cover}
+      />
+      <CardResultados
+        Title={Resultados.comics[1].title}
+        Cover={Resultados.comics[1].cover}
+      />
+      <CardResultados
+        Title={Resultados.comics[2].title}
+        Cover={Resultados.comics[2].cover}
+      />
+      <CardResultados
+        Title={Resultados.comics[3].title}
+        Cover={Resultados.comics[3].cover}
+      />
+      <CardResultados
+        Title={Resultados.comics[4].title}
+        Cover={Resultados.comics[4].cover}
+      />
+    </View>
+  );
 }
-        
-        return (
-          <View>
-
-            <CardResultados Title = {Resultados.comics[0].title} Cover = {Resultados.comics[0].cover}/>
-            <CardResultados Title = {Resultados.comics[1].title} Cover = {Resultados.comics[1].cover}/>
-            <CardResultados Title = {Resultados.comics[2].title} Cover = {Resultados.comics[2].cover}/>
-            <CardResultados Title = {Resultados.comics[3].title} Cover = {Resultados.comics[3].cover}/>
-            <CardResultados Title = {Resultados.comics[4].title} Cover = {Resultados.comics[4].cover}/>
-            
-          </View>
-        );
-    }
-
-
-const CARD_HEIGHT = 150;
-
-const styles = StyleSheet.create({
-  card: {
-    flex: 0,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignContent: "center",
-    width: "auto",
-    height: CARD_HEIGHT,
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    borderRadius: 5,
-    backgroundColor: "white",
-
-    shadowOffset: { width: 5, height: 5 },
-    shadowRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.3,
-  },
-  image:{
-    marginLeft: 10,
-    marginTop: 5,
-    width: 80,
-    height: CARD_HEIGHT - 10,
-    resizeMode: "cover",
-  }, 
-  title: {
-    fontSize: 17,
-    fontFamily: "RobotoCondensed-Bold",
-    display: "flex",
-    top: "17%",
-  },
-});

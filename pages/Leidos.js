@@ -37,7 +37,7 @@ export default function Leidos() {
       <BackIcon style={styles.backIcon} />
       <TitleLeidos Title={Results.text} />
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <CardListaLeidos />
         <View style={styles.sizedbox} />
       </ScrollView>
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   sizedbox: {
-    height: 200,
+    height: 150,
   },
 });
