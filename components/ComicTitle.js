@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { useFonts } from "@use-expo/font";
 
-export default function ComicTitle() {
+export default function ComicTitle(props) {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
@@ -16,7 +16,7 @@ export default function ComicTitle() {
     }
     return (
         <View style={styles.box}>
-            <Text style={styles.text}>{this.props.Title}</Text>
+            <Text style={styles.text}>{props.Title}</Text>
         </View>
     );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Dimensions, ActivityIndicator } from "react-native";
 import { useFonts } from "@use-expo/font";
 
-export default function ComicSynopsis() {
+export default function ComicSynopsis(props) {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
         "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
@@ -19,7 +19,7 @@ export default function ComicSynopsis() {
     return (
         <View style={styles.box}>
             <Text style={styles.text_1}>Sinopsis</Text>
-            <Text style={styles.text_2}>{this.props.Synopsis}</Text>
+            <Text style={styles.text_2}>{props.Synopsis}</Text>
         </View>
     );
 }
