@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, StatusBar, Dimensions, TextInput, ActivityIndicator, TouchableHighlight } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    StatusBar,
+    Dimensions,
+    TextInput,
+    ActivityIndicator,
+    TouchableHighlight,
+} from "react-native";
 import { useFonts } from "@use-expo/font";
 import { LinearGradient } from "expo-linear-gradient";
 import Modal from "react-native-modal";
 import SearchSvg from "../assets/searchicon.svg";
-
 import Resultados from "../pages/Resultados";
-
 
 const SearchBar = () => {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
     });
 
-    const [text, setText] = React.useState('');
+    const [text, setText] = React.useState("");
+    const [modalVisible, setModalVisible] = useState(false);
 
     if (!fontsLoaded) {
         return (
@@ -23,25 +31,26 @@ const SearchBar = () => {
         );
     }
 
-    const [modalVisible, setModalVisible] = useState(false);
-
     return (
-
         <>
-            <View style={styles.page} >
-                <View style={styles.container} >
+            <View style={styles.page}>
+                <View style={styles.container}>
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Type here!"
-                        placeholderTextColor= "#856D6D"
-                        onChangeText={text => setText(text)}
+                        placeholderTextColor="#856D6D"
+                        onChangeText={(text) => setText(text)}
                         defaultValue={text}
-                        onSubmitEditing={() => {setModalVisible(true); }}
+                        onSubmitEditing={() => {
+                            setModalVisible(true);
+                        }}
                     />
-                    <TouchableHighlight 
-                        underlayColor={"#f0f0"} 
-                        style={styles.searchIcon} 
-                        onPress={() => {setModalVisible(true); }} 
+                    <TouchableHighlight
+                        underlayColor={"#f0f0"}
+                        style={styles.searchIcon}
+                        onPress={() => {
+                            setModalVisible(true);
+                        }}
                     >
                         <SearchSvg />
                     </TouchableHighlight>
@@ -50,40 +59,37 @@ const SearchBar = () => {
 
             <View>
                 <Modal
-                backdropOpacity={0.3}
-                isVisible={modalVisible}
-                onBackdropPress={() => setModalVisible(false)}
-                style={styles.contentView}
+                    backdropOpacity={0.3}
+                    isVisible={modalVisible}
+                    onBackdropPress={() => setModalVisible(false)}
+                    style={styles.contentView}
                 >
-                <Search />
-                <TouchableHighlight
-                    underlayColor={"#f0f0"}
-                    onPress={() => {
-                    setModalVisible(false);
-                    }}
-                    style={styles.closeIcon}
-                >
-                    <Text style={styles.text}>x</Text>
-                </TouchableHighlight>
-                 <Resultados/>
+                    <Resultados />
+                    <TouchableHighlight
+                        underlayColor={"#f0f0"}
+                        onPress={() => {
+                            setModalVisible(false);
+                        }}
+                        style={styles.closeIcon}
+                    >
+                        <Text style={styles.text}>x</Text>
+                    </TouchableHighlight>
                 </Modal>
             </View>
         </>
     );
-}
+};
 
 export default SearchBar;
-
 
 const COLOR = "white";
 const FONT_SIZE = 18;
 const FONT = "RobotoCondensed-Regular";
 
 const styles = StyleSheet.create({
-
     page: {
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
     },
@@ -93,7 +99,12 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: "center",
     },
-
+    contentView: {
+        //justifyContent: "flex-end",
+        marginTop: 42,
+        marginLeft: 0,
+        marginRight: 0,
+    },
     searchInput: {
         position: "absolute",
         color: COLOR,
@@ -102,20 +113,35 @@ const styles = StyleSheet.create({
         width: 250,
         height: 40,
         borderWidth: 1,
-        borderTopColor: 'transparent',
+        borderTopColor: "transparent",
         borderBottomColor: COLOR,
-        borderLeftColor: 'transparent',
-        borderRightColor: 'transparent',
+        borderLeftColor: "transparent",
+        borderRightColor: "transparent",
     },
-
     searchIcon: {
         position: "absolute",
         width: 40,
         height: 40,
-        alignSelf: 'flex-end',
+        alignSelf: "flex-end",
         zIndex: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
     },
-    
-  });
+    closeIcon: {
+        position: "absolute",
+        top: -17,
+        left: 30,
+        width: 20,
+        height: 20,
+        alignSelf: "flex-end",
+        zIndex: 2,
+    },
+    text: {
+        fontFamily: "Roboto",
+        color: "black",
+        width: 60,
+        height: 60,
+        //fontWeight: "bold",
+        fontSize: 30,
+    },
+});
