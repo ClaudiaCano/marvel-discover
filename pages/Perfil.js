@@ -93,9 +93,9 @@ export default function Perfil() {
             <UserPfp ProfilePic = {user.pfp} />
             <UserInfo Name = {user.name} Username = {user.username} Bio = {user.about} />
             <Text style={styles.text_1}>MIS COLECCIONES</Text>
-            <HomeTitles Title="LEÍDOS" />
+            <HomeTitles Title="LEÍDOS" screen="Leidos"/>
             <CardHome Data={data} />
-            <HomeTitles Title="GUARDADOS" />
+            <HomeTitles Title="GUARDADOS" screen="Guardados" />
             <CardHome Data={data2} />
         </ScrollView>
       <AppBarBackground />

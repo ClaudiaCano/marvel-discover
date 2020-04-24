@@ -60,6 +60,20 @@ function HomeStackScreen() {
   );
 }
 
+function ProfileStackScreen() {
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <ProfileStack.Screen name="Perfil" component={Perfil} />
+      <ProfileStack.Screen name="Leidos" component={Leidos} />
+      <ProfileStack.Screen name="Guardados" component={Guardados} />
+    </ProfileStack.Navigator>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 const dimensions = Dimensions.get("window");
@@ -122,7 +136,7 @@ export default function App() {
           />
           <Tab.Screen
             name="Perfil"
-            component={Perfil}
+            component={ProfileStackScreen}
             options={{ tabBarIcon: ({ tintColor }) => <ProfileIcon /> }}
           />
         </Tab.Navigator>
