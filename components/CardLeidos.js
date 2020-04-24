@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,15 +6,21 @@ import {
   Image,
   ActivityIndicator,
   Dimensions,
+  TouchableHighlight,
 } from "react-native";
 import { useFonts } from "@use-expo/font";
+import Modal from "react-native-modal";
+
 import Guardar from "./GuardarLists";
+import Comic from "../pages/Comic";
 
 export default function CardLeidos(props) {
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   if (!fontsLoaded) {
     return (
@@ -25,11 +31,41 @@ export default function CardLeidos(props) {
   }
 
   return (
-    <View style={styles.card}>
-      <Image source={props.Cover} style={styles.image} />
-      <Text style={styles.title}>{props.Title}</Text>
-      <Guardar />
-    </View>
+    <>
+      <View style={styles.card}>
+        <TouchableHighlight
+            underlayColor={"#f0f0"}
+            style={styles.searchIcon}
+            onPress={() => {
+                setModalVisible(true);
+            }}
+        >
+          <Image source={props.Cover} style={styles.image} />
+        </TouchableHighlight>
+        <Text style={styles.title}>{props.Title}</Text>
+        <Guardar />
+      </View>
+
+      <View>
+        <Modal
+            backdropOpacity={0.3}
+            isVisible={modalVisible}
+            onBackdropPress={() => setModalVisible(false)}
+            style={styles.contentView}
+        >
+            <Comic />
+            <TouchableHighlight
+                underlayColor={"#f0f0"}
+                onPress={() => {
+                    setModalVisible(false);
+                }}
+                style={styles.closeIcon}
+            >
+                <Text style={styles.text}>x</Text>
+            </TouchableHighlight>
+        </Modal>
+      </View>
+    </>
   );
 }
 
@@ -71,4 +107,27 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     width: (Dimensions.get("screen").width - 20) / 2.5,
   },
+
+  //Estilos del Modal
+  contentView: {
+    margin: 0,
+  },
+  closeIcon: {
+    position: "absolute",
+    top: 30,
+    left: 30,
+    width: 20,
+    height: 20,
+    alignSelf: "flex-end",
+    zIndex: 2,
+  },
+  text: {
+    fontFamily: "Roboto",
+    color: "white",
+    width: 60,
+    height: 60,
+    //fontWeight: "bold",
+    fontSize: 30,
+  },
+
 });

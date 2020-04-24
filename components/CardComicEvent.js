@@ -73,9 +73,7 @@ const PADDING = 10;
 const RADIUS = 10;
 
 const styles = StyleSheet.create({
-    contentView: {
-        margin: 0,
-    },
+    
     box: {
         flex: 0,
         flexDirection: "row",
@@ -105,6 +103,11 @@ const styles = StyleSheet.create({
         width: WIDTH,
         resizeMode: "cover",
         borderRadius: RADIUS,
+    },
+
+    //Estilos del Modal
+    contentView: {
+        margin: 0,
     },
     closeIcon: {
         position: "absolute",
