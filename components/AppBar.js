@@ -8,44 +8,10 @@ import Logo from "../assets/logo.svg";
 import ProfileIcon from "../assets/profileicon.svg";
 import SearchIcon from "../assets/searchicon.svg";
 
-/*const TabBar = (props) => {
-  const { navigationState, navigation, position } = props
-  return (
-    <View style={{
-      height: 80,
-      backgroundColor: 'seashell',
-      flexDirection: "row",
-      justifyContent: 'space-around',
-      alignItems: 'center',
-    }}>
-    {navigationState.routes.map((route, index) => {
-      const focusAnim = position.interpolate({
-        inputRange: [index - 1, index, index + 1],
-        outputRange: [0, 1, 0]
-      })
-      return (
-        <Tab 
-          focusAnim={focusAnim}
-          title={route.routeName} 
-          onPress={() => navigation.navigate(route.routeName)}
-        />
-      )
-    })}
-    </View>
-  )
-}*/
-
 const AppBar = (props) => {
-  const { navigationState, navigation, position } = props
-
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
-
-  const goToPerfil= () => {
-    // 7. Usar el navegador per anar a la pantalla posant el "name"
-    navigation.navigate("perfil");
-  };
 
   if (!fontsLoaded) {
       return (
@@ -68,7 +34,6 @@ const AppBar = (props) => {
           height={136 * ratio}
           style={styles.appbarbackground}
         />
-        <Button title="Go to Screen 1" onPress={goToPerfil}></Button>
         <View style={styles.circle} />
         <SearchIcon width={20} height={20} style={styles.searchicon} />
       </View>
