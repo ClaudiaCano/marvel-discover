@@ -27,8 +27,12 @@ export default function Guardados() {
   }
     return (
       <View>
-        <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
-        <BackIcon style={styles.backIcon} />
+        <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+        />
+        <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradientsup} />
+        
         <TitleGuardados Title={Results.text} />
 
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -39,8 +43,18 @@ export default function Guardados() {
     );
   }
 
+  //<BackIcon style={styles.backIcon} />
+
 const styles = StyleSheet.create({
   gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
+    zIndex: -1,
+  },
+  gradientsup: {
     position: "absolute",
     left: 0,
     right: 0,

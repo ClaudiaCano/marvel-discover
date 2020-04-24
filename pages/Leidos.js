@@ -38,7 +38,7 @@ export default function Leidos() {
           style={styles.gradient}
         />
       <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradientsup} />
-      <BackIcon style={styles.backIcon} />
+      
       <TitleLeidos Title={Results.text} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -48,6 +48,8 @@ export default function Leidos() {
     </View>
   );
 }
+
+//<BackIcon style={styles.backIcon} />
 
 const styles = StyleSheet.create({
   gradient: {
