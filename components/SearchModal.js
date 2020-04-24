@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button, Text } from "react-native";
+import { StyleSheet, View, Button, Text, TouchableHighlight } from "react-native";
 import Modal from 'react-native-modal';
 
 import SearchIcon from "../components/SearchIcon";
+import Search from '../pages/Search';
 
 export default SearchModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
-      <Button onPress={() => {setModalVisible(true)}}
-        buttonStyle={styles.buttonStyle}
-        title="Search"
-      />
+      <TouchableHighlight
+        underlayColor={"#f0f0"}
+        onPress={() => {setModalVisible(true)}}
+      >
+        <SearchIcon />
+      </TouchableHighlight>
       <View style={styles.container}>
         <Modal
           backdropOpacity={0.3}
@@ -19,10 +22,7 @@ export default SearchModal = () => {
           onBackdropPress={() => setModalVisible(false)}
           style={styles.contentView}
         >
-          <View style={styles.content}>
-            <Text style={styles.contentTitle}>Hi!</Text>
-            <Text>Hello from Overlay!</Text>
-          </View>
+          <Search />
         </Modal>
       </View>
     </>

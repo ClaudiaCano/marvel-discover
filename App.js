@@ -42,8 +42,22 @@ export default function App() {
 }
 */
 
-/*const HomeStack = createStackNavigator();
+const HomeStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Evento" component={Evento} />
+      <HomeStack.Screen name="Comic" component={Comic} />
+    </HomeStack.Navigator>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 
@@ -60,7 +74,7 @@ export default function App() {
       <AppBarBackground />
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="home"
+          initialRouteName="Home"
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
@@ -84,128 +98,29 @@ export default function App() {
             style: {
               backgroundColor: "transparent",
               position: "absolute", // TabBar background
-              height: barheight - 10,
+              height: barheight,
               width: windowwidth,
               elevation: 0,
-              borderTopWidth: 2,
+              borderTopWidth: 0,
               zIndex: 2,
             },
           }}
         >
           <Tab.Screen
-            name="home"
-            component={Home}
+            name="Home"
+            component={HomeStackScreen}
             style={styles.icon}
             options={{ tabBarIcon: ({ tintColor }) => <HomeIcon /> }}
           />
           <Tab.Screen
-            name="search"
-            component={Search}
-            options={{
-              tabBarIcon: ({ tintColor }) => <Button onPress={() => {setModalVisible(true)}}
-              buttonStyle={styles.buttonStyle}
-              title="Search"
-            />
-            }}
-          />
-          <Tab.Screen
-            name="searchprova"
+            name="Search"
             component={Search}
             options={{
               tabBarButton: () => <SearchModal />,
             }}
           />
           <Tab.Screen
-            name="perfil"
-            component={Perfil}
-            options={{ tabBarIcon: ({ tintColor }) => <ProfileIcon /> }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </View>
-  );
-}*/
-
-const HomeStack = createStackNavigator();
-const ProfileStack = createStackNavigator();
-
-const Tab = createBottomTabNavigator();
-
-const dimensions = Dimensions.get("window");
-const windowwidth = dimensions.width;
-const windowheight = dimensions.height;
-const ratio = windowwidth / 615.6;
-const barheight = 136 * ratio;
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <StatusBar hidden />
-      <AppBarBackground />
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="home"
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-
-              if (route.name === "Home") {
-                iconName = focused
-                  ? "ios-information-circle"
-                  : "ios-information-circle-outline";
-              } else if (route.name === "Settings") {
-                iconName = focused ? "ios-list-box" : "ios-list";
-              }
-
-              // You can return any component that you like here!
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-          })}
-          tabBarOptions={{
-            activeTintColor: '#FF6F00',
-            inactiveTintColor: '#8997B0',
-            showIcon: true,
-            showLabel: false,
-            style: {
-              backgroundColor: '#f1f6f9',
-            },
-          }}
-        >
-          <Tab.Screen
-            name="home"
-            component={Home}
-            style={styles.icon}
-            options={{ tabBarIcon: ({ tintColor }) => <HomeIcon /> }}
-          />
-          <Tab.Screen
-            name="ask"
-            component={Search}
-            options={{
-              tabBarIcon: ({tintColor}) => (
-                <View
-                  style={{
-                    position: 'absolute',
-                    bottom: 20, // space from bottombar
-                    height: 58,
-                    width: 58,
-                    borderRadius: 58,
-                    backgroundColor: '#5a95ff',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                </View>
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="searchprova"
-            component={Search}
-            options={{
-              tabBarButton: () => <SearchModal />,
-            }}
-          />
-          <Tab.Screen
-            name="perfil"
+            name="Perfil"
             component={Perfil}
             options={{ tabBarIcon: ({ tintColor }) => <ProfileIcon /> }}
           />
@@ -264,6 +179,6 @@ const styles = StyleSheet.create({
     height: 500,
     width: 110,
     backgroundColor: "red",
-    borderRadius: 100
-  }
+    borderRadius: 100,
+  },
 });

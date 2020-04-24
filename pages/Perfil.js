@@ -9,6 +9,7 @@ import AppBar from "../components/AppBar";
 
 import BackSvg from "../assets/back.svg";
 import GearSvg from "../assets/settingsicon.svg";
+import AppBarBackground from "../components/AppBarBackground";
 
 
 const user = {
@@ -31,7 +32,7 @@ export default class Perfil extends React.Component {
                   <UserInfo Name = {user.name} Username = {user.username} Bio = {user.about} />
                   <UserColecciones/>
               </ScrollView>
-            <AppBar/>
+            <AppBarBackground />
           </View>
       );
   };

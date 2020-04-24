@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    top: -30,
+    top: -22,
   },
   circle: {
     top: 0,

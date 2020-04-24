@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },*/
   appbarbackground: {
     position: "absolute",
-    top: 0,
+    top: 30,
     shadowColor: "#826A92",
     shadowOffset: {
       width: 0,
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 40,
-    zIndex: 0,
-    borderTopWidth: 0,
+    elevation: 0,
   },
 });
