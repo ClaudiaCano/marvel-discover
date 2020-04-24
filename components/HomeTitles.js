@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         marginBottom: MARGIN_BOTTOM,
         marginTop: MARGIN_TOP,
+        alignItems: "center",
     },
     text: {
         color: COLOR,
@@ -47,6 +48,7 @@ const styles = StyleSheet.create({
         fontFamily: FONT,
         textTransform: "uppercase",
         display: "flex",
+        
     },
     btn: {
         alignItems: "flex-start",

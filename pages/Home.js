@@ -84,8 +84,6 @@ const data3 = [
   },
 ];
 
-
-
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
