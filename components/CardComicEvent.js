@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Image, FlatList } from "react-native";
+import Modal from "react-native-modal";
+import { StyleSheet, Text, View, Image, FlatList, TouchableHighlight } from "react-native";
+
+import Comic from "../pages/Comic";
 
 export default class CardComicEvent extends Component {
     constructor(props) {
@@ -11,6 +14,7 @@ export default class CardComicEvent extends Component {
 
     render() {
         return (
+            <>
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -18,20 +22,47 @@ export default class CardComicEvent extends Component {
                 renderItem={({ item: rowData }) => {
                     return (
                         <View style={styles.card}>
-                            <Image
-                                source={{
-                                    uri: rowData.imageUrl,
-                                }}
-                                style={styles.image}
-                            />
+                        <TouchableHighlight
+                        underlayColor={"#f0f0"}
+                        onPress={() => {
+                        this.setState({ modalVisible: true });
+                        }}
+                        >
+                        <Image
+                            source={{
+                                uri: rowData.imageUrl,
+                            }}
+                            style={styles.image}
+                        />
+                        </TouchableHighlight>
                         </View>
                     );
                 }}
-                keyExtractor={(item, index) => index.toString()}
+                keyExtractor={(item, index) => index}
                 style={styles.box}
                 ListHeaderComponent={() => <View width={PADDING} />}
                 ListFooterComponent={() => <View width={PADDING} />}
             />
+
+            <View>
+            <Modal
+                backdropOpacity={0.3}
+                isVisible={this.state.modalVisible}
+                style={styles.contentView}
+            >
+                <TouchableHighlight
+                underlayColor={"#f0f0"}
+                onPress={() => {
+                    this.setState({ modalVisible: false });
+                }}
+                style={styles.closeIcon}
+                >
+                <Text style={styles.text}>x</Text>
+                </TouchableHighlight>
+                <Comic />
+            </Modal>
+            </View>
+            </>
         );
     }
 }
@@ -42,6 +73,9 @@ const PADDING = 10;
 const RADIUS = 10;
 
 const styles = StyleSheet.create({
+    contentView: {
+        margin: 0,
+    },
     box: {
         flex: 0,
         flexDirection: "row",
@@ -72,4 +106,21 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
         borderRadius: RADIUS,
     },
+    closeIcon: {
+        position: "absolute",
+        top: 30,
+        left: 30,
+        width: 20,
+        height: 20,
+        alignSelf: "flex-end",
+        zIndex: 2,
+    },
+    text: {
+        fontFamily: "Roboto",
+        color: "white",
+        width: 60,
+        height: 60,
+        //fontWeight: "bold",
+        fontSize: 30,
+      },
 });
