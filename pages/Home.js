@@ -12,7 +12,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 
 import CarouselItem from "../components/CarouselItem";
-import Titles from "../components/HomeTitlesHome";
+import Titles from "../components/HomeTitles";
 
 import CardHome from "../components/CardsHome";
 import AppBarBackground from "../components/AppBarBackground";

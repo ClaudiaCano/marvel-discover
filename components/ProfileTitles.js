@@ -4,7 +4,7 @@ import { useFonts } from "@use-expo/font";
 
 import BtnVerMas from "./BtnVerMas";
 
-export default function HomeTitlesHome(props) {
+export default function ProfileTitles(props) {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
         "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),

@@ -7,7 +7,7 @@ import UserHeader from "../components/UserHeader";
 import UserPfp from "../components/UserPfp";
 import UserInfo from "../components/UserInfo";
 import AppBar from "../components/AppBar";
-import HomeTitles from "../components/HomeTitles";
+import HomeTitles from "../components/ProfileTitles";
 import CardHome from "../components/CardsHome";
 
 import BackSvg from "../assets/back.svg";
@@ -112,7 +112,7 @@ export default function Perfil() {
 const styles = StyleSheet.create({
 
   sizedbox: {
-    height: 100,
+    height: 120,
   },
 
   //Back "ARROW" Icon
