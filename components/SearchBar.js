@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, StatusBar, Dimensions, TextInput, ActivityIndicator, TouchableHighlight } from "react-native";
 import { useFonts } from "@use-expo/font";
 import { LinearGradient } from "expo-linear-gradient";
-
+import Modal from "react-native-modal";
 import SearchSvg from "../assets/searchicon.svg";
 
+import Resultados from "../pages/Resultados";
 
-const SearchBar = ({ navigation }) => {
+
+const SearchBar = () => {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
     });
@@ -21,30 +23,57 @@ const SearchBar = ({ navigation }) => {
         );
     }
 
-    const goToResults = () => {
-        navigation.navigate("resultados")
-    };
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
-        <View style={styles.page} >
-            <View style={styles.container} >
-                <TextInput
-                    style={styles.searchInput}
-                    placeholder="Type here!"
-                    placeholderTextColor= "#856D6D"
-                    onChangeText={text => setText(text)}
-                    defaultValue={text}
-                    onSubmitEditing={goToResults}
-                />
-                <TouchableHighlight style={styles.searchIcon} onPress={goToResults} >
-                    <SearchSvg />
-                </TouchableHighlight>
+
+        <>
+            <View style={styles.page} >
+                <View style={styles.container} >
+                    <TextInput
+                        style={styles.searchInput}
+                        placeholder="Type here!"
+                        placeholderTextColor= "#856D6D"
+                        onChangeText={text => setText(text)}
+                        defaultValue={text}
+                        onSubmitEditing={() => {setModalVisible(true); }}
+                    />
+                    <TouchableHighlight 
+                        underlayColor={"#f0f0"} 
+                        style={styles.searchIcon} 
+                        onPress={() => {setModalVisible(true); }} 
+                    >
+                        <SearchSvg />
+                    </TouchableHighlight>
+                </View>
             </View>
-        </View>
+
+            <View>
+                <Modal
+                backdropOpacity={0.3}
+                isVisible={modalVisible}
+                onBackdropPress={() => setModalVisible(false)}
+                style={styles.contentView}
+                >
+                <Search />
+                <TouchableHighlight
+                    underlayColor={"#f0f0"}
+                    onPress={() => {
+                    setModalVisible(false);
+                    }}
+                    style={styles.closeIcon}
+                >
+                    <Text style={styles.text}>x</Text>
+                </TouchableHighlight>
+                 <Resultados/>
+                </Modal>
+            </View>
+        </>
     );
 }
 
 export default SearchBar;
+
 
 const COLOR = "white";
 const FONT_SIZE = 18;
