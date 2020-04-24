@@ -16,7 +16,7 @@ import AppBarBackground from "../components/AppBarBackground";
 
 
 const user = {
-  pfp: "https://www.lavanguardia.com/r/GODO/LV/p7/WebSite/2020/01/06/Recortada/img_csierra_20190729-110854_imagenes_lv_otras_fuentes_captura_de_pantalla_2019-07-29_a_las_110313-kxwG-U472724208983W1-992x558@LaVanguardia-Web.png",
+  pfp: "https://amayei.nyc3.digitaloceanspaces.com/2019/04/Screen-Shot-2019-04-26-at-11.50.46-PM.png",
   name: "User",
   username: "@User",
   about:
