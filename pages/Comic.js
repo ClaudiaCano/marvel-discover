@@ -1,33 +1,62 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Dimensions } from "react-native";
+import { StyleSheet, ScrollView, View, Dimensions, FlatList } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+
 import ComicHeader from "../components/ComicHeader";
 import ComicTitle from "../components/ComicTitle";
+import ComicTitlePersonajes from "../components/ComicTitlePersonajes";
 import ComicDetails from "../components/ComicDetails";
-import ComicPersonajes from "../components/ComicPersonajes";
 import ComicSynopsis from "../components/ComicSynopsis";
-import ComicBar from "../components/ComicBar";
 import BackSvg from "../assets/back.svg";
 import BtnLeido from "../components/BtnLeido";
 import Guardar from "../components/Guardar";
 
+import Personaje from "../components/Personaje";
 
 import photoLeia from "../assets/Leia.jpg";
+import photoDart from "../assets/DartVader.jpg";
+import photoBoba from "../assets/BobaFett.png";
+import photoDarth from "../assets/DarthMaul.jpg";
+import photoPoe from "../assets/PoeDameron.jpg";
+import photoThrawn from "../assets/Thrawn.jpeg";
+
 
 const StarWars = {
     title: "Star Wars (2015) #1",
     author: "Jason Aaron",
     date: "14 enero, 2015",
-    characters: {
-        leia: {
+    characters: [
+        {
             character: "Princesa Leia",
             completeName: "Leia Organa",
             photo: photoLeia,
         },
-        darthVader: {
+        {
             character: "Darth Vader",
             completeName: "",
+            photo: photoDart,
         },
-    },
+        {
+            character: "Darth Vader",
+            completeName: "",
+            photo: photoBoba,
+        },
+        {
+            character: "Darth Maul",
+            completeName: "",
+            photo: photoDarth,
+        },
+        {
+            character: "Poe Dameron",
+            completeName: "",
+            photo: photoPoe,
+        },
+        {
+            character: "Thrawn",
+            completeName: "",
+            photo: photoThrawn,
+        }
+    ],
     synopsis:
         "THE GREATEST SPACE ADVENTURE OF ALL TIME RETURNS TO MARVEL! Luke Skywalker and the ragtag band of rebels fighting against the Galactic Empire are fresh off their biggest victory yet-the destruction of the massive battle station known as the Death Star. But the Empire's not toppled yet! Join Luke along with Princess Leia, smugglers Han Solo and Chewbacca, droids C-3PO and R2-D2 and the rest of the Rebel Alliance as they strike out for freedom against the evil forces of Darth Vader and his master, the Emperor. Written by Jason Aaron (Original Sin, Thor: God of Thunder) and with art by John Cassaday (Astonishing X-Men, Uncanny Avengers), this is the Star Wars saga as only Marvel Comics could make it!",
     cover:
@@ -38,35 +67,69 @@ export default class Comic extends React.Component {
     render() {
         return (
             <View>
+                <LinearGradient
+                    colors={["white", "white", "#B895C8"]}
+                    style={styles.gradient}
+                />
                 <BackSvg style={styles.backIcon} />
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <ComicHeader Cover={StarWars.cover} />
                     <ComicTitle Title={StarWars.title} />
                     <ComicDetails Name={StarWars.author} Date={StarWars.date} />
-                    <ComicPersonajes Characters={StarWars.characters} />
+                    <ComicTitlePersonajes />
+                    <FlatList
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        data={StarWars.characters}
+                        renderItem={({ item: rowData }) => {
+                            return (
+                                <View style={styles.card}>
+                                    <Personaje character={rowData.character}
+                                    completename={rowData.completeName}
+                                    photo={rowData.photo}/>
+                                </View>
+                            );
+                        }}
+                        keyExtractor={(item, index) => index}
+                        style={styles.list}
+                        ListHeaderComponent={() => <View width={PADDING} />}
+                    />
                     <ComicSynopsis Synopsis={StarWars.synopsis} />
                 </ScrollView>
                 <View style={styles.comicbar}>
                     <Guardar />
                     <BtnLeido />
-                </View>                
+                </View>
             </View>
         );
     }
 }
 
+const PADDING = 10;
+
 const styles = StyleSheet.create({
+    gradient: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        height: Dimensions.get("window").height,
+        zIndex: -1,
+      },
     backIcon: {
         position: "absolute",
         top: 10,
         left: 20,
         zIndex: 2,
     },
-    comicbar:{
+    comicbar: {
         top: Dimensions.get("window").height - 56,
-        position:"absolute",
+        position: "absolute",
         flex: 0,
         flexDirection: "row",
-        backgroundColor: "rgba(196, 164, 216, 0.85)"
+        backgroundColor: "rgba(196, 164, 216, 0.85)",
+    },
+    list: {
+        marginBottom: 30,
     }
 });
