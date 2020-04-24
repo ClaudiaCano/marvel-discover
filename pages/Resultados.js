@@ -5,6 +5,7 @@ import {
   View,
   Dimensions,
   ActivityIndicator,
+  StatusBar
 } from "react-native";
 import { useFonts } from "@use-expo/font";
 import { LinearGradient } from "expo-linear-gradient";
@@ -33,8 +34,11 @@ export default function Resultados() {
   }
   return (
     <View>
-      <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
-      <BackIcon style={styles.backIcon} />
+      <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+        />
+      
       <TitleResults Title={Results.text} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -44,6 +48,8 @@ export default function Resultados() {
     </View>
   );
 }
+
+//<BackIcon style={styles.backIcon} />
 
 const styles = StyleSheet.create({
   gradient: {

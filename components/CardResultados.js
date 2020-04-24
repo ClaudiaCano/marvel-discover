@@ -9,7 +9,7 @@ import {
     TouchableHighlight,
 } from "react-native";
 import { useFonts } from "@use-expo/font";
-
+import Modal from "react-native-modal";
 import Comic from "../pages/Comic";
 import Guardar from "./GuardarLists";
 
@@ -49,6 +49,7 @@ export default function CardResultados(props) {
                     isVisible={modalVisible}
                     style={styles.contentView}
                 >
+                    <Comic />
                     <TouchableHighlight
                         underlayColor={"#f0f0"}
                         onPress={() => {
@@ -58,7 +59,6 @@ export default function CardResultados(props) {
                     >
                         <Text style={styles.text}>x</Text>
                     </TouchableHighlight>
-                    <Comic />
                 </Modal>
             </View>
         </>
@@ -102,5 +102,27 @@ const styles = StyleSheet.create({
         height: CARD_HEIGHT,
         textAlignVertical: "center",
         width: (Dimensions.get("screen").width - 20) / 2.5,
+    },
+    contentView: {
+        //justifyContent: "flex-end",
+        top: 0,
+        margin: 0,
+    },
+    closeIcon: {
+        position: "absolute",
+        top: 30,
+        left: 30,
+        width: 20,
+        height: 20,
+        alignSelf: "flex-end",
+        zIndex: 2,
+    },
+    text: {
+        fontFamily: "Roboto",
+        color: "white",
+        width: 60,
+        height: 60,
+        //fontWeight: "bold",
+        fontSize: 30,
     },
 });
