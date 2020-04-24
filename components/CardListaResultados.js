@@ -43,7 +43,7 @@ export default function CardListaResultados() {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.container}>
+      <View>
         <ActivityIndicator />
       </View>
     );
@@ -74,3 +74,5 @@ export default function CardListaResultados() {
     </View>
   );
 }
+
+

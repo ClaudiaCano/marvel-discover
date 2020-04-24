@@ -8,7 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@react-native-community/masked-view": "0.1.6",
+    "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^5.1.6",
     "@react-navigation/stack": "^5.2.13",
     "@use-expo/font": "^2.0.0",
@@ -25,6 +25,7 @@
     "react-native-svg": "11.0.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-web": "~0.11.7",
+    "undefined": "react-native-community/masked-view",
     "yarn": "^1.22.4"
   },
   "devDependencies": {

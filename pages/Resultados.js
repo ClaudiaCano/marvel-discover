@@ -41,8 +41,6 @@ export default function Resultados() {
         <CardListaResultados />
         <View style={styles.sizedbox} />
       </ScrollView>
-
-      <AppBar />
     </View>
   );
 }

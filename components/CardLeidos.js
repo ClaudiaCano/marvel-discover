@@ -28,12 +28,13 @@ export default function CardLeidos(props) {
     <View style={styles.card}>
       <Image source={props.Cover} style={styles.image} />
       <Text style={styles.title}>{props.Title}</Text>
-      <Guardar style={styles.btn} />
+      <Guardar />
     </View>
   );
 }
 
 const CARD_HEIGHT = 150;
+const PADDING = 10;
 
 const styles = StyleSheet.create({
   card: {
@@ -44,8 +45,8 @@ const styles = StyleSheet.create({
     width: "auto",
     height: CARD_HEIGHT,
     marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: PADDING,
+    marginRight: PADDING,
     borderRadius: 5,
     backgroundColor: "white",
 

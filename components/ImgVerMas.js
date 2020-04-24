@@ -16,16 +16,18 @@ const ImgVerMas = () => {
 export default ImgVerMas;
 
 const WIDTH = 95;
-const HEIGHT = 143;
+const HEIGHT = 140;
 const TINT = "#5E009C";
 const COLOR_TEXT = "white";
 
 const styles = StyleSheet.create({
     item: {
-        position: window.top,
         backgroundColor: "white",
         width: WIDTH,
         height: HEIGHT,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 5,
     },
     image: {
         resizeMode: "cover",

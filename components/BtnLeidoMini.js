@@ -42,8 +42,8 @@ export default function BtnLeidoMini() {
     }
     return (
         <View style={styles.btn}>
-            <View style={styles.btnTop} />
-            <View style={styles.btnBottom} />
+            <View style={styles.btnTop2} />
+            <View style={styles.btnBottom2} />
             <TouchableHighlight
                 style={styles.touch}
                 underlayColor={"#f0f0"}
@@ -51,7 +51,7 @@ export default function BtnLeidoMini() {
                     setSelected(!selected);
                 }}
             >
-                <Text style={styles.text}>¿Leído?</Text>
+                <Text style={styles.text2}>Leído</Text>
             </TouchableHighlight>
         </View>
     );
@@ -74,6 +74,8 @@ const styles = StyleSheet.create({
     btn: {
         width: BTN_WIDTH,
         height: BTN_HEIGHT,
+        marginTop: 115,
+        marginRight: 20,
     },
     text: {
         position: "absolute",

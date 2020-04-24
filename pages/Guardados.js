@@ -31,12 +31,10 @@ export default function Guardados() {
         <BackIcon style={styles.backIcon} />
         <TitleGuardados Title={Results.text} />
 
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <CardListaGuardados />
           <View style={styles.sizedbox}/>
         </ScrollView>
-        
-        <AppBar />
       </View>
     );
   }

@@ -43,7 +43,7 @@ export default function CardListaLeidos() {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.container}>
+      <View>
         <ActivityIndicator />
       </View>
     );

@@ -43,7 +43,7 @@ export default function CardListaGuardados() {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.container}>
+      <View>
         <ActivityIndicator />
       </View>
     );
@@ -73,39 +73,3 @@ export default function CardListaGuardados() {
     </View>
   );
 }
-
-const CARD_HEIGHT = 150;
-
-const styles = StyleSheet.create({
-  card: {
-    flex: 0,
-    flexDirection: "row",
-    width: "auto",
-    justifyContent: "space-between",
-    height: CARD_HEIGHT,
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    borderRadius: 5,
-    backgroundColor: "white",
-
-    shadowOffset: { width: 5, height: 5 },
-    shadowRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.3,
-  },
-  image: {
-    marginLeft: 10,
-    marginTop: 5,
-    width: 80,
-    height: CARD_HEIGHT - 10,
-    resizeMode: "cover",
-  },
-  title: {
-    fontSize: 17,
-    fontFamily: "RobotoCondensed-Bold",
-    display: "flex",
-    top: "17%",
-    textTransform: "uppercase",
-  },
-});

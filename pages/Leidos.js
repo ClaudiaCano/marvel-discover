@@ -41,8 +41,6 @@ export default function Leidos() {
         <CardListaLeidos />
         <View style={styles.sizedbox} />
       </ScrollView>
-
-      <AppBar />
     </View>
   );
 }

@@ -1,40 +1,29 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { useFonts } from "@use-expo/font";
 
 import BtnVerMas from "./BtnVerMas";
 
-export default class HomeTitles extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            fontloaded: false,
-            selected: false,
-        };
-    }
-
-    async componentDidMount() {
-        await Font.loadAsync({
-            "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
-            "RobotoCondensed-BoldItalic": require("../assets/fonts/RobotoCondensed-BoldItalic.ttf"),
-            "RobotoCondensed-Italic": require("../assets/fonts/RobotoCondensed-Italic.ttf"),
-            "RobotoCondensed-Light": require("../assets/fonts/RobotoCondensed-Light.ttf"),
-            "RobotoCondensed-LightItalic": require("../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-            "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-        });
-
-        this.setState({ fontloaded: true });
-    }
-
-    render() {
+export default function HomeTitles(props) {
+    const [fontsLoaded] = useFonts({
+        "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
+        "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
+      });
+    
+      if (!fontsLoaded) {
+        return (
+          <View style={styles.container}>
+            <ActivityIndicator />
+          </View>
+        );
+      }
         return (
             <View style={styles.box}>
-                <Text style={styles.text}>{this.props.Title}</Text>
+                <Text style={styles.text}>{props.Title}</Text>
                 <BtnVerMas style={styles.btn}/>
             </View>
         );
     }
-}
 
 const COLOR = "black";
 const FONT_SIZE = 20;
