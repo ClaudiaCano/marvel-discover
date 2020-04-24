@@ -46,13 +46,13 @@ export default function CardResultados(props) {
             <View>
                 <Modal
                     backdropOpacity={0.3}
-                    isVisible={this.state.modalVisible}
+                    isVisible={modalVisible}
                     style={styles.contentView}
                 >
                     <TouchableHighlight
                         underlayColor={"#f0f0"}
                         onPress={() => {
-                            this.setState({ modalVisible: false });
+                            setModalVisible(false);
                         }}
                         style={styles.closeIcon}
                     >
