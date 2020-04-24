@@ -7,17 +7,18 @@ import {
     TouchableHighlight,
 } from "react-native";
 import { useFonts } from "@use-expo/font";
+import { useNavigation } from '@react-navigation/native';
+
 
 const text = "VER MÁS";
 
-const BtnVermas = ({ navigation }) => {
+
+const BtnVermas = ({ screen }) => {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
 
-    const goToEvento = () => {
-        navigation.navigate("evento");
-    };
+    const navigation = useNavigation();
 
     if (!fontsLoaded) {
         return (
@@ -27,7 +28,7 @@ const BtnVermas = ({ navigation }) => {
         );
     }
     return (
-        <TouchableHighlight onPress={goToEvento}>
+        <TouchableHighlight onPress={() => navigation.navigate(screen)}>
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
                 <View style={styles.btnBottom} />
