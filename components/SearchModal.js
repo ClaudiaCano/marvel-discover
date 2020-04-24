@@ -40,7 +40,7 @@ export default SearchModal = () => {
             }}
             style={styles.closeIcon}
           >
-            <Text>X</Text>
+            <Text style={styles.text}>x</Text>
           </TouchableHighlight>
         </Modal>
       </View>
@@ -79,5 +79,11 @@ const styles = StyleSheet.create({
     height: 20,
     alignSelf: "flex-end",
     zIndex: 2,
+  },
+  text: {
+    fontFamily: "Roboto",
+    color: "white",
+    //fontWeight: "bold",
+    fontSize: 30,
   },
 });
