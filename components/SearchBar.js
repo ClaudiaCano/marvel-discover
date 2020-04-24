@@ -1,12 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar, Dimensions, TextInput, ActivityIndicator } from "react-native";
+import { StyleSheet, Text, View, StatusBar, Dimensions, TextInput, ActivityIndicator, TouchableHighlight } from "react-native";
 import { useFonts } from "@use-expo/font";
 import { LinearGradient } from "expo-linear-gradient";
 
 import SearchSvg from "../assets/searchicon.svg";
 
 
-export default function SearchBar() {
+const SearchBar = ({ navigation }) => {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
     });
@@ -21,6 +21,10 @@ export default function SearchBar() {
         );
     }
 
+    const goToResults = () => {
+        navigation.navigate("resultados")
+    };
+
     return (
         <View style={styles.page} >
             <View style={styles.container} >
@@ -30,13 +34,17 @@ export default function SearchBar() {
                     placeholderTextColor= "#856D6D"
                     onChangeText={text => setText(text)}
                     defaultValue={text}
+                    onSubmitEditing={goToResults}
                 />
-                <SearchSvg style={styles.searchIcon} />
+                <TouchableHighlight style={styles.searchIcon} onPress={goToResults} >
+                    <SearchSvg />
+                </TouchableHighlight>
             </View>
         </View>
     );
 }
 
+export default SearchBar;
 
 const COLOR = "white";
 const FONT_SIZE = 18;
@@ -76,6 +84,9 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         alignSelf: 'flex-end',
+        zIndex: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     
   });
