@@ -33,8 +33,8 @@ const MARGIN_TOP = 20;
 
 const styles = StyleSheet.create({
     box: {
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
         flex: 0,
         flexDirection: "row",
         justifyContent: "space-between",
