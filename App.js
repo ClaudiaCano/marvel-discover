@@ -55,6 +55,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar hidden />
       <AppBarBackground />
       <NavigationContainer>
         <Tab.Navigator
