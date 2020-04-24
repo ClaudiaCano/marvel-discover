@@ -1,13 +1,23 @@
-import React from "react";
-import { StyleSheet, Text, View, Dimensions, ActivityIndicator } from "react-native";
+import React, {useState} from "react";
+import {
+    StyleSheet,
+    Text,
+    View,
+    FlatList,
+    Dimensions,
+    ActivityIndicator,
+} from "react-native";
 import { useFonts } from "@use-expo/font";
 import Personaje from "../components/Personaje";
 
-export default function ComicPersonajes() {
+export default function ComicPersonajes(props) {
+
+    const [data, setData] = useState(props.data);
+
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
-  
+
     if (!fontsLoaded) {
         return (
             <View style={styles.container}>
@@ -15,14 +25,33 @@ export default function ComicPersonajes() {
             </View>
         );
     }
-    
+
     return (
         <View style={styles.box}>
             <Text style={styles.text_1}>PERSONAJES</Text>
-            <Personaje character = "Princesa Leia" completename = "Leia Organa"/>
+            <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={data}
+                renderItem={({ item: rowData }) => {
+                    return (
+                        <View style={styles.card}>
+                            <Personaje
+                                character= {rowData.character}
+                                completename= {rowData.completename}
+                                photo= {rowData.photo}
+                            />
+                        </View>
+                    );
+                }}
+                keyExtractor={(item, index) => index}
+                style={styles.box}
+                ListHeaderComponent={() => <View width={PADDING} />}
+                ListFooterComponent={() => <View width={PADDING} />}
+            />
         </View>
     );
-  }
+}
 
 const COLOR = "#D01C1F";
 const FONT_SIZE = 18;
@@ -44,7 +73,7 @@ const styles = StyleSheet.create({
         fontFamily: FONT,
         textTransform: "uppercase",
         display: "flex",
-        width: (Dimensions.get("screen").width - 20),
+        width: Dimensions.get("screen").width - 20,
         marginBottom: 10,
     },
 });

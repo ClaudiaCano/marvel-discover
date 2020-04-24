@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Image, FlatList } from "react-native";
-import Comic1 from "../assets/image1.png";
-import Comic2 from "../assets/image2.png";
 
 export default class CardComicEvent extends Component {
     constructor(props) {
