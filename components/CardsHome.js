@@ -46,7 +46,7 @@ export default class CardHome extends Component {
                 </TouchableHighlight>
               );
             }}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => index.toString()}
             ListFooterComponent={() => <ImgVerMas style={styles.image} />}
           />
         </View>

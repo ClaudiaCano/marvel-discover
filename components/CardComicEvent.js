@@ -27,7 +27,7 @@ export default class CardComicEvent extends Component {
                         </View>
                     );
                 }}
-                keyExtractor={(item, index) => index}
+                keyExtractor={(item, index) => index.toString()}
                 style={styles.box}
                 ListHeaderComponent={() => <View width={PADDING} />}
                 ListFooterComponent={() => <View width={PADDING} />}
