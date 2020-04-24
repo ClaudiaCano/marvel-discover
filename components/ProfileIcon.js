@@ -26,7 +26,6 @@ export default function Guardar(props) {
   return (
     <View style={styles.column}>
       <ProfileIcon width={20} height={20} />
-      <Text style={styles.text}>Perfil</Text>
     </View>
   );
 }
@@ -39,6 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    bottom: -7,
   },
   text: {
     fontFamily: "RobotoCondensed-Regular",

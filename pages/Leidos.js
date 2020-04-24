@@ -33,7 +33,11 @@ export default function Leidos() {
   }
   return (
     <View>
-      <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradient} />
+      <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+        />
+      <LinearGradient colors={["#FAF2FF", "#fff0"]} style={styles.gradientsup} />
       <BackIcon style={styles.backIcon} />
       <TitleLeidos Title={Results.text} />
 
@@ -47,6 +51,14 @@ export default function Leidos() {
 
 const styles = StyleSheet.create({
   gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
+    zIndex: -1,
+  },
+  gradientsup: {
     position: "absolute",
     left: 0,
     right: 0,

@@ -25,13 +25,11 @@ const BtnVermas = () => {
         );
     }
     return (
-        <TouchableHighlight>
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
                 <View style={styles.btnBottom} />
                 <Text style={styles.text}>{text}</Text>
             </View>
-        </TouchableHighlight>
     );
 };
 
