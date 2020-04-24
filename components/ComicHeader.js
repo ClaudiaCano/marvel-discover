@@ -22,7 +22,7 @@ export default class ComicHeader extends React.Component {
                     style={styles.headerBackground}
                     source={BackgroundImg}
                 >
-                    <BackSvg style={styles.backIcon} />
+                    <View style={styles.width}/>
 
                     <Image style={styles.poster} source={{ uri: Url }}></Image>
                     <CurveSvg style={styles.Curve} />
@@ -32,6 +32,8 @@ export default class ComicHeader extends React.Component {
     }
 }
 
+//<BackSvg style={styles.backIcon} />
+
 const styles = StyleSheet.create({
     headerBackground: {
         paddingTop: 20,
@@ -40,6 +42,10 @@ const styles = StyleSheet.create({
         backgroundColor: "red",
         overflow: "hidden",
         alignItems: "stretch",
+    },
+
+    width: {
+        height: 20,
     },
 
     //Back "ARROW" Icon
