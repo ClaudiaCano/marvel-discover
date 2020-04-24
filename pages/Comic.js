@@ -63,6 +63,8 @@ const StarWars = {
         "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
 };
 
+// <BackSvg style={styles.backIcon} />
+
 export default class Comic extends React.Component {
     render() {
         return (
@@ -71,7 +73,7 @@ export default class Comic extends React.Component {
                     colors={["white", "white", "#B895C8"]}
                     style={styles.gradient}
                 />
-                <BackSvg style={styles.backIcon} />
+                
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <ComicHeader Cover={StarWars.cover} />
                     <ComicTitle Title={StarWars.title} />
