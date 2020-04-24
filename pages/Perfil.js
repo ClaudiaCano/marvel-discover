@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Text, ActivityIndicator  } from "react-native";
+import { StyleSheet, ScrollView, View, Text, ActivityIndicator, Dimensions } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { useFonts } from "@use-expo/font";
 
 import UserHeader from "../components/UserHeader";
@@ -85,9 +86,13 @@ export default function Perfil() {
   }
   return (
     <View>
+      <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+      />
       <BackSvg style={styles.backIcon}/>
       <GearSvg style={styles.gearIcon}/>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
             <UserHeader/>
             <UserPfp ProfilePic = {user.pfp} />
             <UserInfo Name = {user.name} Username = {user.username} Bio = {user.about} />
@@ -96,6 +101,7 @@ export default function Perfil() {
             <CardHome Data={data} />
             <HomeTitles Title="GUARDADOS" screen="Guardados" />
             <CardHome Data={data2} />
+            <View style={styles.sizedbox}/>
         </ScrollView>
       <AppBarBackground />
     </View>
@@ -104,6 +110,10 @@ export default function Perfil() {
 
 
 const styles = StyleSheet.create({
+
+  sizedbox: {
+    height: 100,
+  },
 
   //Back "ARROW" Icon
   backIcon: {
@@ -136,6 +146,15 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     display: "flex",
     marginTop: 20,
-},
+  },
+
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: Dimensions.get("window").height,
+    zIndex: -1,
+  },
   
 });

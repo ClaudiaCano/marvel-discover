@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: windowwidth,
     height: barheight + 30,
     position: "absolute",
-    bottom: - 45,
+    bottom: - 35,
   },
   /*appbarstructure: {
     position: "absolute",
