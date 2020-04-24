@@ -5,7 +5,6 @@ import { useFonts } from "@use-expo/font";
 import UserHeader from "../components/UserHeader";
 import UserPfp from "../components/UserPfp";
 import UserInfo from "../components/UserInfo";
-import UserColecciones from "../components/UserColecciones";
 import AppBar from "../components/AppBar";
 import HomeTitles from "../components/HomeTitles";
 import CardHome from "../components/CardsHome";
