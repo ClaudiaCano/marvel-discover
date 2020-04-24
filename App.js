@@ -21,6 +21,7 @@ import ProfileIcon from "./components/ProfileIcon";
 import SearchIcon from "./components/SearchIcon";
 import AppBarBackground from "./components/AppBarBackground";
 import SearchModal from "./components/SearchModal";
+import CloseSvg from "./assets/close.svg";
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
@@ -155,6 +156,22 @@ export default function App() {
   );
 }*/
 
+/*export default function App() {
+  //const comicPage = useState(false);
+
+  return (
+    <View style={styles.container}>
+      <StatusBar hidden />
+      <LinearGradient
+        colors={["white", "white", "#B895C8"]}
+        style={styles.gradient}
+      />
+
+<CloseSvg style={styles.closeIcon}/>
+    </View>
+  );
+}*/
+
 /*<View style={styles.container}>
       <StatusBar hidden />
       <LinearGradient
@@ -180,5 +197,14 @@ const styles = StyleSheet.create({
     width: 110,
     backgroundColor: "red",
     borderRadius: 100,
+  },
+  closeIcon: {
+    position: "absolute",
+    top: 30,
+    right: 30,
+    width: 20,
+    height: 20,
+    alignSelf: "flex-end",
+    zIndex: 2,
   },
 });
