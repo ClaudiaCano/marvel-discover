@@ -1,18 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar, Dimensions, TextInput } from "react-native";
+import { StyleSheet, View, StatusBar, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import SearchBar from "../components/SearchBar";
 
-import SearchSvg from "../assets/searchicon.svg";
 import CloseSvg from "../assets/close.svg";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function Search() {
-    const [text, setText] = React.useState('');
+
+export default function Search({ navigation }) {
+
+    const goToPreviousScreen = () => {
+        navigation.goBack()
+    };
 
     return (
         <View style={styles.page}>
-            <CloseSvg style={styles.closeIcon} />
+            <CloseSvg style={styles.closeIcon} onPress={goToPreviousScreen}/>
             <StatusBar hidden />
             <LinearGradient
                 colors={["#D01C1F", "#3F2021"]}
@@ -22,6 +26,7 @@ export default function Search() {
         </View>
     );
 }
+
 
 
 const styles = StyleSheet.create({
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
     },
 
     page: {
-      height: Dimensions.get("window").height,
+      height: '100%',
     },
 
     gradient: {
@@ -45,7 +50,7 @@ const styles = StyleSheet.create({
       left: 0,
       right: 0,
       top: 0,
-      height: Dimensions.get("window").height,
+      height: '100%',
       zIndex: -1,
     },
         
