@@ -16,7 +16,7 @@ export default function Search({ navigation }) {
 
     return (
         <View style={styles.page}>
-            <CloseSvg style={styles.closeIcon} onPress={goToPreviousScreen}/>
+            
             <StatusBar hidden />
             <LinearGradient
                 colors={["#D01C1F", "#3F2021"]}
@@ -27,7 +27,7 @@ export default function Search({ navigation }) {
     );
 }
 
-
+// <CloseSvg style={styles.closeIcon} onPress={goToPreviousScreen}/>
 
 const styles = StyleSheet.create({
 

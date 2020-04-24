@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Button, Text, TouchableHighlight } from "react-native";
-import Modal from 'react-native-modal';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Button,
+  Text,
+  TouchableHighlight,
+} from "react-native";
+import Modal from "react-native-modal";
 
+import CloseSvg from "../assets/close.svg";
 import SearchIcon from "../components/SearchIcon";
-import Search from '../pages/Search';
+import Search from "../pages/Search";
 
 export default SearchModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -11,11 +18,14 @@ export default SearchModal = () => {
     <>
       <TouchableHighlight
         underlayColor={"#f0f0"}
-        onPress={() => {setModalVisible(true)}}
+        onPress={() => {
+          setModalVisible(true);
+        }}
       >
         <SearchIcon />
       </TouchableHighlight>
-      <View style={styles.container}>
+
+      <View>
         <Modal
           backdropOpacity={0.3}
           isVisible={modalVisible}
@@ -23,17 +33,27 @@ export default SearchModal = () => {
           style={styles.contentView}
         >
           <Search />
+          <TouchableHighlight
+            underlayColor={"#f0f0"}
+            onPress={() => {
+              setModalVisible(false);
+            }}
+            style={styles.closeIcon}
+          >
+            <Text>X</Text>
+          </TouchableHighlight>
         </Modal>
       </View>
     </>
   );
-}
+};
+
 const styles = StyleSheet.create({
   content: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderTopRightRadius: 17,
     borderTopLeftRadius: 17,
   },
@@ -42,13 +62,22 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   contentView: {
-    justifyContent: 'flex-end',
+    //justifyContent: "flex-end",
     margin: 0,
   },
-	buttonStyle: {
+  buttonStyle: {
     height: 200,
     width: 110,
     backgroundColor: "red",
-    borderRadius: 100
-  }
+    borderRadius: 100,
+  },
+  closeIcon: {
+    position: "absolute",
+    top: 30,
+    right: 30,
+    width: 20,
+    height: 20,
+    alignSelf: "flex-end",
+    zIndex: 2,
+  },
 });
