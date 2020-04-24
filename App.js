@@ -7,16 +7,19 @@ import {
   Dimensions,
   TouchableOpacity,
   Button,
+  ActivityIndicator,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useFonts } from "@use-expo/font";
 
 /*------------------------ COMPONENTS ------------------------ */
 import AppBar from "./components/AppBar";
 import HomeIcon from "./components/HomeIcon";
+import Label from "./components/Label";
 import ProfileIcon from "./components/ProfileIcon";
 import SearchIcon from "./components/SearchIcon";
 import AppBarBackground from "./components/AppBarBackground";
@@ -82,7 +85,19 @@ const windowheight = dimensions.height;
 const ratio = windowwidth / 615.6;
 const barheight = 136 * ratio;
 
-export default function App() {
+export default function App(props) {
+  const [fontsLoaded] = useFonts({
+    "RobotoCondensed-Regular": require("./assets/fonts/RobotoCondensed-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar hidden />
@@ -107,9 +122,9 @@ export default function App() {
             },
           })}
           tabBarOptions={{
-            showLabel: false, // hide labels
-            activeTintColor: "#F8F8F8", // active icon color
-            inactiveTintColor: "#586589", // inactive icon color
+            showLabel: true, // hide labels
+            activeTintColor: "red", // active icon color
+            inactiveTintColor: "#000", // inactive icon color
             style: {
               backgroundColor: "transparent",
               position: "absolute", // TabBar background
@@ -125,7 +140,7 @@ export default function App() {
             name="Home"
             component={HomeStackScreen}
             style={styles.icon}
-            options={{ tabBarIcon: ({ tintColor }) => <HomeIcon /> }}
+            options={{ tabBarLabel: ({focused}) => <Label Title="Home" Focused={focused}/>, tabBarIcon: ({ tintColor }) => <HomeIcon/> }}
           />
           <Tab.Screen
             name="Search"
@@ -137,7 +152,7 @@ export default function App() {
           <Tab.Screen
             name="Perfil"
             component={ProfileStackScreen}
-            options={{ tabBarIcon: ({ tintColor }) => <ProfileIcon /> }}
+            options={{ tabBarLabel: ({focused}) => <Label Title="Perfil" Focused={focused}/>, tabBarIcon: ({ tintColor }) => <ProfileIcon/>  }}
           />
         </Tab.Navigator>
       </NavigationContainer>
@@ -145,65 +160,10 @@ export default function App() {
   );
 }
 
-/*export default function App() {
-  //const comicPage = useState(false);
-
-  return (
-    <View><SearchIcon/></View>
-    
-  );
-}*/
-
-/*export default function App() {
-  //const comicPage = useState(false);
-
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="home" component={Home} />
-        <Stack.Screen name="perfil" component={Perfil} />
-        <Stack.Screen name="evento" component={Evento} />
-        <Stack.Screen name="comic" component={Comic} />
-      </Stack.Navigator>
-      <AppBar />
-    </NavigationContainer>
-  );
-}*/
-
-/*export default function App() {
-  //const comicPage = useState(false);
-
-  return (
-    <View style={styles.container}>
-      <StatusBar hidden />
-      <LinearGradient
-        colors={["white", "white", "#B895C8"]}
-        style={styles.gradient}
-      />
-
-<CloseSvg style={styles.closeIcon}/>
-    </View>
-  );
-}*/
-
-/*<View style={styles.container}>
-      <StatusBar hidden />
-      <LinearGradient
-        colors={["white", "white", "#B895C8"]}
-        style={styles.gradient}
-      />
-
-      <Resultados />
-      <AppBar />
-    </View>*/
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff0",
-    //alignItems: "center",
-    //justifyContent: "center",
-    //justifyContent: "flex-end",
   },
   icon: {},
   buttonStyle: {
@@ -220,5 +180,8 @@ const styles = StyleSheet.create({
     height: 20,
     alignSelf: "flex-end",
     zIndex: 2,
+  },
+  text: {
+    fontFamily: "RobotoCondensed-Regular",
   },
 });

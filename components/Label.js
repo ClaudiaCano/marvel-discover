@@ -12,7 +12,7 @@ import { useFonts } from "@use-expo/font";
 
 import Logo from "../assets/logo.svg";
 
-export default function HomeIcon(props) {
+export default function Label(props) {
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
@@ -25,9 +25,12 @@ export default function HomeIcon(props) {
     );
   }
 
+  const title = props.Title;
+  const focused = props.focused;
+
   return (
     <View style={styles.column}>
-      <Logo width={20} height={20} />
+      <Text style={[styles.text,  props.focused? styles.textActive : {}]} >{title}</Text>
     </View>
   );
 }
@@ -45,10 +48,15 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    bottom: -7,
+    bottom: 15,
   },
   text: {
     fontFamily: "RobotoCondensed-Regular",
     fontSize: 11,
+  },
+  textActive: {
+    fontFamily: "RobotoCondensed-Regular",
+    fontSize: 14,
+    color: "red",
   },
 });
