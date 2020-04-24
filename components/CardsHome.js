@@ -11,7 +11,6 @@ import Modal from "react-native-modal";
 
 import ImgVerMas from "../components/ImgVerMas";
 import Comic from "../pages/Comic";
-import BackSvg from "../assets/back.svg";
 
 export default class CardHome extends Component {
   constructor(props) {
@@ -73,8 +72,6 @@ export default class CardHome extends Component {
     );
   }
 }
-
-//<BackSvg style={styles.backIcon} />
 
 const CARD_HEIGHT = 150;
 const PADDING = 10;
