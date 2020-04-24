@@ -118,16 +118,16 @@ export default class Home extends React.Component {
           </Text>
           <CarouselItem />
 
-          <Titles Title={Title.title1} />
+          <Titles Title={Title.title1} navigation={this.props.navigation} screen={"Evento"}/>
           <CardHome Data={data} />
 
-          <Titles Title={Title.title2} />
+          <Titles Title={Title.title2} navigation={this.props.navigation} screen={"Evento"}/>
           <CardHome Data={data2} />
 
-          <Titles Title={Title.title3} />
+          <Titles Title={Title.title3} navigation={this.props.navigation} screen={"Evento"}/>
           <CardHome Data={data3} />
 
-          <View style={styles.sizedbox} />
+          <View style={styles.sizedbox} navigation={this.props.navigation}/>
         </ScrollView>
         <AppBarBackground />
       </View>

@@ -10,14 +10,12 @@ import { useFonts } from "@use-expo/font";
 
 const text = "VER MÁS";
 
-const BtnVermas = ({ navigation }) => {
+const BtnVermas = ({ navigation, screen }) => {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
 
-    const goToEvento = () => {
-        navigation.navigate("evento");
-    };
+    
 
     if (!fontsLoaded) {
         return (
@@ -27,7 +25,7 @@ const BtnVermas = ({ navigation }) => {
         );
     }
     return (
-        <TouchableHighlight onPress={goToEvento}>
+        <TouchableHighlight onPress={() => navigation.navigate(screen)}>
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
                 <View style={styles.btnBottom} />
