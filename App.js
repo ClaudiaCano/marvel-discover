@@ -6,6 +6,7 @@ import {
   StatusBar,
   Dimensions,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import "react-native-gesture-handler";
@@ -19,6 +20,7 @@ import HomeIcon from "./components/HomeIcon";
 import ProfileIcon from "./components/ProfileIcon";
 import SearchIcon from "./components/SearchIcon";
 import AppBarBackground from "./components/AppBarBackground";
+import SearchModal from "./components/SearchModal";
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
@@ -40,7 +42,7 @@ export default function App() {
 }
 */
 
-const HomeStack = createStackNavigator();
+/*const HomeStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -52,7 +54,6 @@ const ratio = windowwidth / 615.6;
 const barheight = 136 * ratio;
 
 export default function App() {
-
   return (
     <View style={styles.container}>
       <StatusBar hidden />
@@ -81,21 +82,14 @@ export default function App() {
             activeTintColor: "#F8F8F8", // active icon color
             inactiveTintColor: "#586589", // inactive icon color
             style: {
-              backgroundColor: 'transparent',
-              position: 'absolute', // TabBar background
+              backgroundColor: "transparent",
+              position: "absolute", // TabBar background
               height: barheight - 10,
               width: windowwidth,
               elevation: 0,
-              borderTopWidth: 0,
+              borderTopWidth: 2,
               zIndex: 2,
             },
-          }}
-          // Our plus button
-          Adding={{
-            screen: () => null, // Empty screen
-            navigationOptions: () => ({
-              tabBarIcon: <SearchCircle />, // Plus button component
-            }),
           }}
         >
           <Tab.Screen
@@ -107,17 +101,116 @@ export default function App() {
           <Tab.Screen
             name="search"
             component={Search}
-            options={{ tabBarIcon: ({ tintColor }) => <SearchIcon /> }}
+            options={{
+              tabBarIcon: ({ tintColor }) => <Button onPress={() => {setModalVisible(true)}}
+              buttonStyle={styles.buttonStyle}
+              title="Search"
+            />
+            }}
+          />
+          <Tab.Screen
+            name="searchprova"
+            component={Search}
+            options={{
+              tabBarButton: () => <SearchModal />,
+            }}
           />
           <Tab.Screen
             name="perfil"
             component={Perfil}
             options={{ tabBarIcon: ({ tintColor }) => <ProfileIcon /> }}
           />
-          
         </Tab.Navigator>
       </NavigationContainer>
-      
+    </View>
+  );
+}*/
+
+const HomeStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+
+const Tab = createBottomTabNavigator();
+
+const dimensions = Dimensions.get("window");
+const windowwidth = dimensions.width;
+const windowheight = dimensions.height;
+const ratio = windowwidth / 615.6;
+const barheight = 136 * ratio;
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <StatusBar hidden />
+      <AppBarBackground />
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="home"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === "Home") {
+                iconName = focused
+                  ? "ios-information-circle"
+                  : "ios-information-circle-outline";
+              } else if (route.name === "Settings") {
+                iconName = focused ? "ios-list-box" : "ios-list";
+              }
+
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: '#FF6F00',
+            inactiveTintColor: '#8997B0',
+            showIcon: true,
+            showLabel: false,
+            style: {
+              backgroundColor: '#f1f6f9',
+            },
+          }}
+        >
+          <Tab.Screen
+            name="home"
+            component={Home}
+            style={styles.icon}
+            options={{ tabBarIcon: ({ tintColor }) => <HomeIcon /> }}
+          />
+          <Tab.Screen
+            name="ask"
+            component={Search}
+            options={{
+              tabBarIcon: ({tintColor}) => (
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: 20, // space from bottombar
+                    height: 58,
+                    width: 58,
+                    borderRadius: 58,
+                    backgroundColor: '#5a95ff',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                </View>
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="searchprova"
+            component={Search}
+            options={{
+              tabBarButton: () => <SearchModal />,
+            }}
+          />
+          <Tab.Screen
+            name="perfil"
+            component={Perfil}
+            options={{ tabBarIcon: ({ tintColor }) => <ProfileIcon /> }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
     </View>
   );
 }
@@ -130,7 +223,6 @@ export default function App() {
     
   );
 }*/
-
 
 /*export default function App() {
   //const comicPage = useState(false);
@@ -159,9 +251,6 @@ export default function App() {
       <AppBar />
     </View>*/
 
-
-    
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -170,6 +259,11 @@ const styles = StyleSheet.create({
     //justifyContent: "center",
     //justifyContent: "flex-end",
   },
-  icon: {
+  icon: {},
+  buttonStyle: {
+    height: 500,
+    width: 110,
+    backgroundColor: "red",
+    borderRadius: 100
   }
 });
