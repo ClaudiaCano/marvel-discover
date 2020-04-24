@@ -11,11 +11,11 @@ import Modal from "react-native-modal";
 import { useFonts } from "@use-expo/font";
 
 import BtnVerMasPerfil from "./BtnVerMasPerfil";
-import Leidos from "../pages/Leidos";
+import Guardados from "../pages/Guardados";
 
 //<BtnVerMas style={styles.btn} screen={props.screen} />
 
-export default function ProfileTitles(props) {
+export default function ProfileTitlesGuardados(props) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [fontsLoaded] = useFonts({
@@ -50,7 +50,7 @@ export default function ProfileTitles(props) {
           isVisible={modalVisible}
           style={styles.contentView}
         >
-          <Leidos />
+          <Guardados />
           <TouchableHighlight
             underlayColor={"#f0f0"}
             onPress={() => {

@@ -8,6 +8,7 @@ import UserPfp from "../components/UserPfp";
 import UserInfo from "../components/UserInfo";
 import AppBar from "../components/AppBar";
 import HomeTitles from "../components/ProfileTitles";
+import ProfileTitlesGuardados from "../components/ProfileTitlesGuardados";
 import CardHome from "../components/CardsHome";
 
 import BackSvg from "../assets/back.svg";
@@ -99,7 +100,7 @@ export default function Perfil() {
             <Text style={styles.text_1}>MIS COLECCIONES</Text>
             <HomeTitles Title="LEÍDOS" screen="Leidos"/>
             <CardHome Data={data} />
-            <HomeTitles Title="GUARDADOS" screen="Guardados" />
+            <ProfileTitlesGuardados Title="GUARDADOS" screen="Guardados" />
             <CardHome Data={data2} />
             <View style={styles.sizedbox}/>
         </ScrollView>
