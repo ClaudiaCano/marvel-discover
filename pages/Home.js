@@ -113,9 +113,6 @@ export default class Home extends React.Component {
           style={styles.gradient}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Text style={{ color: "blue" }} onPress={this.buttonPress}>
-            Evento
-          </Text>
           <CarouselItem />
 
           <Titles Title={Title.title1} screen={"Evento"}/>
@@ -139,7 +136,7 @@ const PADDING = 10;
 
 const styles = StyleSheet.create({
   sizedbox: {
-    height: 100,
+    height: 120,
   },
   title: {
     fontWeight: "bold",
