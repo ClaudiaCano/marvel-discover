@@ -12,7 +12,6 @@ export default function UserHeader() {
       <ImageBackground
       style={styles.headerBackground}
       source={imgHeader}
-      blurRadius={2}
       >
       </ImageBackground>
     </View>
