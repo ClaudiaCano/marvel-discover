@@ -17,11 +17,10 @@ export default class UserPfp extends React.Component {
           </ClipPath>
           <G clipPath="url(#mascara)">
             <Image
-              width={393}
-              height={467}
               href={{ uri: Url }}
               transform="scale(1.2977 1.3019)"
               overflow="visible"
+              style={styles.image}
             />
           </G>
         </Svg>
@@ -35,4 +34,10 @@ const styles = StyleSheet.create({
     width: "100%",
     alignSelf: 'center',
   },
+  image:{
+    position: "absolute",
+    top: 0,
+    height: 200,
+    width: "100%"
+  }
 });
