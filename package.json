@@ -27,7 +27,6 @@
     "react-native-svg": "11.0.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-web": "~0.11.7",
-    "undefined": "react-native-community/masked-view",
     "yarn": "^1.22.4"
   },
   "devDependencies": {
