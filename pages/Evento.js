@@ -5,8 +5,12 @@ import {
   View,
   Dimensions,
   TouchableHighlight,
+  ActivityIndicator,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { MarvelContext } from "../model/MarvelModel";
+import { observer } from "mobx-react";
+import { useContext, useEffect } from "react";
 
 /*------------------------ COMPONENTS ------------------------ */
 import EventTitle from "../components/EventTitle";
@@ -51,6 +55,18 @@ const StarWars = {
 };
 
 /*------------------------ PAGE ------------------------ */
+
+
+
+const marvel = observer(() => {
+  const marvelc = useContext(MarvelContext);
+
+  useEffect(() => {
+    marvelc.loadEvents();
+  }, []);
+});
+
+@observer
 export default class Evento extends React.Component {
   constructor(props) {
     super(props);
@@ -62,12 +78,20 @@ export default class Evento extends React.Component {
     console.log("comic");
     this.props.navigation.navigate("comic");
   }
+
   buttonBack() {
     console.log("back");
     this.props.navigation.goBack();
   }
 
   render() {
+    if (marvelc.events == null) {
+      return (
+        <View>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
     return (
       <View>
         <LinearGradient
