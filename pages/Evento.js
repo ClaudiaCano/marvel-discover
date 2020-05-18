@@ -56,15 +56,7 @@ const StarWars = {
 
 /*------------------------ PAGE ------------------------ */
 
-
-
-const marvel = observer(() => {
-  const marvelc = useContext(MarvelContext);
-
-  useEffect(() => {
-    marvelc.loadEvents();
-  }, []);
-});
+const marvel = useContext(MarvelContext);
 
 @observer
 export default class Evento extends React.Component {
@@ -83,6 +75,10 @@ export default class Evento extends React.Component {
     console.log("back");
     this.props.navigation.goBack();
   }
+
+ /* componentDidMount() {
+    marvel.loadEvents();
+  }*/
 
   render() {
     if (marvelc.events == null) {
