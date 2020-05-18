@@ -21,6 +21,7 @@ export default SearchModal = () => {
                 onPress={() => {
                     setModalVisible(true);
                 }}
+                style={{ borderWidth: 1 }}
             >
                 <SearchIcon />
             </TouchableHighlight>
@@ -38,7 +39,7 @@ export default SearchModal = () => {
                         onPress={() => {
                             setModalVisible(false);
                         }}
-                        style={styles.closeIcon}
+                        style={[styles.closeIcon, { borderWidth: 1 }]}
                     >
                         <Text style={styles.text}>x</Text>
                     </TouchableHighlight>
@@ -75,16 +76,17 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 30,
         right: 30,
-        width: 20,
-        height: 20,
+        width: 40,
+        height: 40,
         alignSelf: "flex-end",
-        zIndex: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     text: {
         fontFamily: "Roboto",
         color: "white",
-        width: 60,
-        height: 60,
+        // width: 60,
+        // height: 60,
         //fontWeight: "bold",
         fontSize: 30,
     },
