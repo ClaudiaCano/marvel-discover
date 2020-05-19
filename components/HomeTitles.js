@@ -8,22 +8,22 @@ export default function HomeTitles(props) {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
         "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
-      });
-    
-      if (!fontsLoaded) {
+    });
+
+    if (!fontsLoaded) {
         return (
-          <View style={styles.container}>
-            <ActivityIndicator />
-          </View>
-        );
-      }
-        return (
-            <View style={styles.box}>
-                <Text style={styles.text}>{props.Title}</Text>
-                <BtnVerMas style={styles.btn} screen={props.screen}/>
+            <View style={styles.container}>
+                <ActivityIndicator />
             </View>
         );
     }
+    return (
+        <View style={styles.box}>
+            <Text style={styles.text}>{props.Title}</Text>
+            <BtnVerMas style={styles.btn} screen={props.screen} />
+        </View>
+    );
+}
 
 const COLOR = "black";
 const FONT_SIZE = 20;
@@ -33,6 +33,7 @@ const MARGIN_TOP = 20;
 
 const styles = StyleSheet.create({
     box: {
+        //borderWidth: 1,
         paddingLeft: 10,
         paddingRight: 10,
         flex: 0,
@@ -48,7 +49,6 @@ const styles = StyleSheet.create({
         fontFamily: FONT,
         textTransform: "uppercase",
         display: "flex",
-        
     },
     btn: {
         alignItems: "flex-start",

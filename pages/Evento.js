@@ -56,7 +56,7 @@ const StarWars = {
 
 /*------------------------ PAGE ------------------------ */
 
-const marvel = useContext(MarvelContext);
+//const marvel = useContext(MarvelContext);
 
 @observer
 export default class Evento extends React.Component {

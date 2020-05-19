@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Dimensions, FlatList } from "react-native";
+import { StyleSheet, ScrollView, View, Dimensions, FlatList, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import ComicHeader from "../components/ComicHeader";
@@ -63,7 +63,7 @@ const StarWars = {
         "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
 };
 
-// <BackSvg style={styles.backIcon} />
+
 
 export default class Comic extends React.Component {
     render() {
@@ -115,17 +115,11 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         top: 0,
-        height: Dimensions.get("window").height,
+        height: Dimensions.get("screen").height,
         zIndex: -1,
       },
-    backIcon: {
-        position: "absolute",
-        top: 10,
-        left: 20,
-        zIndex: 2,
-    },
     comicbar: {
-        top: Dimensions.get("window").height - 56,
+        bottom: 0,
         position: "absolute",
         flex: 0,
         flexDirection: "row",

@@ -17,20 +17,16 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useFonts } from "@use-expo/font";
 
 /*------------------------ COMPONENTS ------------------------ */
-import AppBar from "./components/AppBar";
 import HomeIcon from "./components/HomeIcon";
 import Label from "./components/Label";
 import ProfileIcon from "./components/ProfileIcon";
-import SearchIcon from "./components/SearchIcon";
 import AppBarBackground from "./components/AppBarBackground";
 import SearchModal from "./components/SearchModal";
-import CloseSvg from "./assets/close.svg";
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
 import Evento from "./pages/Evento";
 import Splash from "./pages/Splash";
-import Resultados from "./pages/Resultados";
 import Leidos from "./pages/Leidos";
 import Guardados from "./pages/Guardados";
 import Perfil from "./pages/Perfil";
@@ -165,21 +161,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff0",
   },
-  icon: {},
   buttonStyle: {
     height: 500,
     width: 110,
     backgroundColor: "red",
     borderRadius: 100,
-  },
-  closeIcon: {
-    position: "absolute",
-    top: 30,
-    right: 30,
-    width: 20,
-    height: 20,
-    alignSelf: "flex-end",
-    zIndex: 2,
   },
   text: {
     fontFamily: "RobotoCondensed-Regular",

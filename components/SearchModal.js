@@ -11,6 +11,7 @@ import Modal from "react-native-modal";
 import CloseSvg from "../assets/close.svg";
 import SearchIcon from "../components/SearchIcon";
 import Search from "../pages/Search";
+import Svg from "react-native-svg";
 
 export default SearchModal = () => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -21,7 +22,7 @@ export default SearchModal = () => {
                 onPress={() => {
                     setModalVisible(true);
                 }}
-                style={{ borderWidth: 1 }}
+                style={[styles.buttonStyle]}
             >
                 <SearchIcon />
             </TouchableHighlight>
@@ -39,9 +40,9 @@ export default SearchModal = () => {
                         onPress={() => {
                             setModalVisible(false);
                         }}
-                        style={[styles.closeIcon, { borderWidth: 1 }]}
+                        style={[styles.closeIcon]}
                     >
-                        <Text style={styles.text}>x</Text>
+                        <CloseSvg width={15} height={15} ></CloseSvg>
                     </TouchableHighlight>
                 </Modal>
             </View>
@@ -67,12 +68,12 @@ const styles = StyleSheet.create({
         margin: 0,
     },
     buttonStyle: {
-        height: 200,
-        width: 110,
-        backgroundColor: "red",
-        borderRadius: 100,
+        //borderWidth: 2,
+        top: -22,
+        height: 80,
     },
     closeIcon: {
+        //borderWidth: 2,
         position: "absolute",
         top: 30,
         right: 30,
@@ -81,13 +82,5 @@ const styles = StyleSheet.create({
         alignSelf: "flex-end",
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    text: {
-        fontFamily: "Roboto",
-        color: "white",
-        // width: 60,
-        // height: 60,
-        //fontWeight: "bold",
-        fontSize: 30,
-    },
+    }
 });
