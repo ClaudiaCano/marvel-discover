@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from "mobx-react";
 import {
   StyleSheet,
   Text,
@@ -15,6 +16,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useFonts } from "@use-expo/font";
+
+import MarvelContext from "./model/MarvelModel";
 
 /*------------------------ COMPONENTS ------------------------ */
 import HomeIcon from "./components/HomeIcon";
@@ -95,6 +98,7 @@ export default function App(props) {
   }
 
   return (
+    <Provider marvelContext={MarvelContext}>
     <View style={styles.container}>
       <StatusBar hidden />
       <AppBarBackground />
@@ -153,6 +157,7 @@ export default function App(props) {
         </Tab.Navigator>
       </NavigationContainer>
     </View>
+    </Provider>
   );
 }
 

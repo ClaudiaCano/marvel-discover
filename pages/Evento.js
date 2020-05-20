@@ -81,13 +81,13 @@ export default class Evento extends React.Component {
   }*/
 
   render() {
-    if (marvelc.events == null) {
+    /*if (marvelc.events == null) {
       return (
         <View>
           <ActivityIndicator size="large" />
         </View>
       );
-    }
+    }*/
     return (
       <View>
         <LinearGradient
