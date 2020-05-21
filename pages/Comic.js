@@ -1,5 +1,5 @@
-import React from "react";
-import { observer, inject, Provider } from "mobx-react";
+import React, { useContext, useEffect } from "react";
+import { observer } from "mobx-react";
 import {
   StyleSheet,
   ScrollView,
@@ -29,6 +29,7 @@ import photoPoe from "../assets/PoeDameron.jpg";
 import photoThrawn from "../assets/Thrawn.jpeg";
 
 import MarvelContext from "../model/MarvelModel";
+import { observable } from "mobx";
 
 const StarWars = {
   title: "Star Wars (2015) #1",
@@ -71,54 +72,55 @@ const StarWars = {
   cover: "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
 };
 
-@inject("marvelContext")
-export default class Comic extends React.Component {
-  componentDidMount() {
-    this.props.marvelContext.loadEvents();
-  }
+const Comic = observer(() => {
+  const marvel = useContext(MarvelContext);
 
-  render() {
-    return (
-      <View>
-        <LinearGradient
-          colors={["white", "white", "#B895C8"]}
-          style={styles.gradient}
+  useEffect(() => {
+    marvel.loadEvents();
+  }, []);
+
+  return (
+    <View>
+      <LinearGradient
+        colors={["white", "white", "#B895C8"]}
+        style={styles.gradient}
+      />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ComicHeader Cover={StarWars.cover} />
+        <ComicTitle Title={JSON.stringify(marvel.events)} />
+        <ComicDetails Name={StarWars.author} Date={StarWars.date} />
+        <ComicTitlePersonajes />
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={StarWars.characters}
+          renderItem={({ item: rowData }) => {
+            return (
+              <View style={styles.card}>
+                <Personaje
+                  character={rowData.character}
+                  completename={rowData.completeName}
+                  photo={rowData.photo}
+                />
+              </View>
+            );
+          }}
+          keyExtractor={(item, index) => index}
+          style={styles.list}
+          ListHeaderComponent={() => <View width={PADDING} />}
         />
-
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <ComicHeader Cover={StarWars.cover} />
-          <ComicTitle Title={this.props.marvelContext.events} />
-          <ComicDetails Name={StarWars.author} Date={StarWars.date} />
-          <ComicTitlePersonajes />
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={StarWars.characters}
-            renderItem={({ item: rowData }) => {
-              return (
-                <View style={styles.card}>
-                  <Personaje
-                    character={rowData.character}
-                    completename={rowData.completeName}
-                    photo={rowData.photo}
-                  />
-                </View>
-              );
-            }}
-            keyExtractor={(item, index) => index}
-            style={styles.list}
-            ListHeaderComponent={() => <View width={PADDING} />}
-          />
-          <ComicSynopsis Synopsis={StarWars.synopsis} />
-        </ScrollView>
-        <View style={styles.comicbar}>
-          <Guardar />
-          <BtnLeido />
-        </View>
+        <ComicSynopsis Synopsis={StarWars.synopsis} />
+      </ScrollView>
+      <View style={styles.comicbar}>
+        <Guardar />
+        <BtnLeido />
       </View>
-    );
-  }
-}
+    </View>
+  );
+});
+
+export default Comic;
 
 const PADDING = 10;
 

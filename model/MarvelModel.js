@@ -8,8 +8,8 @@ class MarvelModel {
   @action async loadEvents() {
     const response = await fetch("http://gateway.marvel.com/v1/public/events/253?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
     const json = await response.json();
-    if(json.results != null) {
-      this.events = json.results;
+    if(json.data && json.data.results) {
+      this.events = json.data.results;
     } else {
       this.events = "love";
     }
@@ -38,15 +38,15 @@ class MarvelModel {
     return favs;
   }*/
 }
-/*
+
 const model = new MarvelModel();
 
 export const MarvelContext = createContext(model);
+export default MarvelContext;
 
 export const MarvelProvider = ({ children }) => (
-  <MarvelContext.Provider value={model}>{children}</MarvelContext.Provider>
+  <MarvelContext.Provider value={model}>
+    {children}
+  </MarvelContext.Provider>
 );
-*/
 
-const MarvelContext = new MarvelModel();
-export default MarvelContext;
