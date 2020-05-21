@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { observer } from "mobx-react";
 import {
   StyleSheet,
   Text,
@@ -8,8 +9,10 @@ import {
   Button,
   Image,
   Dimensions,
+  ActivityIndicator,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import MarvelContext from "../model/MarvelModel";
 
 import CarouselItem from "../components/CarouselItem";
 import Titles from "../components/HomeTitles";
@@ -92,7 +95,56 @@ const data3 = [
   },
 ];
 
-export default class Home extends React.Component {
+const Home = observer(() => {
+  const marvel = useContext(MarvelContext);
+
+  useEffect(() => {
+    marvel.loadEvents();
+  }, []);
+
+  if (
+    marvel.secretWarsEvent == null ||
+    marvel.starWarsEvent == null ||
+    marvel.avengersEvent == null
+  ) {
+    return (
+      <View>
+        <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+        />
+        <CarouselItem />
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+  return (
+    <View>
+      <LinearGradient
+        colors={["white", "white", "#B895C8"]}
+        style={styles.gradient}
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <CarouselItem />
+
+        <Titles Title={marvel.secretWarsEvent[0].title} screen={"Evento"} />
+        <CardHome event={marvel.secretWarsEvent[0].id} />
+
+        <Titles Title={marvel.starWarsEvent[0].title} screen={"Evento"} />
+        <CardHome event={marvel.starWarsEvent[0].id} />
+
+        <Titles Title={marvel.avengersEvent[0].title} screen={"Evento"} />
+        <CardHome event={marvel.avengersEvent[0].id} />
+
+      </ScrollView>
+      <AppBarBackground />
+    </View>
+  );
+});
+
+export default Home;
+
+/*export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.buttonPress = this.buttonPress.bind(this);
@@ -128,7 +180,7 @@ export default class Home extends React.Component {
       </View>
     );
   }
-}
+}*/
 
 const PADDING = 10;
 

@@ -75,9 +75,11 @@ const StarWars = {
 const Comic = observer(() => {
   const marvel = useContext(MarvelContext);
 
-  useEffect(() => {
+  /*useEffect(() => {
     marvel.loadEvents();
-  }, []);
+  }, []);*/
+
+  /*<ComicTitle Title={marvel.events[0].title} />*/
 
   return (
     <View>
@@ -88,7 +90,7 @@ const Comic = observer(() => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <ComicHeader Cover={StarWars.cover} />
-        <ComicTitle Title={JSON.stringify(marvel.events)} />
+        <ComicTitle Title={StarWars.title} />
         <ComicDetails Name={StarWars.author} Date={StarWars.date} />
         <ComicTitlePersonajes />
         <FlatList
