@@ -35,6 +35,12 @@ class MarvelModel {
     this.event = json1.data.results;
   }
 
+  @action async loadComicById(id) {
+    const response1 = await fetch("http://gateway.marvel.com/v1/public/comics/" + id + "?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+    const json1 = await response1.json();
+    this.comic = json1.data.results;
+  }
+
   /*
   @action async loadComics() {
     const response = await fetch("http://gateway.marvel.com//v1/public/comics/78629?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");

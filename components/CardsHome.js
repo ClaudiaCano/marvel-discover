@@ -14,7 +14,7 @@ import Modal from "react-native-modal";
 import MarvelContext from "../model/MarvelModel";
 
 import ImgVerMas from "../components/ImgVerMas";
-import Evento from "../pages/Evento";
+import Comic from "../pages/Comic";
 import BackSvg from "../assets/back.svg";
 
 /*const CardHome = observer(({ event }) => {
@@ -78,6 +78,7 @@ export default class CardHome extends Component {
       modalVisible: false,
       eventComics: [],
       isLoading: true,
+      comicId: null,
     };
   }
 
@@ -95,7 +96,7 @@ export default class CardHome extends Component {
 
 
   render() {
-    const { eventComics, isLoading, modalVisible } = this.state;
+    const { eventComics, isLoading, modalVisible, comicId } = this.state;
     return (
       <>
         <View style={styles.card}>
@@ -110,6 +111,7 @@ export default class CardHome extends Component {
                   underlayColor={"#f0f0"}
                   onPress={() => {
                     this.setState({ modalVisible: true });
+                    this.setState({ comicId: rowData.id });
                   }}
                 >
                   <Image
@@ -152,7 +154,10 @@ export default class CardHome extends Component {
             >
               <BackSvg style={styles.backIcon} width={15} height={15} />
             </TouchableHighlight>
-            <Evento />
+           
+            <Text>{comicId}</Text>
+
+            <Comic comicId={comicId}/>
           </Modal>
         </View>
       </>

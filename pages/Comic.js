@@ -7,6 +7,8 @@ import {
   Dimensions,
   FlatList,
   TouchableHighlight,
+  ActivityIndicator,
+  Text,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -72,15 +74,27 @@ const StarWars = {
   cover: "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
 };
 
-const Comic = observer(() => {
+const Comic = observer(({comicId}) => {
   const marvel = useContext(MarvelContext);
 
-  /*useEffect(() => {
-    marvel.loadEvents();
-  }, []);*/
+  useEffect(() => {
+    marvel.loadComicById(comicId);
+  }, []);
 
-  /*<ComicTitle Title={marvel.events[0].title} />*/
-
+  /*if (
+    marvel.comic == null
+  ) {
+    return (
+      <View>
+        <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+        />
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+  */
   return (
     <View>
       <LinearGradient
@@ -89,7 +103,24 @@ const Comic = observer(() => {
       />
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ComicHeader Cover={StarWars.cover} />
+
+      <Text>{comicId}</Text>
+
+      </ScrollView>
+      <View style={styles.comicbar}>
+        <Guardar />
+        <BtnLeido />
+      </View>
+    </View>
+  );
+});
+
+export default Comic;
+/*
+
+<Text>{marvel.comic[0].title}</Text>
+
+<ComicHeader Cover={StarWars.cover} />
         <ComicTitle Title={StarWars.title} />
         <ComicDetails Name={StarWars.author} Date={StarWars.date} />
         <ComicTitlePersonajes />
@@ -113,17 +144,7 @@ const Comic = observer(() => {
           ListHeaderComponent={() => <View width={PADDING} />}
         />
         <ComicSynopsis Synopsis={StarWars.synopsis} />
-      </ScrollView>
-      <View style={styles.comicbar}>
-        <Guardar />
-        <BtnLeido />
-      </View>
-    </View>
-  );
-});
-
-export default Comic;
-
+*/
 const PADDING = 10;
 
 const styles = StyleSheet.create({
