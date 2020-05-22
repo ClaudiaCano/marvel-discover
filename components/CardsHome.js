@@ -17,14 +17,27 @@ import ImgVerMas from "../components/ImgVerMas";
 import Comic from "../pages/Comic";
 import BackSvg from "../assets/back.svg";
 
-const CardHome = observer(({ event }) => {
+/*const CardHome = observer(({ event }) => {
   const marvel = useContext(MarvelContext);
 
-  useEffect(() => {
+  const [data, setData] = useState({ eventComics: null });
+
+  /*useEffect(() => {
     marvel.loadComicsbyEvent(event);
+  }, []);*/
+
+  /*useEffect(() => {
+    const fetchData = async () => {
+      const response1 = await fetch("http://gateway.marvel.com/v1/public/events/" + event + "/comics?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+      const json1 = await response1.json();
+      //this.eventComics = json1.data.results;
+      setData(json1.data.results);
+    };
+
+    fetchData();
   }, []);
 
-  if (marvel.eventComics == null) {
+  if (data.eventComics == null) {
     return (
       <View>
         <ActivityIndicator size="large" />
@@ -37,7 +50,7 @@ const CardHome = observer(({ event }) => {
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={marvel.eventComics}
+            data={data.eventComics}
             renderItem={({ item: rowData }) => {
               return (
                   <Image
@@ -56,25 +69,41 @@ const CardHome = observer(({ event }) => {
   );
 });
 
-export default CardHome;
+export default CardHome;*/
 
-/*export default class CardHome extends Component {
+export default class CardHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: this.props.Data,
       modalVisible: false,
+      eventComics: [],
+      isLoading: true,
     };
   }
 
+  componentDidMount() {
+    fetch("http://gateway.marvel.com/v1/public/events/" + this.props.Data + "/comics?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665")
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({ eventComics: json.data.results });
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLoading: false });
+      });
+  }
+
+
   render() {
+    const { eventComics, isLoading, modalVisible } = this.state;
     return (
       <>
         <View style={styles.card}>
+        {isLoading ? <ActivityIndicator/> : (
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={this.state.data}
+            data={eventComics}
             renderItem={({ item: rowData }) => {
               return (
                 <TouchableHighlight
@@ -85,7 +114,7 @@ export default CardHome;
                 >
                   <Image
                     source={{
-                      uri: rowData.imageUrl,
+                      uri: rowData.images[0].path + "." + rowData.images[0].extension,
                     }}
                     style={styles.image}
                   />
@@ -93,13 +122,25 @@ export default CardHome;
               );
             }}
             keyExtractor={(item, index) => index.toString()}
-            ListFooterComponent={() => <ImgVerMas style={styles.image} />}
+            ListFooterComponent={() => {
+              return (
+                <TouchableHighlight
+                  underlayColor={"#f0f0"}
+                  onPress={() => {
+                    this.setState({ modalVisible: true });
+                  }}
+                >
+                  <ImgVerMas style={styles.image} />
+                </TouchableHighlight>
+              );
+            }}
           />
+        )}
         </View>
         <View>
           <Modal
             backdropOpacity={0.3}
-            isVisible={this.state.modalVisible}
+            isVisible={modalVisible}
             style={styles.contentView}
           >
             <TouchableHighlight
@@ -117,7 +158,7 @@ export default CardHome;
       </>
     );
   }
-}*/
+}
 
 const CARD_HEIGHT = 150;
 const PADDING = 10;
