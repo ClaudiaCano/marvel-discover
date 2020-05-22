@@ -56,9 +56,51 @@ const StarWars = {
 
 /*------------------------ PAGE ------------------------ */
 
-//const marvel = useContext(MarvelContext);
+const Evento = observer(({ route }) => {
+  const marvel = useContext(MarvelContext);
+  const { event } = route.params;
 
-@observer
+  useEffect(() => {
+    marvel.loadEventById(event);
+  }, []);
+
+  if (marvel.event == null) {
+    return (
+      <View>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+  return (
+    <View>
+      <LinearGradient
+        colors={["white", "white", "#B895C8"]}
+        style={styles.gradient}
+      />
+      <LinearGradient
+        colors={["#FAF2FF", "#fff0"]}
+        style={styles.gradientsup}
+      />
+      <BackIcon style={styles.backIcon} />
+
+        <EventTitle Title={marvel.event[0].title} />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <CardComic Data={data} />
+        
+        <Details Title="Creadores" Description={marvel.event[0].creators.items} />
+        <View style={styles.sizedbox} />
+      </ScrollView>
+      <AppBarBackground />
+    </View>
+  );
+});
+
+/*<Details Title="Descripción" Description={marvel.event[0].description} />*/
+
+export default Evento;
+
+/*@observer
 export default class Evento extends React.Component {
   constructor(props) {
     super(props);
@@ -80,7 +122,7 @@ export default class Evento extends React.Component {
     marvel.loadEvents();
   }*/
 
-  render() {
+/*render() {
     /*if (marvelc.events == null) {
       return (
         <View>
@@ -88,7 +130,7 @@ export default class Evento extends React.Component {
         </View>
       );
     }*/
-    return (
+/*return (
       <View>
         <LinearGradient
           colors={["white", "white", "#B895C8"]}
@@ -112,7 +154,7 @@ export default class Evento extends React.Component {
       </View>
     );
   }
-}
+}*/
 
 const styles = StyleSheet.create({
   gradient: {

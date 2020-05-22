@@ -14,7 +14,7 @@ import Modal from "react-native-modal";
 import MarvelContext from "../model/MarvelModel";
 
 import ImgVerMas from "../components/ImgVerMas";
-import Comic from "../pages/Comic";
+import Evento from "../pages/Evento";
 import BackSvg from "../assets/back.svg";
 
 /*const CardHome = observer(({ event }) => {
@@ -152,7 +152,7 @@ export default class CardHome extends Component {
             >
               <BackSvg style={styles.backIcon} width={15} height={15} />
             </TouchableHighlight>
-            <Comic />
+            <Evento />
           </Modal>
         </View>
       </>

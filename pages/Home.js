@@ -52,13 +52,13 @@ const Home = observer(() => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <CarouselItem />
 
-        <Titles Title={marvel.secretWarsEvent[0].title} screen={"Evento"} />
+        <Titles Title={marvel.secretWarsEvent[0].title} screen={"Evento"} eventId={marvel.secretWarsEvent[0].id}/>
         <CardHome Data={marvel.secretWarsEvent[0].id} />
 
-        <Titles Title={marvel.starWarsEvent[0].title} screen={"Evento"} />
+        <Titles Title={marvel.starWarsEvent[0].title} screen={"Evento"} eventId={marvel.starWarsEvent[0].id}/>
         <CardHome Data={marvel.starWarsEvent[0].id} />
 
-        <Titles Title={marvel.avengersEvent[0].title} screen={"Evento"} />
+        <Titles Title={marvel.avengersEvent[0].title} screen={"Evento"} eventId={marvel.avengersEvent[0].id}/>
         <CardHome Data={marvel.avengersEvent[0].id} />
 
         <View style={styles.sizedbox}/>
@@ -67,6 +67,8 @@ const Home = observer(() => {
     </View>
   );
 });
+
+/**/
 
 export default Home;
 

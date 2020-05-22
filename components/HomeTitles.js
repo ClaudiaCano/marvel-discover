@@ -20,7 +20,7 @@ export default function HomeTitles(props) {
     return (
         <View style={styles.box}>
             <Text style={styles.text}>{props.Title}</Text>
-            <BtnVerMas style={styles.btn} screen={props.screen} />
+            <BtnVerMas style={styles.btn} screen={props.screen} eventId={props.eventId}/>
         </View>
     );
 }

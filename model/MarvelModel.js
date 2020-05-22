@@ -6,7 +6,7 @@ class MarvelModel {
   @observable starWarsEvent = null;
   @observable avengersEvent = null;
   
-  @observable eventComics = null;
+  @observable event = null;
 
   @action async loadEvents() {
     const response1 = await fetch("http://gateway.marvel.com/v1/public/events/323?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
@@ -29,10 +29,10 @@ class MarvelModel {
     //this.events.forEach((event) => (event.type = "event"));
   }
 
-  @action async loadComicsbyEvent(event) {
-    const response1 = await fetch("http://gateway.marvel.com/v1/public/events/" + event + "/comics?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+  @action async loadEventById(id) {
+    const response1 = await fetch("http://gateway.marvel.com/v1/public/events/" + id + "?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
     const json1 = await response1.json();
-    this.eventComics = json1.data.results;
+    this.event = json1.data.results;
   }
 
   /*

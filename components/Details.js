@@ -28,10 +28,17 @@ export default function EventDetails(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.body}>{description}</Text>
+
+      {description.map((item) => (
+        <View>
+          <Text style={styles.body}>{item.name}, </Text>
+        </View>
+      ))}
     </View>
   );
 }
+
+/*<Text style={styles.body}>{description}</Text>*/
 
 const TITLE_COLOR = "black";
 const BODY_COLOR = "#757575";
@@ -63,5 +70,7 @@ const styles = StyleSheet.create({
     fontSize: BODY_SIZE,
     fontFamily: BODY_TYPE,
     display: "flex",
+    flexDirection: "row",
+    flexWrap: 'wrap',
   },
 });
