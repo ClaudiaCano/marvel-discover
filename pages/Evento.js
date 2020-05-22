@@ -56,7 +56,7 @@ const StarWars = {
 
 /*------------------------ PAGE ------------------------ */
 
-const Evento = observer(({ route }) => {
+const Evento = observer(({ route, navigation }) => {
   const marvel = useContext(MarvelContext);
   const { event } = route.params;
 
@@ -82,13 +82,16 @@ const Evento = observer(({ route }) => {
         style={styles.gradientsup}
       />
       <BackIcon style={styles.backIcon} />
-
+      <TouchableHighlight onPress={() => navigation.navigate('Home')}>
         <EventTitle Title={marvel.event[0].title} />
-
+      </TouchableHighlight>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <CardComic Data={data} />
-        
-        <Details Title="Creadores" Description={marvel.event[0].creators.items} />
+        <CardComic Data={marvel.event[0].id} />
+        <Details
+          Title="Descripción"
+          Description={marvel.event[0].description}
+        />
+        <Details Title="Creadores" Creators={marvel.event[0].creators.items} />
         <View style={styles.sizedbox} />
       </ScrollView>
       <AppBarBackground />

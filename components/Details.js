@@ -24,16 +24,25 @@ export default function EventDetails(props) {
 
   const title = props.Title;
   const description = props.Description;
+  const creators = props.Creators;
 
+  if (creators == null) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.body}>{description}</Text>
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
 
-      {description.map((item) => (
-        <View>
-          <Text style={styles.body}>{item.name}, </Text>
-        </View>
+      <View style={styles.body}>
+      {creators.map((item) => (
+          <Text key={item.resourceURI} style={styles.body}>{item.name}, </Text>
       ))}
+      </View>
     </View>
   );
 }

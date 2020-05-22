@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import MarvelContext from "../model/MarvelModel";
+import { useNavigation } from '@react-navigation/native';
 
 import ImgVerMas from "../components/ImgVerMas";
 import Comic from "../pages/Comic";
@@ -71,15 +72,20 @@ import BackSvg from "../assets/back.svg";
 
 export default CardHome;*/
 
-export default class CardHome extends Component {
+class CardHome extends Component {
   constructor(props) {
     super(props);
+    this.verMas = this.verMas.bind(this);
     this.state = {
       modalVisible: false,
       eventComics: [],
       isLoading: true,
       comicId: null,
     };
+  }
+
+  verMas() {
+    this.props.navigation.navigate('Evento', {event: this.props.Data});
   }
 
   componentDidMount() {
@@ -97,6 +103,7 @@ export default class CardHome extends Component {
 
   render() {
     const { eventComics, isLoading, modalVisible, comicId } = this.state;
+    const { navigation } = this.props;
     return (
       <>
         <View style={styles.card}>
@@ -128,9 +135,7 @@ export default class CardHome extends Component {
               return (
                 <TouchableHighlight
                   underlayColor={"#f0f0"}
-                  onPress={() => {
-                    this.setState({ modalVisible: true });
-                  }}
+                  onPress={this.verMas}
                 >
                   <ImgVerMas style={styles.image} />
                 </TouchableHighlight>
@@ -163,6 +168,12 @@ export default class CardHome extends Component {
       </>
     );
   }
+}
+
+export default function(props) {
+  const navigation = useNavigation();
+
+  return <CardHome {...props} navigation={navigation} />;
 }
 
 const CARD_HEIGHT = 150;

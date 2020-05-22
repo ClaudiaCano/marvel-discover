@@ -17,9 +17,14 @@ export default function Title(props) {
   }
 
   var string = props.Title;
-  var number = string.indexOf("(");
-  var text1 = string.slice(0, number);
-  var text2 = string.slice(number);
+  var stringHasDate = string.includes("(");
+
+  if (stringHasDate) {
+    var number = string.indexOf("(");
+    var text1 = string.slice(0, number);
+    var text2 = string.slice(number);
+  } else {var text1 = string;}
+  
 
   return (
     <View style={styles.container}>
