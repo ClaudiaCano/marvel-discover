@@ -5,8 +5,13 @@ class MarvelModel {
   @observable secretWarsEvent = null;
   @observable starWarsEvent = null;
   @observable avengersEvent = null;
+
+  @observable detailsComic = null;
+  @observable charactersComic = null;
+  @observable creatorsComic = null;
   
   @observable event = null;
+  @observable comic = null;
 
   @action async loadEvents() {
     const response1 = await fetch("http://gateway.marvel.com/v1/public/events/323?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
@@ -41,17 +46,27 @@ class MarvelModel {
     this.comic = json1.data.results;
   }
 
-  /*
-  @action async loadComics() {
-    const response = await fetch("http://gateway.marvel.com//v1/public/comics/78629?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
-    const json = await response.json();
-    this.setState({
-      comics: json.code
-    });
-    // Afegeixo un camp de tipus per poder distingir als favourites
-    this.comics.forEach((comic) => (comic.type = "comic"));
-  }
-  */
+
+ @action async loadComicDetails(id) {
+  const response1 = await fetch("http://gateway.marvel.com//v1/public/comics/78629?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+  const json1 = await response1.json();
+  this.detailsComic = json1.data.results;
+
+  const response2 = await fetch("http://gateway.marvel.com//v1/public/comics/78629/characters?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+  const json2 = await response2.json();
+  this.charactersComic = json2.data.results;
+
+  const response3 = await fetch("http://gateway.marvel.com//v1/public/comics/78629/creators?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+  const json3 = await response3.json();
+  this.creatorsComic = json3.data.results;
+  /*if(json.data && json.data.results) {
+    this.events = json.data.results;
+  } else {
+    this.events = "love";
+  }*/
+  // Afegeixo un camp de tipus per poder distingir als favourites
+  //this.events.forEach((event) => (event.type = "event"));
+}
   
 
   /*@computed get favourites() {

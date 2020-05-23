@@ -31,7 +31,6 @@ import photoPoe from "../assets/PoeDameron.jpg";
 import photoThrawn from "../assets/Thrawn.jpeg";
 
 import MarvelContext from "../model/MarvelModel";
-import { observable } from "mobx";
 
 const StarWars = {
   title: "Star Wars (2015) #1",
@@ -81,39 +80,36 @@ const Comic = observer(({comicId}) => {
     marvel.loadComicById(comicId);
   }, []);
 
-  /*if (
-    marvel.comic == null
-  ) {
+  if (marvel.comic == null) {
     return (
       <View>
-        <LinearGradient
-          colors={["white", "white", "#B895C8"]}
-          style={styles.gradient}
-        />
         <ActivityIndicator size="large" />
       </View>
     );
   }
-  */
+  
   return (
     <View>
-      <LinearGradient
-        colors={["white", "white", "#B895C8"]}
-        style={styles.gradient}
-      />
+        <LinearGradient
+            colors={["white", "white", "#B895C8"]}
+            style={styles.gradient}
+        />
+        
+        <ScrollView showsVerticalScrollIndicator={false}>
+            <ComicHeader Cover={marvel.comic[0].images[0].path+"."+marvel.comic[0].images[0].extension} />
+            <ComicTitle Title={marvel.comic[0].title} />
+            <ComicSynopsis Synopsis={StarWars.synopsis} />
+        </ScrollView>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-
-      <Text>{comicId}</Text>
-
-      </ScrollView>
-      <View style={styles.comicbar}>
-        <Guardar />
-        <BtnLeido />
-      </View>
+        <View style={styles.comicbar}>
+            <Guardar />
+            <BtnLeido />
+        </View>
     </View>
   );
 });
+
+
 
 export default Comic;
 /*
