@@ -160,8 +160,6 @@ class CardHome extends Component {
               <BackSvg style={styles.backIcon} width={15} height={15} />
             </TouchableHighlight>
            
-            <Text>{comicId}</Text>
-
             <Comic comicId={comicId}/>
           </Modal>
         </View>

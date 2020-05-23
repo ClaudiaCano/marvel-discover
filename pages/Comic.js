@@ -80,7 +80,10 @@ const Comic = observer(({comicId}) => {
     marvel.loadComicById(comicId);
   }, []);
 
-  if (marvel.comic == null) {
+  if (
+    marvel.comic == null ||
+    marvel.creatorsComic == null
+  ) {
     return (
       <View>
         <ActivityIndicator size="large" />
@@ -98,29 +101,11 @@ const Comic = observer(({comicId}) => {
         <ScrollView showsVerticalScrollIndicator={false}>
             <ComicHeader Cover={marvel.comic[0].images[0].path+"."+marvel.comic[0].images[0].extension} />
             <ComicTitle Title={marvel.comic[0].title} />
-            <ComicSynopsis Synopsis={StarWars.synopsis} />
-        </ScrollView>
+            
+            <ComicDetails Name={marvel.creatorsComic[0].fullName} Date={marvel.comic[0].dates[0].date} />
+            <ComicTitlePersonajes />
 
-        <View style={styles.comicbar}>
-            <Guardar />
-            <BtnLeido />
-        </View>
-    </View>
-  );
-});
-
-
-
-export default Comic;
-/*
-
-<Text>{marvel.comic[0].title}</Text>
-
-<ComicHeader Cover={StarWars.cover} />
-        <ComicTitle Title={StarWars.title} />
-        <ComicDetails Name={StarWars.author} Date={StarWars.date} />
-        <ComicTitlePersonajes />
-        <FlatList
+            <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
           data={StarWars.characters}
@@ -139,8 +124,45 @@ export default Comic;
           style={styles.list}
           ListHeaderComponent={() => <View width={PADDING} />}
         />
-        <ComicSynopsis Synopsis={StarWars.synopsis} />
+
+        
+            <ComicSynopsis Synopsis={marvel.comic[0].description} />
+            
+        </ScrollView>
+
+        <View style={styles.comicbar}>
+            <Guardar />
+            <BtnLeido />
+        </View>
+    </View>
+  );
+});
+
+export default Comic;
+
+/*
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={StarWars.characters}
+          renderItem={({ item: rowData }) => {
+            return (
+              <View style={styles.card}>
+                <Personaje
+                  character={rowData.character}
+                  completename={rowData.completeName}
+                  photo={rowData.photo}
+                />
+
+              </View>
+            );
+          }}
+          keyExtractor={(item, index) => index}
+          style={styles.list}
+          ListHeaderComponent={() => <View width={PADDING} />}
+        />
 */
+
 const PADDING = 10;
 
 const styles = StyleSheet.create({
