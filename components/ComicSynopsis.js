@@ -36,9 +36,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
         flex: 0,
-        flexDirection: "row",
-        alignItems: "flex-start",
-        flexWrap: "wrap",
+        flexDirection: "column",
         marginBottom: 80,
     },
     text_1: {
