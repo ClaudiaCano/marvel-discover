@@ -14,6 +14,7 @@ import { observer } from "mobx-react";
 import { useContext, useEffect } from "react";
 
 import Comic from "../pages/Comic";
+import BackSvg from "../assets/back.svg";
 
 /*const CardComicEvent = observer(({ event }) => {
   const marvel = useContext(MarvelContext);
@@ -118,7 +119,7 @@ export default class CardComicEvent extends Component {
     return (
       <>
         {isLoading ? (
-          <ActivityIndicator />
+          <ActivityIndicator size="large"/>
         ) : (
           <FlatList
             horizontal
@@ -164,9 +165,9 @@ export default class CardComicEvent extends Component {
               onPress={() => {
                 this.setState({ modalVisible: false });
               }}
-              style={styles.closeIcon}
+              style={[styles.closeIcon]}
             >
-              <Text style={styles.text}>x</Text>
+              <BackSvg style={styles.backIcon} width={15} height={15} />
             </TouchableHighlight>
             <Comic />
           </Modal>
@@ -218,12 +219,15 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   closeIcon: {
+    //borderWidth: 2,
     position: "absolute",
     top: 30,
-    left: 30,
-    width: 20,
-    height: 20,
+    left: 15,
+    width: 40,
+    height: 40,
     alignSelf: "flex-end",
+    justifyContent: "center",
+    alignItems: "center",
     zIndex: 2,
   },
   text: {

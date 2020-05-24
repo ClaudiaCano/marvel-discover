@@ -13,7 +13,7 @@ export default function HomeTitles(props) {
     if (!fontsLoaded) {
         return (
             <View style={styles.container}>
-                <ActivityIndicator />
+                
             </View>
         );
     }

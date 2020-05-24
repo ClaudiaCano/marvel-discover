@@ -3,11 +3,11 @@ import { StyleSheet, Text, Image, View, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import CarouselItemImage from "../assets/CarouselItem1.jpg";
 
-const CarouselItem = () => {
-    const Title = "avenging women";
+const CarouselItem = (props) => {
+    //const Title = "avenging women";
     return (
         <View style={styles.item}>
-            <Image source={CarouselItemImage} style={styles.image} />
+            <Image source={props.Img} style={styles.image} />
             <View style={styles.tint} />
             <LinearGradient
                 colors={["transparent", "transparent", "rgba(255, 255, 255, 0.5)", "rgba(255, 255, 255, 1)"]}
@@ -19,7 +19,7 @@ const CarouselItem = () => {
                     height: HEIGHT,
                 }}
             />
-            <Text style={styles.title}>{Title}</Text>
+            <Text style={styles.title}>{props.Title}</Text>
         </View>
     );
 };

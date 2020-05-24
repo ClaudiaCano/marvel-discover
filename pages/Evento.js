@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Dimensions,
-  TouchableHighlight,
-  ActivityIndicator,
+    StyleSheet,
+    ScrollView,
+    View,
+    Dimensions,
+    TouchableHighlight,
+    ActivityIndicator,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MarvelContext } from "../model/MarvelModel";
@@ -21,82 +21,89 @@ import AppBarBackground from "../components/AppBarBackground";
 
 /*------------------------ OBJECTS ------------------------ */
 const data = [
-  {
-    imageUrl:
-      "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
-  },
-  {
-    imageUrl:
-      "https://i.annihil.us/u/prod/marvel/i/mg/3/a0/5670864d95ab0/clean.jpg",
-  },
-  {
-    imageUrl:
-      "https://i.annihil.us/u/prod/marvel/i/mg/3/50/567084ad58a03/clean.jpg",
-  },
-  {
-    imageUrl:
-      "https://i.annihil.us/u/prod/marvel/i/mg/3/20/5519439c0b32c/clean.jpg",
-  },
-  {
-    imageUrl:
-      "https://i.annihil.us/u/prod/marvel/i/mg/e/d0/54a2fda8ace40/clean.jpg",
-  },
-  {
-    imageUrl:
-      "https://i.annihil.us/u/prod/marvel/i/mg/6/90/5536b03673fdf/clean.jpg",
-  },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/3/a0/5670864d95ab0/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/3/50/567084ad58a03/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/3/20/5519439c0b32c/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/e/d0/54a2fda8ace40/clean.jpg",
+    },
+    {
+        imageUrl:
+            "https://i.annihil.us/u/prod/marvel/i/mg/6/90/5536b03673fdf/clean.jpg",
+    },
 ];
 const StarWars = {
-  title: "Star Wars (2015)",
-  description:
-    "A long time ago in a galaxy far, far away, the adventures of Luke Skywalker, Han Solo, Princess, Leia, Darth Vader and more continue! Set following the events of Episode IV: A New Hope, Marvel's ongoing Star Wars comics reveal new stories featuring these classic characters!",
-  creators:
-    "Jason Aaron, John Cassaday, Kieron Gillen, Salvador Larroca, Adi Granov Mark Waid, Terry Dodson, Greg Weisman, Mark Brooks, Pepe Larraz, Stuart Immonen.",
+    title: "Star Wars (2015)",
+    description:
+        "A long time ago in a galaxy far, far away, the adventures of Luke Skywalker, Han Solo, Princess, Leia, Darth Vader and more continue! Set following the events of Episode IV: A New Hope, Marvel's ongoing Star Wars comics reveal new stories featuring these classic characters!",
+    creators:
+        "Jason Aaron, John Cassaday, Kieron Gillen, Salvador Larroca, Adi Granov Mark Waid, Terry Dodson, Greg Weisman, Mark Brooks, Pepe Larraz, Stuart Immonen.",
 };
 
 /*------------------------ PAGE ------------------------ */
 
 const Evento = observer(({ route, navigation }) => {
-  const marvel = useContext(MarvelContext);
-  const { event } = route.params;
+    const marvel = useContext(MarvelContext);
+    const { event } = route.params;
 
-  useEffect(() => {
-    marvel.loadEventById(event);
-  }, []);
+    useEffect(() => {
+        marvel.loadEventById(event);
+    }, []);
 
-  if (marvel.event == null) {
+    if (marvel.event == null) {
+        return (
+            <View>
+                <ActivityIndicator size="large" />
+            </View>
+        );
+    }
     return (
-      <View>
-        <ActivityIndicator size="large" />
-      </View>
+        <View>
+            <LinearGradient
+                colors={["white", "white", "#B895C8"]}
+                style={styles.gradient}
+            />
+            <LinearGradient
+                colors={["#FAF2FF", "#fff0"]}
+                style={styles.gradientsup}
+            />
+            <TouchableHighlight
+                style={styles.backIcon}
+                onPress={() => navigation.navigate("Home")}
+            >
+                <BackIcon />
+            </TouchableHighlight>
+            <EventTitle Title={marvel.event[0].title} />
+			<AppBarBackground style={styles.appbar}/>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <CardComic Data={marvel.event[0].id} />
+                <Details
+                    Title="Descripción"
+                    Description={marvel.event[0].description}
+                />
+                <Details
+                    Title="Creadores"
+                    Creators={marvel.event[0].creators.items}
+                    
+                />
+				<View style={styles.sizedbox} />
+            </ScrollView>
+        </View>
     );
-  }
-  return (
-    <View>
-      <LinearGradient
-        colors={["white", "white", "#B895C8"]}
-        style={styles.gradient}
-      />
-      <LinearGradient
-        colors={["#FAF2FF", "#fff0"]}
-        style={styles.gradientsup}
-      />
-      <BackIcon style={styles.backIcon} />
-      <TouchableHighlight onPress={() => navigation.navigate('Home')}>
-        <EventTitle Title={marvel.event[0].title} />
-      </TouchableHighlight>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <CardComic Data={marvel.event[0].id} />
-        <Details
-          Title="Descripción"
-          Description={marvel.event[0].description}
-        />
-        <Details Title="Creadores" Creators={marvel.event[0].creators.items} />
-        <View style={styles.sizedbox} />
-      </ScrollView>
-      <AppBarBackground />
-    </View>
-  );
 });
 
 /*<Details Title="Descripción" Description={marvel.event[0].description} />*/
@@ -160,29 +167,40 @@ export default class Evento extends React.Component {
 }*/
 
 const styles = StyleSheet.create({
-  gradient: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
-    zIndex: -1,
-  },
-  gradientsup: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: Dimensions.get("window").height,
-    zIndex: -1,
-  },
-  backIcon: {
-    position: "absolute",
-    top: 38,
-    left: 30,
-    zIndex: 2,
-  },
-  sizedbox: {
-    height: 150,
-  },
+    gradient: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        height: Dimensions.get("window").height,
+        zIndex: -1,
+    },
+    gradientsup: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        height: Dimensions.get("window").height,
+        zIndex: -1,
+    },
+    backIcon: {
+        //borderWidth: 2,
+        position: "absolute",
+        top: 26,
+        left: 10,
+        width: 40,
+        height: 40,
+        alignSelf: "flex-end",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 2,
+    },
+    sizedbox: {
+		height: 200,
+    },
+    appbar: {
+        position: "absolute",
+        bottom: 0,
+        zIndex: 2,
+    },
 });

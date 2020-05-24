@@ -17,7 +17,6 @@ export default function EventDetails(props) {
   if (!fontsLoaded) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator />
       </View>
     );
   }

@@ -107,7 +107,6 @@ class CardHome extends Component {
     return (
       <>
         <View style={styles.card}>
-        {isLoading ? <ActivityIndicator/> : (
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -142,7 +141,6 @@ class CardHome extends Component {
               );
             }}
           />
-        )}
         </View>
         <View>
           <Modal

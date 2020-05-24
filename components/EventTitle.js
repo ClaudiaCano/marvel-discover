@@ -11,7 +11,6 @@ export default function Title(props) {
   if (!fontsLoaded) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator />
       </View>
     );
   }

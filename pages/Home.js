@@ -14,7 +14,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import MarvelContext from "../model/MarvelModel";
 
-import CarouselItem from "../components/CarouselItem";
+import Carousel from "../components/Carousel";
 import Titles from "../components/HomeTitles";
 
 import CardHome from "../components/CardsHome";
@@ -38,7 +38,7 @@ const Home = observer(() => {
           colors={["white", "white", "#B895C8"]}
           style={styles.gradient}
         />
-        <CarouselItem />
+        <Carousel />
         <ActivityIndicator size="large" />
       </View>
     );
@@ -50,7 +50,7 @@ const Home = observer(() => {
         style={styles.gradient}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <CarouselItem />
+        <Carousel />
 
         <Titles Title={marvel.secretWarsEvent[0].title} screen={"Evento"} eventId={marvel.secretWarsEvent[0].id}/>
         <CardHome Data={marvel.secretWarsEvent[0].id} />
