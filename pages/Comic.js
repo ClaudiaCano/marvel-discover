@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { observer } from "mobx-react";
+import moment from "moment/min/moment-with-locales";
 import {
   StyleSheet,
   ScrollView,
@@ -75,6 +76,7 @@ const StarWars = {
 
 const Comic = observer(({comicId}) => {
   const marvel = useContext(MarvelContext);
+  moment.locale('es'); //CONFIGURAR DATA EN ESPAÑOL
 
   useEffect(() => {
     marvel.loadComicById(comicId);
@@ -102,7 +104,7 @@ const Comic = observer(({comicId}) => {
             <ComicHeader Cover={marvel.comic[0].images[0].path+"."+marvel.comic[0].images[0].extension} />
             <ComicTitle Title={marvel.comic[0].title} />
             
-            <ComicDetails Name={marvel.creatorsComic[0].fullName} Date={marvel.comic[0].dates[0].date} />
+            <ComicDetails Name={marvel.creatorsComic[0].fullName} Date={moment(marvel.comic[0].dates[0].date).format('DD MMMM, YYYY')} />
             <ComicTitlePersonajes />
 
             <FlatList
