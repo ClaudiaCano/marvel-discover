@@ -24,11 +24,6 @@ class MarvelModel {
     const response3 = await fetch("http://gateway.marvel.com/v1/public/events/310?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
     const json3 = await response3.json();
     this.avengersEvent = json3.data.results;
-    /*if(json.data && json.data.results) {
-      this.events = json.data.results;
-    } else {
-      this.events = "love";
-    }*/
     // Afegeixo un camp de tipus per poder distingir als favourites
     //this.events.forEach((event) => (event.type = "event"));
   }
