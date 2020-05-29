@@ -77,6 +77,7 @@ const StarWars = {
 
 const Comic = observer(({ comicId }) => {
     const marvel = useContext(MarvelContext);
+
     moment.locale("es"); //CONFIGURAR DATA EN ESPAÑOL
 
     useEffect(() => {
@@ -140,8 +141,8 @@ const Comic = observer(({ comicId }) => {
             </ScrollView>
 
             <View style={styles.comicbar}>
-                <Guardar />
-                <BtnLeido />
+                <Guardar comic={marvel.comic[0]} />
+                <BtnLeido comic={marvel.comic[0]} />
             </View>
         </View>
     );

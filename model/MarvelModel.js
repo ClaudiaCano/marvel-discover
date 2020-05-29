@@ -6,7 +6,6 @@ class MarvelModel {
   @observable starWarsEvent = null;
   @observable avengersEvent = null;
 
-  @observable detailsComic = null;
   @observable charactersComic = null;
   @observable creatorsComic = null;
   
@@ -54,37 +53,20 @@ class MarvelModel {
     const json3 = await response3.json();
     this.creatorsComic = json3.data.results;
   }
-
-
- @action async loadComicDetails(id) {
-  const response1 = await fetch("http://gateway.marvel.com//v1/public/comics/78629?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
-  const json1 = await response1.json();
-  this.detailsComic = json1.data.results;
-
-  const response2 = await fetch("http://gateway.marvel.com//v1/public/comics/78629/characters?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
-  const json2 = await response2.json();
-  this.charactersComic = json2.data.results;
-
-  const response3 = await fetch("http://gateway.marvel.com//v1/public/comics/78629/creators?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
-  const json3 = await response3.json();
-  this.creatorsComic = json3.data.results;
-  /*if(json.data && json.data.results) {
-    this.events = json.data.results;
-  } else {
-    this.events = "love";
-  }*/
-  // Afegeixo un camp de tipus per poder distingir als favourites
-  //this.events.forEach((event) => (event.type = "event"));
-}
   
-
-  /*@computed get favourites() {
-    let favs = [
-      ...(this.people ? this.people.filter((p) => p.favourite) : []),
-      ...(this.planets ? this.planets.filter((p) => p.favourite) : []),
+  @computed get leidos() {
+    let reads = [
+    ...(this.comic ? this.comic.filter((c) => c.leido) : []),
     ];
-    return favs;
-  }*/
+    return reads;
+  }
+
+  @computed get guardados() {
+    let saves = [
+    ...(this.comic ? this.comic.filter((g) => g.guardado) : []),
+    ];
+    return saves;
+  }
 }
 
 const model = new MarvelModel();

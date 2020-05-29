@@ -1,4 +1,6 @@
-import React from "react";
+//import React from "react";
+import React, { useContext, useEffect } from "react";
+import { observer } from "mobx-react";
 import {
     StyleSheet,
     ScrollView,
@@ -16,11 +18,14 @@ import UserInfo from "../components/UserInfo";
 import AppBar from "../components/AppBar";
 import HomeTitles from "../components/ProfileTitles";
 import ProfileTitlesGuardados from "../components/ProfileTitlesGuardados";
-import CardHome from "../components/CardsHome";
+import CardPerfilLeidos from "../components/CardPerfilLeidos";
+import CardPerfilGuardados from "../components/CardPerfilGuardados";
 
 import BackSvg from "../assets/back.svg";
 import GearSvg from "../assets/settingsicon.svg";
 import AppBarBackground from "../components/AppBarBackground";
+
+import MarvelContext from "../model/MarvelModel";
 
 const user = {
     pfp:
@@ -77,7 +82,10 @@ const data2 = [
     },
 ];
 
-export default function Perfil() {
+
+const Perfil = observer(() => {
+    const marvel = useContext(MarvelContext);
+
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
@@ -106,15 +114,18 @@ export default function Perfil() {
                 />
                 <Text style={styles.text_1}>MIS COLECCIONES</Text>
                 <HomeTitles Title="LEÍDOS" screen="Leidos" />
-                <CardHome Data={data} />
+                <CardPerfilLeidos Data={marvel.leidos} />
                 <ProfileTitlesGuardados Title="GUARDADOS" screen="Guardados" />
-                <CardHome Data={data2} />
+                <CardPerfilGuardados Data={marvel.guardados} />
                 <View style={styles.sizedbox} />
             </ScrollView>
             <AppBarBackground />
         </View>
     );
-}
+});
+
+export default Perfil;
+
 
 const styles = StyleSheet.create({
     sizedbox: {
