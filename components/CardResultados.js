@@ -12,6 +12,7 @@ import { useFonts } from "@use-expo/font";
 import Modal from "react-native-modal";
 import Comic from "../pages/Comic";
 import Guardar from "./GuardarLists";
+import BackSvg from "../assets/backblack.svg";
 
 export default function CardResultados(props) {
     const [fontsLoaded] = useFonts({
@@ -52,10 +53,12 @@ export default function CardResultados(props) {
                     <TouchableHighlight
                         underlayColor={"#f0f0"}
                         onPress={() => {
-                            this.setState({ modalVisible: false });
+                            setModalVisible(false);
                         }}
-                        style={[styles.closeIcon]}
-                    ></TouchableHighlight>
+                        style={styles.closeIcon}
+                    >
+                        <BackSvg width={15} height={15} />
+                    </TouchableHighlight>
                     <Comic />
                 </Modal>
             </View>

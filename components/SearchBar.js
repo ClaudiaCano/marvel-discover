@@ -14,6 +14,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Modal from "react-native-modal";
 import SearchSvg from "../assets/searchicon.svg";
 import Resultados from "../pages/Resultados";
+import BackSvg from "../assets/backblack.svg";
 
 const SearchBar = () => {
     const [fontsLoaded] = useFonts({
@@ -72,7 +73,7 @@ const SearchBar = () => {
                         }}
                         style={styles.closeIcon}
                     >
-                        <Text style={styles.text}>x</Text>
+                        <BackSvg width={15} height={15} />
                     </TouchableHighlight>
                 </Modal>
             </View>
@@ -128,12 +129,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     closeIcon: {
+        //borderWidth: 2,
         position: "absolute",
-        top: -17,
-        left: 30,
-        width: 20,
-        height: 20,
+        top: -12,
+        left: 20,
+        width: 35,
+        height: 35,
         alignSelf: "flex-end",
+        justifyContent: "center",
+        alignItems: "center",
         zIndex: 2,
     },
     text: {
