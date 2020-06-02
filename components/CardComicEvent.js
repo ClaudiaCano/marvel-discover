@@ -155,7 +155,7 @@ export default class CardComicEvent extends Component {
         )}
 
         <View>
-          <Modal
+        <Modal
             backdropOpacity={0.3}
             isVisible={modalVisible}
             style={styles.contentView}
@@ -219,16 +219,18 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   closeIcon: {
-    //borderWidth: 2,
-    position: "absolute",
-    top: 30,
-    left: 15,
-    width: 40,
-    height: 40,
-    alignSelf: "flex-end",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 2,
+     //borderWidth: 2,
+     position: "absolute",
+     backgroundColor: 'rgba(196, 164, 216, 0.8)',
+     borderRadius: 10,
+     top: 15,
+     left: 15,
+     width: 35,
+     height: 35,
+     alignSelf: "flex-end",
+     justifyContent: "center",
+     alignItems: "center",
+     zIndex: 2,
   },
   text: {
     fontFamily: "Roboto",

@@ -16,7 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import ImgVerMas from "../components/ImgVerMas";
 import Comic from "../pages/Comic";
-import BackSvg from "../assets/back.svg";
+import BackSvg from "../assets/backblack.svg";
 
 /*const CardHome = observer(({ event }) => {
   const marvel = useContext(MarvelContext);
@@ -215,10 +215,12 @@ const styles = StyleSheet.create({
   closeIcon: {
     //borderWidth: 2,
     position: "absolute",
-    top: 30,
+    backgroundColor: 'rgba(196, 164, 216, 0.8)',
+    borderRadius: 10,
+    top: 15,
     left: 15,
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
     alignSelf: "flex-end",
     justifyContent: "center",
     alignItems: "center",

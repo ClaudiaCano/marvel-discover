@@ -111,18 +111,20 @@ const styles = StyleSheet.create({
         height: CARD_HEIGHT,
         textAlignVertical: "center",
         width: (Dimensions.get("screen").width - 20) / 2.5,
-	},
-	//Estilos del Modal
+    },
+    //Estilos del Modal
     contentView: {
         margin: 0,
     },
     closeIcon: {
         //borderWidth: 2,
         position: "absolute",
-        top: 30,
+        backgroundColor: "rgba(196, 164, 216, 0.8)",
+        borderRadius: 10,
+        top: 15,
         left: 15,
-        width: 40,
-        height: 40,
+        width: 35,
+        height: 35,
         alignSelf: "flex-end",
         justifyContent: "center",
         alignItems: "center",

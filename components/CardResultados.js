@@ -49,16 +49,14 @@ export default function CardResultados(props) {
                     isVisible={modalVisible}
                     style={styles.contentView}
                 >
-                    <Comic />
                     <TouchableHighlight
                         underlayColor={"#f0f0"}
                         onPress={() => {
-                            setModalVisible(false);
+                            this.setState({ modalVisible: false });
                         }}
-                        style={styles.closeIcon}
-                    >
-                        <Text style={styles.text}>x</Text>
-                    </TouchableHighlight>
+                        style={[styles.closeIcon]}
+                    ></TouchableHighlight>
+                    <Comic />
                 </Modal>
             </View>
         </>
@@ -109,12 +107,17 @@ const styles = StyleSheet.create({
         margin: 0,
     },
     closeIcon: {
+        //borderWidth: 2,
         position: "absolute",
-        top: 30,
-        left: 30,
-        width: 20,
-        height: 20,
+        backgroundColor: "rgba(196, 164, 216, 0.8)",
+        borderRadius: 10,
+        top: 15,
+        left: 15,
+        width: 35,
+        height: 35,
         alignSelf: "flex-end",
+        justifyContent: "center",
+        alignItems: "center",
         zIndex: 2,
     },
     text: {

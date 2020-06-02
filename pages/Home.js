@@ -2,15 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { observer } from "mobx-react";
 import {
   StyleSheet,
-  Text,
   View,
   ScrollView,
-  FlatList,
-  Button,
-  Image,
   Dimensions,
   ActivityIndicator,
 } from "react-native";
+
 import { LinearGradient } from "expo-linear-gradient";
 import MarvelContext from "../model/MarvelModel";
 
@@ -68,47 +65,7 @@ const Home = observer(() => {
   );
 });
 
-/**/
-
 export default Home;
-
-/*export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.buttonPress = this.buttonPress.bind(this);
-  }
-
-  buttonPress() {
-    console.log("Perfil");
-    this.props.navigation.navigate("Evento");
-  }
-
-  render() {
-    return (
-      <View>
-        <LinearGradient
-          colors={["white", "white", "#B895C8"]}
-          style={styles.gradient}
-        />
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <CarouselItem />
-
-          <Titles Title={Title.title1} screen={"Evento"}/>
-          <CardHome Data={data} />
-
-          <Titles Title={Title.title2} screen={"Evento"}/>
-          <CardHome Data={data2} />
-
-          <Titles Title={Title.title3} screen={"Evento"}/>
-          <CardHome Data={data3} />
-
-          <View style={styles.sizedbox} navigation={this.props.navigation}/>
-        </ScrollView>
-        <AppBarBackground />
-      </View>
-    );
-  }
-}*/
 
 const PADDING = 10;
 
