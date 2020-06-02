@@ -53,7 +53,7 @@ const Evento = observer(({ route, navigation }) => {
         <BackIcon />
       </TouchableHighlight>
       <EventTitle Title={marvel.event[0].title} />
-      <View style={styles.appbarrr}>
+      <View style={styles.appbar}>
         <AppBarBackground />
       </View>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollevent}>
@@ -69,24 +69,9 @@ const Evento = observer(({ route, navigation }) => {
   );
 });
 
-/*
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <CardComic Data={marvel.event[0].id} />
-                <Details
-                    Title="Descripción"
-                    Description={marvel.event[0].description}
-                />
-                <Details
-                    Title="Creadores"
-                    Creators={marvel.event[0].creators.items}
-                    
-                />
-				<View style={styles.sizedbox} />
-            </ScrollView>*/
-
 export default Evento;
 
-const dimensions = Dimensions.get("window");
+const dimensions = Dimensions.get("screen");
 const windowwidth = dimensions.width;
 const ratio = windowwidth / 615.6;
 const barheight = 136 * ratio;
@@ -109,7 +94,6 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   backIcon: {
-    //borderWidth: 2,
     position: "absolute",
     top: 26,
     left: 10,
@@ -123,13 +107,12 @@ const styles = StyleSheet.create({
   sizedbox: {
     height: 200,
   },
-
-  appbarrr: {
+  appbar: {
     position: "absolute",
     bottom: 0,
     zIndex: 2,
   },
   scrollevent: {
-    height: Dimensions.get("window").height - barheight + 20,
+    height: Dimensions.get("screen").height - barheight - 5,
   }
 });
