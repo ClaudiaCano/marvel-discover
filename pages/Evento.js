@@ -113,6 +113,6 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   scrollevent: {
-    height: Dimensions.get("screen").height - barheight - 5,
+    height: Dimensions.get("screen").height - barheight,
   }
 });
