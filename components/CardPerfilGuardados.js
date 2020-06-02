@@ -29,7 +29,7 @@ const CardPerfilGuardados = observer(() => {
             horizontal
             showsHorizontalScrollIndicator={false}
             data={marvel.guardados}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({ item: rowData }) => {
               return (
                   <Image
@@ -40,7 +40,6 @@ const CardPerfilGuardados = observer(() => {
                   />
               );
             }}
-            //keyExtractor={(item, index) => index.toString()}
             ListFooterComponent={() => <ImgVerMas style={styles.image} />}
           />
         </View>

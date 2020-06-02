@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import "mobx-react-lite/batchingForReactNative"
 import { observer } from "mobx-react";
 import {
   StyleSheet,
