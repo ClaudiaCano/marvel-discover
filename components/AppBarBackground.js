@@ -10,16 +10,17 @@ const AppBarBackground = (props) => {
   const ratio = imageWidth / 615.6;
   return (
     <View style={styles.appbar}>
-      <View style={styles.appbarstructure}>
+      
         <AppBarSvg
           width={imageWidth}
           height={136 * ratio}
           style={styles.appbarbackground}
         />
-      </View>
+
     </View>
   );
 }
+/*<View style={styles.appbarstructure}>*/
 
 export default AppBarBackground;
 
