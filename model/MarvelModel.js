@@ -34,7 +34,6 @@ class MarvelModel {
     this.event = json1.data.results;
   }
 
-
   @action async loadComicById(id) {
     const response1 = await fetch("http://gateway.marvel.com/v1/public/comics/" + id + "?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
     const json1 = await response1.json();
@@ -50,17 +49,11 @@ class MarvelModel {
   }
   
   @computed get leidos() {
-    let reads = [
-    ...(this.comic ? this.comic.filter((c) => c.leido) : []),
-    ];
-    return reads;
+    return (this.comic ? this.comic.filter((c) => c.leido) : []);
   }
 
   @computed get guardados() {
-    let saves = [
-    ...(this.comic ? this.comic.filter((g) => g.guardado) : []),
-    ];
-    return saves;
+    return (this.comic ? this.comic.filter((g) => g.guardado) : []);
   }
 }
 

@@ -12,42 +12,39 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import MarvelContext from "../model/MarvelModel";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 import ImgVerMas from "../components/ImgVerMas";
 import Comic from "../pages/Comic";
 import BackSvg from "../assets/back.svg";
 
 const CardPerfilLeidos = observer(() => {
-  
   const marvel = useContext(MarvelContext);
 
   return (
-    <>
-      <View style={styles.card}>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={marvel.leidos}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item: rowData }) => {
-              return (
-                  <Image
-                    source={{
-                      uri: rowData.images[0].path + "." + rowData.images[0].extension,
-                    }}
-                    style={styles.image}
-                  />
-              );
-            }}
-            ListFooterComponent={() => <ImgVerMas style={styles.image} />}
-          />
-        </View>
-    </>
+    <View style={styles.card}>
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={marvel.leidos}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item: rowData }) => {
+          return (
+            <Image
+              source={{
+                uri: rowData.images[0].path + "." + rowData.images[0].extension,
+              }}
+              style={styles.image}
+            />
+          );
+        }}
+        ListFooterComponent={() => <ImgVerMas style={styles.image} />}
+      />
+    </View>
   );
 });
 
-export default function(props) {
+export default function (props) {
   const navigation = useNavigation();
 
   return <CardPerfilLeidos {...props} navigation={navigation} />;
