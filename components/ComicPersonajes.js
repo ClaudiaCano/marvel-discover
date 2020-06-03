@@ -44,7 +44,7 @@ export default function ComicPersonajes(props) {
                         </View>
                     );
                 }}
-                keyExtractor={(item, index) => index}
+                keyExtractor={(item, index) => index.toString()}
                 style={styles.box}
                 ListHeaderComponent={() => <View width={PADDING} />}
                 ListFooterComponent={() => <View width={PADDING} />}

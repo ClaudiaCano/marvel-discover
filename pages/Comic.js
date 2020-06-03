@@ -132,7 +132,7 @@ const Comic = observer(({ comicId }) => {
                             </View>
                         );
                     }}
-                    keyExtractor={(item, index) => `${index}`}
+                    keyExtractor={(item, index) => index.toString()}
                     style={styles.list}
                     ListHeaderComponent={() => <View width={PADDING} />}
                 />
@@ -167,7 +167,7 @@ export default Comic;
               </View>
             );
           }}
-          keyExtractor={(item, index) => index}
+          keyExtractor={(item, index) => index.toString()}
           style={styles.list}
           ListHeaderComponent={() => <View width={PADDING} />}
         />
