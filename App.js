@@ -35,6 +35,7 @@ import Guardados from "./pages/Guardados";
 import Perfil from "./pages/Perfil";
 import Search from "./pages/Search";
 import Home from "./pages/Home";
+import { SplashScreen } from "expo";
 
 //--------- PARA EL SEARCH (porque la gradiente es diferente)-------------
 /*
@@ -45,8 +46,10 @@ export default function App() {
 }
 */
 
+
 const HomeStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
+
 
 function HomeStackScreen() {
   return (
@@ -55,6 +58,7 @@ function HomeStackScreen() {
         headerShown: false,
       }}
     >
+      <HomeStack.Screen name="Splash" component={Splash} />
       <HomeStack.Screen name="Home" component={Home} />
       <HomeStack.Screen name="Evento" component={Evento} />
       <HomeStack.Screen name="Comic" component={Comic} />
