@@ -147,6 +147,7 @@ class CardHome extends Component {
             backdropOpacity={0.3}
             isVisible={modalVisible}
             style={styles.contentView}
+            onRequestClose={() => { this.setState({ modalVisible: false }); }}
           >
             <TouchableHighlight
               underlayColor={"#f0f0"}
