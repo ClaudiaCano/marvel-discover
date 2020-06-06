@@ -124,8 +124,7 @@ const styles = StyleSheet.create({
     },
     appbar: {
         position: "absolute",
-        top:  Dimensions.get("screen").height - 50,
+        bottom: 80,
         zIndex: 2,
     },
-    
 });
