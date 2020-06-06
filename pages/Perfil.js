@@ -1,5 +1,4 @@
-//import React from "react";
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { observer } from "mobx-react";
 import {
     StyleSheet,
@@ -25,7 +24,6 @@ import BackSvg from "../assets/back.svg";
 import GearSvg from "../assets/settingsicon.svg";
 import AppBarBackground from "../components/AppBarBackground";
 
-import MarvelContext from "../model/MarvelModel";
 
 const user = {
     pfp:
@@ -36,55 +34,8 @@ const user = {
         "Egestas  Ornare Dius Consequat, Tristique Praesent A. Sagittis Suspendiese Scelerique Arcu Auctor Tellus Enim.",
 };
 
-const data = [
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/1/20/567083a7957b5/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/3/50/5e5d47224c740/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/1/60/5e149e4447993/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/b/70/5db1d1b12a7c5/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/4/e0/5d49e69964c58/clean.jpg",
-    },
-];
-
-const data2 = [
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/3/50/567084ad58a03/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/6/30/5dee805c28500/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/b/d0/5bdb7fc34300e/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/6/10/5e28b321b427e/clean.jpg",
-    },
-    {
-        imageUrl:
-            "https://i.annihil.us/u/prod/marvel/i/mg/3/a0/5e28908b095b2/clean.jpg",
-    },
-];
-
 
 const Perfil = observer(() => {
-    const marvel = useContext(MarvelContext);
 
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
@@ -114,9 +65,9 @@ const Perfil = observer(() => {
                 />
                 <Text style={styles.text_1}>MIS COLECCIONES</Text>
                 <HomeTitles Title="LEÍDOS" screen="Leidos" />
-                <CardPerfilLeidos Data={marvel.leidos} />
+                <CardPerfilLeidos />
                 <ProfileTitlesGuardados Title="GUARDADOS" screen="Guardados" />
-                <CardPerfilGuardados Data={marvel.guardados} />
+                <CardPerfilGuardados />
                 <View style={styles.sizedbox} />
             </ScrollView>
             <AppBarBackground />
