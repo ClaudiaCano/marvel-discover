@@ -60,7 +60,7 @@ function HomeStackScreen() {
         headerShown: false,
       }}
     >
-      <HomeStack.Screen name="Splash" component={Splash} />
+
       <HomeStack.Screen name="Home" component={Home} />
       <HomeStack.Screen name="Evento" component={Evento} />
       <HomeStack.Screen name="Comic" component={Comic} />

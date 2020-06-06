@@ -1,40 +1,18 @@
 
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   Image,
   View,
   Dimensions,
-  Button,
-  TouchableHighlight,
 } from "react-native";
-import Modal from "react-native-modal";
 import SplashImage from "../assets/splash.gif";
 
-const Splash = ({ navigation }) => {
-  const [modalVisible, setModalVisible] = useState(true);
-
+const Splash = () => {
   return (
     <View>
-      <Modal
-        backdropOpacity={0.3}
-        isVisible={modalVisible}
-        onBackdropPress={() => setModalVisible(false)}
-        style={styles.contentView}
-      >
-        
-        <TouchableHighlight
-          underlayColor={"#f0f0"}
-          onPress={() => {
-            setModalVisible(false);
-            navigation.navigate("Home");
-          }}
-        >    
-          <Image source={SplashImage} style={styles.splash} />    
-        </TouchableHighlight>
-
-      </Modal>
-    </View>
+        <Image source={SplashImage} style={styles.splash} />
+      </View>    
   );
 };
 
