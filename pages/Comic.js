@@ -86,8 +86,12 @@ const Comic = observer(({ comicId }) => {
 
     if (marvel.comic == null || marvel.creatorsComic == null) {
         return (
-            <View>
-                <ActivityIndicator size="large" />
+            <View style={[styles.container]}>
+                <LinearGradient
+                    colors={["white", "white", "#B895C8"]}
+                    style={styles.gradient}
+                />
+                <ActivityIndicator size="large" color="#4E00B0" />
             </View>
         );
     }
@@ -150,32 +154,13 @@ const Comic = observer(({ comicId }) => {
 
 export default Comic;
 
-/*
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={StarWars.characters}
-          renderItem={({ item: rowData }) => {
-            return (
-              <View style={styles.card}>
-                <Personaje
-                  character={rowData.character}
-                  completename={rowData.completeName}
-                  photo={rowData.photo}
-                />
-
-              </View>
-            );
-          }}
-          keyExtractor={(item, index) => index.toString()}
-          style={styles.list}
-          ListHeaderComponent={() => <View width={PADDING} />}
-        />
-*/
-
 const PADDING = 10;
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center"
+    },
     gradient: {
         position: "absolute",
         left: 0,

@@ -31,13 +31,12 @@ const Home = observer(() => {
     marvel.avengersEvent == null
   ) {
     return (
-      <View>
+      <View style={[styles.container]}>
         <LinearGradient
           colors={["white", "white", "#B895C8"]}
           style={styles.gradient}
         />
-        <Carousel />
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color="#4E00B0"/>
       </View>
     );
   }
@@ -71,6 +70,10 @@ export default Home;
 const PADDING = 10;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  },
   sizedbox: {
     height: 120,
   },

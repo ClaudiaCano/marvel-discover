@@ -24,7 +24,6 @@ import BackSvg from "../assets/back.svg";
 import GearSvg from "../assets/settingsicon.svg";
 import AppBarBackground from "../components/AppBarBackground";
 
-
 const user = {
     pfp:
         "https://amayei.nyc3.digitaloceanspaces.com/2019/04/Screen-Shot-2019-04-26-at-11.50.46-PM.png",
@@ -34,17 +33,19 @@ const user = {
         "Egestas  Ornare Dius Consequat, Tristique Praesent A. Sagittis Suspendiese Scelerique Arcu Auctor Tellus Enim.",
 };
 
-
 const Perfil = observer(() => {
-
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
 
     if (!fontsLoaded) {
         return (
-            <View style={styles.container}>
-                <ActivityIndicator />
+            <View style={[styles.container]}>
+                <LinearGradient
+                    colors={["white", "white", "#B895C8"]}
+                    style={styles.gradient}
+                />
+                <ActivityIndicator size="large" color="#4E00B0" />
             </View>
         );
     }
@@ -77,8 +78,11 @@ const Perfil = observer(() => {
 
 export default Perfil;
 
-
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center"
+      },
     sizedbox: {
         height: 120,
     },

@@ -95,8 +95,12 @@ export default function App(props) {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator />
+      <View style={[styles.container]}>
+        <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+        />
+        <ActivityIndicator size="large" color="#4E00B0"/>
       </View>
     );
   }
@@ -178,7 +182,7 @@ export default function App(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff0",
+    justifyContent: "center"
   },
   buttonStyle: {
     height: 500,

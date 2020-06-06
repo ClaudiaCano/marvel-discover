@@ -26,8 +26,12 @@ export default function Leidos() {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator />
+      <View style={[styles.container]}>
+        <LinearGradient
+          colors={["white", "white", "#B895C8"]}
+          style={styles.gradient}
+        />
+        <ActivityIndicator size="large" color="#4E00B0"/>
       </View>
     );
   }
@@ -52,6 +56,10 @@ export default function Leidos() {
 //<BackIcon style={styles.backIcon} />
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  },
   gradient: {
     position: "absolute",
     left: 0,
