@@ -24,6 +24,7 @@ export default class CardComicEvent extends Component {
             eventComics: [],
             isLoading: true,
             data: this.props.Data,
+            comicId: "",
         };
     }
 
@@ -63,7 +64,7 @@ export default class CardComicEvent extends Component {
     }
 
     render() {
-        const { eventComics, isLoading, modalVisible } = this.state;
+        const { eventComics, isLoading, modalVisible, comicId } = this.state;
         return (
             <>
                 {isLoading ? (
@@ -81,6 +82,7 @@ export default class CardComicEvent extends Component {
                                         onPress={() => {
                                             this.setState({
                                                 modalVisible: true,
+                                                comicId: rowData.id,
                                             });
                                         }}
                                     >
@@ -109,6 +111,7 @@ export default class CardComicEvent extends Component {
                         backdropOpacity={0.3}
                         isVisible={modalVisible}
                         style={styles.contentView}
+                        onRequestClose={() => { this.setState({ modalVisible: false }); }}
                     >
                         <TouchableHighlight
                             underlayColor={"#f0f0"}
@@ -123,7 +126,7 @@ export default class CardComicEvent extends Component {
                                 height={15}
                             />
                         </TouchableHighlight>
-                        <Comic />
+                        <Comic comicId={comicId}/>
                     </Modal>
                 </View>
             </>
