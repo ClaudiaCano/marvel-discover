@@ -1,13 +1,10 @@
 import React from "react";
 import {
     StyleSheet,
-    Text,
-    Image,
     View,
     Dimensions,
-    SafeAreaView,
 } from "react-native";
-import Carousel from "react-native-snap-carousel";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 import CarouselItem from "../components/CarouselItem";
 
 import ItemImage1 from "../assets/CarouselItem1.jpg";
@@ -44,9 +41,32 @@ export class MyCarousel extends React.Component {
         );
     }
 
+    get pagination () {
+        const { entries, activeSlide } = this.state;
+        return (
+            <Pagination
+              dotsLength={this.state.carouselItems.length}
+              activeDotIndex={this.state.activeIndex}
+              containerStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)'}}
+              dotStyle={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 0,
+                  margin: 0,
+                  backgroundColor: 'rgba(94, 0, 156, 0.6)'
+              }}
+              inactiveDotStyle={{
+                  // Define styles for inactive dots here
+              }}
+              inactiveDotOpacity={0.5}
+              inactiveDotScale={1}
+            />
+        );
+    }
+
     render() {
         return (
-            <View style={styles.view}>
+            <View>
                 <Carousel
                     layout={"default"}
                     ref={(ref) => (this.carousel = ref)}
@@ -60,6 +80,9 @@ export class MyCarousel extends React.Component {
                     inactiveSlideOpacity={1}
                     inactiveSlideScale={1}
                 />
+                <View style={styles.pagination}>
+                { this.pagination }
+                </View>
             </View>
         );
     }
@@ -68,9 +91,10 @@ export class MyCarousel extends React.Component {
 export default MyCarousel;
 
 const styles = StyleSheet.create({
-    view: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
+    pagination: {
+        width: Dimensions.get("screen").width,
+        position: "absolute",
+        top: 160,
+        backgroundColor: 'rgba(0, 0, 0, 0)'    
     },
 });

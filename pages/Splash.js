@@ -1,35 +1,44 @@
-import React from "react";
-import { StyleSheet, Image, View, Dimensions, Button } from "react-native";
 
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Image,
+  View,
+  Dimensions,
+  Button,
+  TouchableHighlight,
+} from "react-native";
+import Modal from "react-native-modal";
 import SplashImage from "../assets/splash.gif";
 
 const Splash = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(true);
+
   return (
-    <View >
-        <Button
-          title="Go to Home"
-          onPress={() => navigation.navigate('Home')}
-          color="#5b43a0"
-        />
+    <View>
+      <Modal
+        backdropOpacity={0.3}
+        isVisible={modalVisible}
+        onBackdropPress={() => setModalVisible(false)}
+        style={styles.contentView}
+      >
         
-        <Image source={SplashImage} style={styles.splash} />
-      </View>
-  )
-}
+        <TouchableHighlight
+          underlayColor={"#f0f0"}
+          onPress={() => {
+            setModalVisible(false);
+            navigation.navigate("Home");
+          }}
+        >    
+          <Image source={SplashImage} style={styles.splash} />    
+        </TouchableHighlight>
+
+      </Modal>
+    </View>
+  );
+};
 
 export default Splash;
-
-/*
-export default class Splash extends React.Component {
-  render() {
-    return (
-      <View>
-        <Image source={SplashImage} style={styles.splash} />
-      </View>
-    );
-  }
-}
-*/
 
 const dimensions = Dimensions.get("window");
 const windowwidth = dimensions.width;
@@ -40,4 +49,10 @@ const styles = StyleSheet.create({
     width: windowwidth,
     height: windowheight,
   },
+  contentView: {
+    //justifyContent: "flex-end",
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+},
 });
