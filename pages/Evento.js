@@ -51,6 +51,7 @@ const Evento = observer(({ route, navigation }) => {
                 style={styles.gradientsup}
             />
             <TouchableHighlight
+                underlayColor={"#f0f0"}
                 style={styles.backIcon}
                 onPress={() => navigation.navigate("Home")}
             >

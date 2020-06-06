@@ -28,7 +28,7 @@ const BtnVermas = ({ screen, eventId }) => {
         );
     }
     return (
-        <TouchableHighlight onPress={() => navigation.navigate(screen, {event: eventId})}>
+        <TouchableHighlight underlayColor={"#f0f0"} onPress={() => navigation.navigate(screen, {event: eventId})}>
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
                 <View style={styles.btnBottom} />
