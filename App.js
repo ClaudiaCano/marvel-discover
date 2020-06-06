@@ -22,9 +22,13 @@ import MarvelContext, { MarvelProvider } from "./model/MarvelModel";
 /*------------------------ COMPONENTS ------------------------ */
 import HomeIcon from "./components/HomeIcon";
 import Label from "./components/Label";
-import ProfileIcon from "./components/ProfileIcon";
 import AppBarBackground from "./components/AppBarBackground";
 import SearchModal from "./components/SearchModal";
+
+import Logo from "./assets/logo.svg";
+import ActiveLogo from "./assets/logoactive.svg";
+import ProfileIcon from "./assets/profileicon.svg";
+import ActiveProfileIcon from "./assets/profileactive.svg";
 
 /*------------------------ PAGES ------------------------ */
 import Comic from "./pages/Comic";
@@ -46,10 +50,8 @@ export default function App() {
 }
 */
 
-
 const HomeStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
-
 
 function HomeStackScreen() {
   return (
@@ -100,7 +102,7 @@ export default function App(props) {
           colors={["white", "white", "#B895C8"]}
           style={styles.gradient}
         />
-        <ActivityIndicator size="large" color="#4E00B0"/>
+        <ActivityIndicator size="large" color="#4E00B0" />
       </View>
     );
   }
@@ -112,7 +114,58 @@ export default function App(props) {
         <AppBarBackground />
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName="Home"
+            tabBarOptions={{
+              showLabel: true, // hide labels
+              style: {
+                backgroundColor: "transparent",
+                position: "absolute", // TabBar background
+                height: barheight,
+                width: windowwidth,
+                elevation: 0,
+                borderTopWidth: 0,
+                zIndex: 2,
+              },
+            }}
+          >
+            <Tab.Screen
+              name="Home"
+              component={HomeStackScreen}
+              options={{
+                tabBarLabel: ({ focused }) => (
+                  /*<Label Title="Home" Focused={focused} />*/
+                  <Text style={focused ? styles.textActive : styles.text}>Home</Text>
+                ),
+                /*tabBarIcon: ({ tintColor }) => <Logo width={20} height={20} />,*/
+                tabBarIcon: ({ focused }) =>
+                  focused ? <ActiveLogo width={20} height={20} style={styles.icon}/> : <Logo width={20} height={20} style={styles.icon}/>,
+              }}
+            />
+            <Tab.Screen
+              name="Search"
+              component={Search}
+              options={{
+                tabBarButton: () => <SearchModal />,
+              }}
+            />
+            <Tab.Screen
+              name="Perfil"
+              component={ProfileStackScreen}
+              options={{
+                tabBarLabel: ({ focused }) => (
+                  <Text style={focused ? styles.textActive : styles.text}>Perfil</Text>
+                ),
+                tabBarIcon: ({ focused }) =>
+                  focused ? <ActiveProfileIcon width={20} height={20} style={styles.icon}/> : <ProfileIcon width={20} height={20} style={styles.icon}/>,
+              }}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </View>
+    </MarvelProvider>
+  );
+}
+
+/*initialRouteName="Home"
             screenOptions={({ route }) => ({
               tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
@@ -128,61 +181,12 @@ export default function App(props) {
                 // You can return any component that you like here!
                 return <Ionicons name={iconName} size={size} color={color} />;
               },
-            })}
-            tabBarOptions={{
-              showLabel: true, // hide labels
-              activeTintColor: "red", // active icon color
-              inactiveTintColor: "#000", // inactive icon color
-              style: {
-                backgroundColor: "transparent",
-                position: "absolute", // TabBar background
-                height: barheight,
-                width: windowwidth,
-                elevation: 0,
-                borderTopWidth: 0,
-                zIndex: 2,
-              },
-            }}
-          >
-            <Tab.Screen
-              name="Home"
-              component={HomeStackScreen}
-              style={styles.icon}
-              options={{
-                tabBarLabel: ({ focused }) => (
-                  <Label Title="Home" Focused={focused} />
-                ),
-                tabBarIcon: ({ tintColor }) => <HomeIcon />,
-              }}
-            />
-            <Tab.Screen
-              name="Search"
-              component={Search}
-              options={{
-                tabBarButton: () => <SearchModal />,
-              }}
-            />
-            <Tab.Screen
-              name="Perfil"
-              component={ProfileStackScreen}
-              options={{
-                tabBarLabel: ({ focused }) => (
-                  <Label Title="Perfil" Focused={focused} />
-                ),
-                tabBarIcon: ({ tintColor }) => <ProfileIcon />,
-              }}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </View>
-    </MarvelProvider>
-  );
-}
+            })}*/
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   buttonStyle: {
     height: 500,
@@ -192,5 +196,16 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: "RobotoCondensed-Regular",
+    fontSize: 11,
+    marginBottom: 15,
+  },
+  textActive: {
+    fontFamily: "RobotoCondensed-Regular",
+    fontSize: 11,
+    color: "#5E009C",
+    marginBottom: 15,
+  },
+  icon: {
+    marginBottom: -25,
   },
 });

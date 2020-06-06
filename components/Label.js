@@ -30,7 +30,7 @@ export default function Label(props) {
 
   return (
     <View style={styles.column}>
-      <Text style={[styles.text,  props.focused? styles.textActive : {}]} >{title}</Text>
+      <Text style={[styles.text,  props.focused? styles.textActive : {}]}>{title}</Text>
     </View>
   );
 }
