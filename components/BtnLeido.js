@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { useFonts } from "@use-expo/font";
 import MarvelContext from "../model/MarvelModel";
+import Leidos from "../pages/Leidos";
 
 export default function BtnLeido(props) {
 
@@ -21,8 +22,14 @@ export default function BtnLeido(props) {
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
 
-    function setLeidos(id) {
-        marvel.saveLeido(id);
+    function setLeidos(data) {
+        marvel.saveLeido(data);
+    }
+
+    function removeLeidos(id) {
+        var newsaveLeido = marvel.leidos.filter(ldo => ldo.id === id);
+        //marvel.leidos = newsaveLeido;
+        marvel.leidos.splice(newsaveLeido,1);
     }
     
     if (!fontsLoaded) {
@@ -33,7 +40,7 @@ export default function BtnLeido(props) {
         );
     }
     
-    if (!selected) {
+    if (!selected && !marvel.leidos.some(ldo => ldo.id == props.comic.id)) {
         return (
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
@@ -60,6 +67,7 @@ export default function BtnLeido(props) {
                 underlayColor={"#f0f0"}
                 onPress={() => {
                     setSelected(!selected);
+                    removeLeidos(props.comic);
                 }}
             >
                 <Text style={styles.text2}>Leído</Text>

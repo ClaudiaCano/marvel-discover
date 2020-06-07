@@ -146,7 +146,7 @@ const Comic = observer(({ comicId }) => {
 
             <View style={styles.comicbar}>
                 <Guardar comic={marvel.comic[0]} />
-                <BtnLeido comic={comicId} />
+                <BtnLeido comic={marvel.comic[0]} />
             </View>
         </View>
     );

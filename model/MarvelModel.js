@@ -68,6 +68,10 @@ class MarvelModel {
     this.guardados.push(id);
   }
 
+  @computed get getguardados() {
+    return this.guardados;
+  }
+
   /*
   @computed get leidos() {
     return (this.comic ? this.comic.filter((c) => c.leido) : []);

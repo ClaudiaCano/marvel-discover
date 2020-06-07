@@ -15,20 +15,48 @@ import MarvelContext from "../model/MarvelModel";
 export default function Guardar(props) {
 
   const marvel = useContext(MarvelContext);
+  //const [selected, setSelected] = useState(marvel.guardados.some(guardado => guardado.id === props.comic.id));
+  //const [selected, setSelected] = useState(marvel.guardados.includes(props.comic));
   const [selected, setSelected] = useState(false);
 
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
 
-  function setGuardados(id) {
-    marvel.saveGuardado(id);
+  function setGuardados(data) {
+    marvel.saveGuardado(data);
   }
 
+  function removeGuardados(id) {
+    var newsaveGuardado = marvel.guardados.filter(gdo => gdo.id === id);
+    //marvel.guardados = newsaveGuardado;
+    //const index = marvel.guardados.findIndex(gdo => gdo.id === id);
+    //const index = marvel.guardados.indexOf(id);
+    marvel.guardados.splice(newsaveGuardado,1);
+  }
+
+  
   if (!fontsLoaded) {
     return (
       <View style={styles.container}>
         <ActivityIndicator />
+      </View>
+    );
+  }
+
+  if (!selected && !marvel.guardados.some(gdo => gdo.id == props.comic.id)) {
+    return (
+      <View style={styles.column}>
+        <TouchableHighlight
+          underlayColor={"#f0f0"}
+          onPress={() => {
+            setSelected(!selected);
+            setGuardados(props.comic);
+          }}
+        >
+          <SaveIcon style={styles.icon} />
+        </TouchableHighlight>
+        <Text style={styles.text}>Guardar</Text>
       </View>
     );
   }
@@ -37,25 +65,16 @@ export default function Guardar(props) {
       <TouchableHighlight
         underlayColor={"#f0f0"}
         onPress={() => {
-          setSelected(!selected)
-          setGuardados(props.comic);
+          setSelected(!selected);
+          removeGuardados(props.comic);
         }}
       >
-        {selected ? (
-          <SaveIconSelected style={styles.icon} />
-        ) : (
-          <SaveIcon style={styles.icon} />
-        )}
+        <SaveIconSelected style={styles.icon} />
       </TouchableHighlight>
-      {selected ? (
-        <Text style={styles.text}>Guardado</Text>
-      ) : (
-        <Text style={styles.text}>Guardar</Text>
-      )}
+      <Text style={styles.text}>Guardado</Text>
     </View>
   );
 };
-
 
 const DISTANCE_ICON_TEXT = 1;
 

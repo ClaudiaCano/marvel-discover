@@ -12,76 +12,85 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import MarvelContext from "../model/MarvelModel";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 import ImgVerMas from "../components/ImgVerMas";
 import Comic from "../pages/Comic";
 import BackSvg from "../assets/back.svg";
 
-const CardPerfilGuardados = observer(() => {
-  
+const CardPerfilGuardados = observer(({navigation}) => {
   const marvel = useContext(MarvelContext);
-  /*
-  const [data, setData] = useState({ savedComics: null });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://gateway.marvel.com/v1/public/comics/" + marvel.leidos + "?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
-      const json = await response.json();
-      //this.savedComics = json.data.results;
-      setData(json.data.results);
-    };
-    fetchData();
-  }, []);
-  
+  const [modalVisible, setModalVisible] = useState(false);
 
-  if (data.savedComics == null) {
-    return (
-      <View>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
-  */
+  const [comicId, setComicId] = useState(false);
 
   return (
     <>
       <View style={styles.card}>
-        <Text>{JSON.stringify(marvel.guardados)}</Text>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={marvel.guardados}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item: rowData }) => {
+            return (
+              <TouchableHighlight
+                underlayColor={"#f0f0"}
+                onPress={() => {
+                  setModalVisible(true);
+                  setComicId(rowData.id);
+                }}
+              >
+                <Image
+                  source={{
+                    uri:
+                      rowData.images[0].path +
+                      "." +
+                      rowData.images[0].extension,
+                  }}
+                  style={styles.image}
+                />
+              </TouchableHighlight>
+            );
+          }}
+          ListFooterComponent={() => {
+            return (
+              <TouchableHighlight
+              underlayColor={"#f0f0"}
+              onPress={() => navigation.navigate("Guardados")}
+              >
+                <ImgVerMas style={styles.image} />
+
+              </TouchableHighlight>
+            );
+          }}
+        />
+      </View>
+      <View>
+        <Modal
+          backdropOpacity={0.3}
+          isVisible={modalVisible}
+          onBackdropPress={() => setModalVisible(false)}
+          style={styles.contentView}
+        >
+          <Comic comicId={comicId} />
+          <TouchableHighlight
+            underlayColor={"#f0f0"}
+            onPress={() => {
+              setModalVisible(false);
+            }}
+            style={[styles.closeIcon]}
+          >
+            <BackSvg style={styles.backIcon} width={15} height={15} />
+          </TouchableHighlight>
+        </Modal>
       </View>
     </>
   );
 });
 
-
-
-/*
-return (
-    <>
-      <View style={styles.card}>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={savedComics}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item: rowData }) => {
-              return (
-                  <Image
-                    source={{
-                      uri: rowData.images[0].path + "." + rowData.images[0].extension,
-                    }}
-                    style={styles.image}
-                  />
-              );
-            }}
-            ListFooterComponent={() => <ImgVerMas style={styles.image} />}
-          />
-        </View>
-    </>
-  );
-*/
-
-export default function(props) {
+export default function (props) {
   const navigation = useNavigation();
 
   return <CardPerfilGuardados {...props} navigation={navigation} />;

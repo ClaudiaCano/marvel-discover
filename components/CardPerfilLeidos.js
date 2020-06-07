@@ -24,10 +24,26 @@ const CardPerfilLeidos = observer(() => {
 
   return (
     <>
-      <View style={styles.card}>
-        <Text>{JSON.stringify(marvel.leidos)}</Text>
+    <View style={styles.card}>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={marvel.leidos}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item: rowData }) => {
+            return (
+                <Image
+                  source={{
+                    uri: rowData.images[0].path + "." + rowData.images[0].extension,
+                  }}
+                  style={styles.image}
+                />
+            );
+          }}
+          ListFooterComponent={() => <ImgVerMas style={styles.image} />}
+        />
       </View>
-    </>
+  </>
   );
 });
 
