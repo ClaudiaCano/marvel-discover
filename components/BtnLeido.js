@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import {
     StyleSheet,
@@ -9,8 +9,13 @@ import {
     TouchableHighlight,
 } from "react-native";
 import { useFonts } from "@use-expo/font";
+import MarvelContext from "../model/MarvelModel";
 
-const BtnLeido = observer(({ comic }) => {
+export default function BtnLeido(props) {
+
+    const marvel = useContext(MarvelContext);
+
+    const [selected, setSelected] = useState(false);
     
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
@@ -24,7 +29,7 @@ const BtnLeido = observer(({ comic }) => {
         );
     }
     
-    if (!comic.leido) {
+    if (!selected) {
         return (
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
@@ -32,7 +37,9 @@ const BtnLeido = observer(({ comic }) => {
                 <TouchableHighlight
                     style={styles.touch}
                     underlayColor={"#f0f0"}
-                    onPress={() => comic.leido = !comic.leido}
+                    onPress={() => {
+                        setSelected(!selected);
+                    }}
                 >
                     <Text style={styles.text}>¿Leído?</Text>
                 </TouchableHighlight>
@@ -46,16 +53,16 @@ const BtnLeido = observer(({ comic }) => {
             <TouchableHighlight
                 style={styles.touch}
                 underlayColor={"#f0f0"}
-                onPress={() => comic.leido = !comic.leido}
+                onPress={() => {
+                    setSelected(!selected);
+                }}
             >
                 <Text style={styles.text2}>Leído</Text>
             </TouchableHighlight>
         </View>
     );
     
-});
-
-export default BtnLeido;
+};
 
 
 const BTN_COLOR = "#5E009C";

@@ -11,6 +11,8 @@ class MarvelModel {
   
   @observable event = null;
   @observable comic = null;
+  @observable leidos = [];
+  @observable guardados = [];
 
   @action async loadEvents() {
     const response1 = await fetch("http://gateway.marvel.com/v1/public/events/323?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
@@ -34,6 +36,7 @@ class MarvelModel {
     this.event = json1.data.results;
   }
 
+  
   @action async loadComicById(id) {
     const response1 = await fetch("http://gateway.marvel.com/v1/public/comics/" + id + "?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
     const json1 = await response1.json();
@@ -47,7 +50,16 @@ class MarvelModel {
     const json3 = await response3.json();
     this.creatorsComic = json3.data.results;
   }
-  
+
+  @action async saveLeido(id){
+    this.leidos.push(id);
+  }
+
+  @action async saveGuardado(id){
+    this.guardados.push(id);
+  }
+
+  /*
   @computed get leidos() {
     return (this.comic ? this.comic.filter((c) => c.leido) : []);
   }
@@ -55,6 +67,7 @@ class MarvelModel {
   @computed get guardados() {
     return (this.comic ? this.comic.filter((g) => g.guardado) : []);
   }
+  */
 }
 
 const model = new MarvelModel();

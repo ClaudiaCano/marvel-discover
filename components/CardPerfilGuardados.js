@@ -21,14 +21,48 @@ import BackSvg from "../assets/back.svg";
 const CardPerfilGuardados = observer(() => {
   
   const marvel = useContext(MarvelContext);
+  /*
+  const [data, setData] = useState({ savedComics: null });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://gateway.marvel.com/v1/public/comics/" + marvel.leidos + "?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+      const json = await response.json();
+      //this.savedComics = json.data.results;
+      setData(json.data.results);
+    };
+    fetchData();
+  }, []);
+  
+
+  if (data.savedComics == null) {
+    return (
+      <View>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+  */
 
   return (
+    <>
+      <View style={styles.card}>
+        <Text>{JSON.stringify(marvel.guardados)}</Text>
+      </View>
+    </>
+  );
+});
+
+
+
+/*
+return (
     <>
       <View style={styles.card}>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={marvel.guardados}
+            data={savedComics}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item: rowData }) => {
               return (
@@ -45,7 +79,7 @@ const CardPerfilGuardados = observer(() => {
         </View>
     </>
   );
-});
+*/
 
 export default function(props) {
   const navigation = useNavigation();

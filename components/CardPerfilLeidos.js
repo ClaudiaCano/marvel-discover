@@ -19,6 +19,7 @@ import Comic from "../pages/Comic";
 import BackSvg from "../assets/back.svg";
 
 const CardPerfilLeidos = observer(() => {
+  
   const marvel = useContext(MarvelContext);
 
   return (

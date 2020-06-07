@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import {
   StyleSheet,
@@ -10,12 +10,20 @@ import {
 import SaveIcon from "../assets/saveicon.svg";
 import SaveIconSelected from "../assets/saveiconselected.svg";
 import { useFonts } from "@use-expo/font";
+import MarvelContext from "../model/MarvelModel";
 
-const Guardar = observer(({ comic }) =>  {
+export default function Guardar(props) {
+
+  const marvel = useContext(MarvelContext);
+  const [selected, setSelected] = useState(false);
 
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
+
+  function setGuardados(id) {
+    marvel.saveGuardado(id);
+  }
 
   if (!fontsLoaded) {
     return (
@@ -24,29 +32,29 @@ const Guardar = observer(({ comic }) =>  {
       </View>
     );
   }
-
   return (
     <View style={styles.column}>
       <TouchableHighlight
         underlayColor={"#f0f0"}
-        onPress={() => comic.guardado = !comic.guardado }
+        onPress={() => {
+          setSelected(!selected)
+          setGuardados(props.comic);
+        }}
       >
-        {comic.guardado ? (
+        {selected ? (
           <SaveIconSelected style={styles.icon} />
         ) : (
           <SaveIcon style={styles.icon} />
         )}
       </TouchableHighlight>
-      {comic.guardado ? (
+      {selected ? (
         <Text style={styles.text}>Guardado</Text>
       ) : (
         <Text style={styles.text}>Guardar</Text>
       )}
     </View>
   );
-});
-
-export default Guardar;
+};
 
 
 const DISTANCE_ICON_TEXT = 1;
