@@ -11,6 +11,9 @@ class MarvelModel {
   
   @observable event = null;
   @observable comic = null;
+
+  @observable searchresults = null;
+
   @observable leidos = [];
   @observable guardados = [];
 
@@ -49,6 +52,12 @@ class MarvelModel {
     const response3 = await fetch("http://gateway.marvel.com//v1/public/comics/" + id + "/creators?ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
     const json3 = await response3.json();
     this.creatorsComic = json3.data.results;
+  }
+
+  @action async search(query) {
+    const response1 = await fetch("https://gateway.marvel.com/v1/public/comics?titleStartsWith=" + query + "&orderBy=-onsaleDate&ts=1&apikey=5cfd7abf0015cce44e75995718376ac6&hash=5ba629ad49c439677d0b421267057665");
+    const json1 = await response1.json();
+    this.searchresults = json1.data.results;
   }
 
   @action async saveLeido(id){
