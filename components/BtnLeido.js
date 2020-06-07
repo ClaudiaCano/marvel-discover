@@ -20,6 +20,10 @@ export default function BtnLeido(props) {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     });
+
+    function setLeidos(id) {
+        marvel.saveLeido(id);
+    }
     
     if (!fontsLoaded) {
         return (
@@ -39,6 +43,7 @@ export default function BtnLeido(props) {
                     underlayColor={"#f0f0"}
                     onPress={() => {
                         setSelected(!selected);
+                        setLeidos(props.comic);
                     }}
                 >
                     <Text style={styles.text}>¿Leído?</Text>

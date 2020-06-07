@@ -23,6 +23,16 @@ const CardPerfilLeidos = observer(() => {
   const marvel = useContext(MarvelContext);
 
   return (
+    <>
+      <View style={styles.card}>
+        <Text>{JSON.stringify(marvel.leidos)}</Text>
+      </View>
+    </>
+  );
+});
+
+/*
+return (
     <View style={styles.card}>
       <FlatList
         horizontal
@@ -43,7 +53,7 @@ const CardPerfilLeidos = observer(() => {
       />
     </View>
   );
-});
+*/
 
 export default function (props) {
   const navigation = useNavigation();
