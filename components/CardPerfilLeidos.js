@@ -18,13 +18,16 @@ import ImgVerMas from "../components/ImgVerMas";
 import Comic from "../pages/Comic";
 import BackSvg from "../assets/back.svg";
 
-const CardPerfilLeidos = observer(() => {
-  
+const CardPerfilLeidos = observer(({ navigation }) => {
   const marvel = useContext(MarvelContext);
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const [comicId, setComicId] = useState(false);
 
   return (
     <>
-    <View style={styles.card}>
+      <View style={styles.card}>
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -32,18 +35,58 @@ const CardPerfilLeidos = observer(() => {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item: rowData }) => {
             return (
+              <TouchableHighlight
+                underlayColor={"#f0f0"}
+                onPress={() => {
+                  setModalVisible(true);
+                  setComicId(rowData.id);
+                }}
+              >
                 <Image
                   source={{
-                    uri: rowData.images[0].path + "." + rowData.images[0].extension,
+                    uri:
+                      rowData.images[0].path +
+                      "." +
+                      rowData.images[0].extension,
                   }}
                   style={styles.image}
                 />
+              </TouchableHighlight>
             );
           }}
-          ListFooterComponent={() => <ImgVerMas style={styles.image} />}
+          ListFooterComponent={() => {
+            return (
+              <TouchableHighlight
+              underlayColor={"#f0f0"}
+              onPress={() => navigation.navigate("Leidos")}
+              >
+                <ImgVerMas style={styles.image} />
+
+              </TouchableHighlight>
+            );
+          }}
         />
       </View>
-  </>
+      <View>
+        <Modal
+          backdropOpacity={0.3}
+          isVisible={modalVisible}
+          onBackdropPress={() => setModalVisible(false)}
+          style={styles.contentView}
+        >
+          <Comic comicId={comicId} />
+          <TouchableHighlight
+            underlayColor={"#f0f0"}
+            onPress={() => {
+              setModalVisible(false);
+            }}
+            style={[styles.closeIcon]}
+          >
+            <BackSvg style={styles.backIcon} width={15} height={15} />
+          </TouchableHighlight>
+        </Modal>
+      </View>
+    </>
   );
 });
 

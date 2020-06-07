@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, Component, useState } from "react";
+import { observer } from "mobx-react";
 import {
   StyleSheet,
   ScrollView,
+  FlatList,
+  Image,
   View,
   Dimensions,
+  TouchableHighlight,
   ActivityIndicator,
 } from "react-native";
 import { useFonts } from "@use-expo/font";
 import { LinearGradient } from "expo-linear-gradient";
+import MarvelContext from "../model/MarvelModel";
 
 import TitleLeidos from "../components/TitleLeidosGuardados";
 import CardListaLeidos from "../components/CardListaLeidos";
 import BackIcon from "../assets/backblack.svg";
 import AppBar from "../components/AppBar";
+import CardLeidos from "../components/CardLeidos";
 
 const Results = {
   text: "Leídos",
 };
 
-export default function Leidos() {
+const Leidos = observer(() => {
+
+  const marvel = useContext(MarvelContext);
+
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
@@ -45,14 +54,27 @@ export default function Leidos() {
       
       <TitleLeidos Title={Results.text} />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <CardListaLeidos />
-        <View style={styles.sizedbox} />
-      </ScrollView>
+      <FlatList
+        data={marvel.leidos}
+        renderItem={({ item: rowData }) => {
+          return (
+            <CardLeidos
+              Title={rowData.title}
+              Cover={{
+                uri: rowData.images[0].path + "." + rowData.images[0].extension,
+              }}
+            />
+          );
+        }}
+        keyExtractor={(item, index) => index.toString()}
+        ListFooterComponent={() => <View height={80} />}
+      />
+
     </View>
   );
-}
+})
 
+export default Leidos;
 //<BackIcon style={styles.backIcon} />
 
 const styles = StyleSheet.create({
