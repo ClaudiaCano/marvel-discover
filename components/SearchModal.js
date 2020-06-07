@@ -33,6 +33,7 @@ export default SearchModal = () => {
                     isVisible={modalVisible}
                     onBackdropPress={() => setModalVisible(false)}
                     style={styles.contentView}
+                    onRequestClose={() => { setModalVisible(false); } }
                 >
                     <Search />
                     <TouchableHighlight

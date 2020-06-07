@@ -35,11 +35,13 @@ const Resultados = {
   },
 };
 
-export default function CardListaResultados() {
+export default function CardListaResultados(props) {
   const [fontsLoaded] = useFonts({
     "RobotoCondensed-Bold": require("../assets/fonts/RobotoCondensed-Bold.ttf"),
     "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
   });
+
+  const results = props.Results;
 
   if (!fontsLoaded) {
     return (

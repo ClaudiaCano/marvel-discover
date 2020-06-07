@@ -39,7 +39,7 @@ export default function CardResultados(props) {
                 }}
             >
                 <View style={styles.card}>
-                    <Image source={props.Cover} style={styles.image} />
+                    <Image source={{ uri: props.Cover }} style={styles.image} />
                     <Text style={styles.title}>{props.Title}</Text>
                     <Guardar />
                 </View>
@@ -65,6 +65,8 @@ export default function CardResultados(props) {
         </>
     );
 }
+
+//source={props.Cover}
 
 const CARD_HEIGHT = 150;
 const PADDING = 10;
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         width: 80,
         height: CARD_HEIGHT - 10,
-        resizeMode: "cover",
+        resizeMode: "contain",
     },
     title: {
         fontSize: 17,
