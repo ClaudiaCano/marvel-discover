@@ -25,7 +25,7 @@ export default function CardResultados(props) {
     if (!fontsLoaded) {
         return (
             <View style={styles.container}>
-                <ActivityIndicator />
+                <ActivityIndicator size="large" color="#4E00B0" />
             </View>
         );
     }
@@ -59,7 +59,7 @@ export default function CardResultados(props) {
                     >
                         <BackSvg width={15} height={15} />
                     </TouchableHighlight>
-                    <Comic />
+                    <Comic comicId={props.Id}/>
                 </Modal>
             </View>
         </>

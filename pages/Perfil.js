@@ -14,13 +14,11 @@ import { useFonts } from "@use-expo/font";
 import UserHeader from "../components/UserHeader";
 import UserPfp from "../components/UserPfp";
 import UserInfo from "../components/UserInfo";
-import AppBar from "../components/AppBar";
-import HomeTitles from "../components/ProfileTitles";
+import ProfileTitles from "../components/ProfileTitles";
 import ProfileTitlesGuardados from "../components/ProfileTitlesGuardados";
 import CardPerfilLeidos from "../components/CardPerfilLeidos";
 import CardPerfilGuardados from "../components/CardPerfilGuardados";
 
-import BackSvg from "../assets/back.svg";
 import GearSvg from "../assets/settingsicon.svg";
 import AppBarBackground from "../components/AppBarBackground";
 
@@ -65,7 +63,7 @@ const Perfil = observer(() => {
                     Bio={user.about}
                 />
                 <Text style={styles.text_1}>MIS COLECCIONES</Text>
-                <HomeTitles Title="LEÍDOS" screen="Leidos" />
+                <ProfileTitles Title="LEÍDOS" screen="Leidos" />
                 <CardPerfilLeidos />
                 <ProfileTitlesGuardados Title="GUARDADOS" screen="Guardados" />
                 <CardPerfilGuardados />

@@ -54,7 +54,7 @@ export default function CardResultados(props) {
                     onBackdropPress={() => setModalVisible(false)}
                     style={styles.contentView}
                 >
-                    <Comic />
+                    <Comic comicId={props.Id}/>
                     <TouchableHighlight
                         underlayColor={"#f0f0"}
                         onPress={() => {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         width: 80,
         height: CARD_HEIGHT - 10,
-        resizeMode: "cover",
+        resizeMode: "contain",
     },
     title: {
         fontSize: 17,

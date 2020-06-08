@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         width: 80,
         height: CARD_HEIGHT - 10,
-        resizeMode: "cover",
+        resizeMode: "contain",
     },
     title: {
         fontSize: 17,
