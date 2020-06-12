@@ -25,14 +25,16 @@ export default function Guardar(props) {
 
   function setGuardados(data) {
     marvel.saveGuardado(data);
+    setSelected(!selected);
   }
 
-  function removeGuardados(id) {
-    var newsaveGuardado = marvel.guardados.filter(gdo => gdo.id === id);
-    //marvel.guardados = newsaveGuardado;
+  function removeGuardados(currentId) {
+    var newsaveGuardado = marvel.guardados.filter(gdo => gdo.id !== currentId);
+    marvel.guardados = newsaveGuardado;
+    setSelected(!selected);
     //const index = marvel.guardados.findIndex(gdo => gdo.id === id);
     //const index = marvel.guardados.indexOf(id);
-    marvel.guardados.splice(newsaveGuardado,1);
+    //marvel.guardados.splice(newsaveGuardado,1);
   }
 
   
@@ -44,13 +46,12 @@ export default function Guardar(props) {
     );
   }
 
-  if (!selected && !marvel.guardados.some(gdo => gdo.id == props.comic.id)) {
+  if (!selected && !marvel.guardados.some(gdo => gdo.id === props.comic.id)) {
     return (
       <View style={styles.column}>
         <TouchableHighlight
           underlayColor={"#f0f0"}
           onPress={() => {
-            setSelected(!selected);
             setGuardados(props.comic);
           }}
         >
@@ -65,8 +66,7 @@ export default function Guardar(props) {
       <TouchableHighlight
         underlayColor={"#f0f0"}
         onPress={() => {
-          setSelected(!selected);
-          removeGuardados(props.comic);
+          removeGuardados(props.comic.id);
         }}
       >
         <SaveIconSelected style={styles.icon} />

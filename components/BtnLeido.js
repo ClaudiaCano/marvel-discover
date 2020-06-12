@@ -24,12 +24,14 @@ export default function BtnLeido(props) {
 
     function setLeidos(data) {
         marvel.saveLeido(data);
+        setSelected(!selected);
     }
 
-    function removeLeidos(id) {
-        var newsaveLeido = marvel.leidos.filter(ldo => ldo.id === id);
-        //marvel.leidos = newsaveLeido;
-        marvel.leidos.splice(newsaveLeido,1);
+    function removeLeidos(currentId) {
+        var newsaveLeido = marvel.leidos.filter(ldo => ldo.id !== currentId);
+        marvel.leidos = newsaveLeido;
+        //marvel.leidos.splice(newsaveLeido,1);
+        setSelected(!selected);
     }
     
     if (!fontsLoaded) {
@@ -49,7 +51,6 @@ export default function BtnLeido(props) {
                     style={styles.touch}
                     underlayColor={"#f0f0"}
                     onPress={() => {
-                        setSelected(!selected);
                         setLeidos(props.comic);
                     }}
                 >
@@ -66,8 +67,7 @@ export default function BtnLeido(props) {
                 style={styles.touch}
                 underlayColor={"#f0f0"}
                 onPress={() => {
-                    setSelected(!selected);
-                    removeLeidos(props.comic);
+                    removeLeidos(props.comic.id);
                 }}
             >
                 <Text style={styles.text2}>Leído</Text>
