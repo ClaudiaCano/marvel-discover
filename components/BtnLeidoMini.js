@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
     StyleSheet,
     Text,
@@ -6,14 +6,30 @@ import {
     ActivityIndicator,
     TouchableHighlight,
 } from "react-native";
+import MarvelContext from "../model/MarvelModel";
 import { useFonts } from "@use-expo/font";
 
-export default function BtnLeidoMini() {
+
+export default function BtnLeidoMini(props) {
     const [fontsLoaded] = useFonts({
         "RobotoCondensed-Regular": require("../assets/fonts/RobotoCondensed-Regular.ttf"),
     });
 
+    const marvel = useContext(MarvelContext);
+
     const [selected, setSelected] = useState(false);
+
+    function setLeidos(data) {
+        marvel.saveLeido(data);
+        setSelected(!selected);
+    }
+
+    function removeLeidos(currentId) {
+        var newsaveLeido = marvel.leidos.filter(ldo => ldo.id !== currentId);
+        marvel.leidos = newsaveLeido;
+        //marvel.leidos.splice(newsaveLeido,1);
+        setSelected(!selected);
+    }
 
     if (!fontsLoaded) {
         return (
@@ -23,7 +39,7 @@ export default function BtnLeidoMini() {
         );
     }
 
-    if (!selected) {
+    if (!selected && !marvel.leidos.some(ldo => ldo.id == props.comic.id)) {
         return (
             <View style={styles.btn}>
                 <View style={styles.btnTop} />
@@ -32,7 +48,7 @@ export default function BtnLeidoMini() {
                     style={styles.touch}
                     underlayColor={"#f0f0"}
                     onPress={() => {
-                        setSelected(!selected);
+                        setLeidos(props.comic);
                     }}
                 >
                     <Text style={styles.text}>¿Leído?</Text>
@@ -48,7 +64,7 @@ export default function BtnLeidoMini() {
                 style={styles.touch}
                 underlayColor={"#f0f0"}
                 onPress={() => {
-                    setSelected(!selected);
+                    removeLeidos(props.comic.id);
                 }}
             >
                 <Text style={styles.text2}>Leído</Text>

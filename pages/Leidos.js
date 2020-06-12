@@ -54,7 +54,7 @@ const Leidos = observer(() => {
                 data={marvel.leidos}
                 renderItem={({ item: rowData }) => {
                     return (
-                        <CardLeidos
+                        <CardLeidos ComicData={rowData}
                             Id={rowData.id}
                             Title={rowData.title}
                             Cover={{

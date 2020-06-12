@@ -54,16 +54,7 @@ const Guardados = observer(() => {
                 data={marvel.guardados}
                 renderItem={({ item: rowData }) => {
                     return (
-                        <CardGuardados
-                            Id={rowData.id}
-                            Title={rowData.title}
-                            Cover={{
-                                uri:
-                                    rowData.images[0].path +
-                                    "." +
-                                    rowData.images[0].extension,
-                            }}
-                        />
+                        <CardGuardados ComicData={rowData}/>
                     );
                 }}
                 keyExtractor={(item, index) => index.toString()}

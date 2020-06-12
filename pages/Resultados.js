@@ -47,7 +47,7 @@ export default function Resultados(props) {
                 data={results}
                 renderItem={({ item: rowData }) => {
                     return (
-                        <CardResultados
+                        <CardResultados ComicData={rowData}
                             Id={rowData.id}
                             Title={rowData.title}
                             Cover={
