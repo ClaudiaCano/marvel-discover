@@ -14,7 +14,7 @@ import MarvelContext from "../model/MarvelModel";
 import ImgVerMas from "../components/ImgVerMas";
 import Leidos from "../pages/Leidos";
 import Comic from "../pages/Comic";
-import BackSvg from "../assets/back.svg";
+import BackSvg from "../assets/backblack.svg";
 
 const CardPerfilLeidos = observer(({ navigation }) => {
     const marvel = useContext(MarvelContext);
@@ -56,7 +56,9 @@ const CardPerfilLeidos = observer(({ navigation }) => {
                         return (
                             <TouchableHighlight
                                 underlayColor={"#f0f0"}
-                                onPress={() => {setModalVisible(true);}}
+                                onPress={() => {
+                                    setModalVisible2(true);
+                                }}
                             >
                                 <ImgVerMas style={styles.image} />
                             </TouchableHighlight>
