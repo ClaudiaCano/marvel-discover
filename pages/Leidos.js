@@ -55,6 +55,7 @@ const Leidos = observer(() => {
                 renderItem={({ item: rowData }) => {
                     return (
                         <CardLeidos
+                            Id={rowData.id}
                             Title={rowData.title}
                             Cover={{
                                 uri:

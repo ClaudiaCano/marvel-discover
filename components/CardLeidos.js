@@ -54,7 +54,7 @@ export default function CardLeidos(props) {
                     onBackdropPress={() => setModalVisible(false)}
                     style={styles.contentView}
                 >
-                    <Comic />
+                    <Comic comicId={props.Id}/>
                     <TouchableHighlight
                         underlayColor={"#f0f0"}
                         onPress={() => {
